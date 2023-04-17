@@ -36,6 +36,8 @@ export class MainComponent {
   Lottary !: any;
   A!: any;
   B!: any;
+
+  C: any[] = []
   A1: any[] = [];
   B1: any[] = [];
   isShowG = false;
@@ -165,39 +167,39 @@ export class MainComponent {
         context.shadowOffsetX = 4;
         context.shadowOffsetY = 4;
         context.shadowBlur = 3;
+
+
+
         this.drawStroked(context, nameimg, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8) //ชื่อหวย
         for (let index = 0; index < ee.length; index++) {
           this.drawStroked(context, this.myDate, (w / 2) - 30, 170, "18px chuanchiim", "white", "", 0)
-
-          for (let index = 0; index < ee.length; index++) { // ตัวเลข  0  0
-            this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
-            this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
-
-            for (let index = 0; index < ee.length; index++) {
-
-
-              this.A1.forEach((element, index) => {
-                // context.fillText(element, (80 * index) + 155, 250);
-                this.drawStroked(context, element, (70 * index) + 160, 280, "60px chuanchiim", "#FFD51E", "black", 5)
-                // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
-              });
-              this.B1.forEach((element, index) => {
-                this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
-              });
-
-              for (let index = 0; index < ee.length; index++) {
-                let A1 = ["132", "423", "331", "123"];
-                A1.forEach((element, index) => {
-                  this.drawStroked(context, element, (60 * index) + 140, 360, "36px chuanchiim", "#FFD51E", "black", 5)
-                });
-              }//for5
-            }//for4
-          }//for3
         }//for2
 
+
+        for (let index = 0; index < ee.length; index++) { // ตัวเลข  0  0
+          this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
+          this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
+        }//for3
+
+
+        for (let index = 0; index < ee.length; index++) {
+          this.A1.forEach((element, index) => {
+            // context.fillText(element, (80 * index) + 155, 250);
+            this.drawStroked(context, element, (70 * index) + 160, 280, "60px chuanchiim", "#FFD51E", "black", 5)
+            // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
+          });
+          this.B1.forEach((element, index) => {
+            this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
+          });
+        }//for4
+
+        for (let index = 0; index < ee.length; index++) {
+          this.C.forEach((element, index) => {
+            this.drawStroked(context, element, (60 * index) + 140, 360, "36px chuanchiim", "#FFD51E", "black", 5)
+          });
+        }//for5
       }
     }//for 1
-
   }
 
   getRandomNumber(min: number, max: number, previous?: number): number {
@@ -269,27 +271,113 @@ export class MainComponent {
     }
 
     for (let i = 0; i < arr.length; i++) {
-      this.checkindex(arr[i], arr)
+      let ck = this.checkindex(arr[i], arr);
+      if (ck == 2) {
+        console.log("num Angil:\t" + arr[i])
+        console.log("============CK2===============")
+        arr[i] = this.getRandomNumber(0, 99)
+      } else if (ck == 1) {
+        console.log("=============CK1==============")
+        arr[i] = this.getRandomNumber(0, 9) + arr[i];
+      } else {
+        // console.log("=============CK0==============")
+        ck = this.checkindex(arr[i], arr);
+      }
     }
     return arr
   }
 
-  random() {
+  generateArray(num1: any, num2: any): number[] {
+    let arr: number[] = []
+    arr = [
+      this.getRandomNumber(0, 999),
+      this.getRandomNumber(0, 999),
+      this.getRandomNumber(0, 999),
+      this.getRandomNumber(0, 999),
+    ]
+
+    for (let index = 0; index < arr.length; index++) {
+
+      let cks = this.checkindextree(arr[index], arr)
+      if (cks == 1) {
+        arr[index] = arr[index] + this.getRandomNumber(10, 99)
+      } else if (cks == 2) {
+        arr[index] = this.getRandomNumber(1, 9) + arr[index];
+      } else {
+        console.log("generateArray else");
+
+      }
+      cks = this.checkindextree(arr[index], arr);
+    }
+    return arr
+  }
+  checkindextree(em: any, arr: any) {
+    let result !: number;
+    if (em.toString().length == 1) {
+      console.log("common==0: " + em);
+      result = 1
+    }
+    else if (em.toString().length == 2) {
+      console.log("common==1: " + em);
+      result = 2
+    }
+    else {
+      console.log("commonelse: " + em);
+    }
+    return result;
+  }
+
+  intersect_arrays(a: any, b: any) {
+    var sorted_a = a.concat().sort();
+    var sorted_b = b.concat().sort();
+    var common = [];
+    var a_i = 0;
+    var b_i = 0;
+
+    while (a_i < a.length
+      && b_i < b.length) {
+      if (sorted_a[a_i] === sorted_b[b_i]) {
+        common.push(sorted_a[a_i]);
+        a_i++;
+        b_i++;
+      }
+      else if (sorted_a[a_i] < sorted_b[b_i]) {
+        a_i++;
+      }
+      else {
+        b_i++;
+      }
+    }
+
+    return common;
+  }
+
+  random(): void {
     let previousNumber: number | undefined;
 
     const randomNum1 = this.getRandomNumber(0, 9);
     const randomNum2 = this.getRandomNumber(0, 9, randomNum1);
 
-
-    // console.log(randomNum1);
-    // console.log(randomNum2);
-
+    const myArray = this.generateArray(randomNum1, randomNum2);
+    let arrsum: any[] = []
 
     const arr1 = this.randomN1(randomNum1);
     const arr2 = this.randomN1(randomNum2);
+
+    arrsum = this.intersect_arrays(arr1, arr2);
+    console.log("SSS:\t" + arrsum);
+    if (arrsum.length > 0) {
+      console.log("=========intersect_arrays==========");
+      this.random()
+    }
+
+
+
     console.log("Arr1: " + arr1)
     console.log("Arr2: " + arr2)
+    console.log(myArray);
 
+    this.C = myArray;
     this.A = randomNum1;
     this.B = randomNum2;
     this.A1 = arr1;
@@ -297,12 +385,14 @@ export class MainComponent {
   }
 
   checkindex(num: any, arr: any) {
+    let isresult!: number;
     let len = num.toString().length
     if (len > 0) {
 
       if (len == 1) {
         // console.log(num + "\tnum == 1 ");
-        this.randomN1(this.getRandomNumber(0, 9))
+        isresult = 1;
+
       } else if (len == 2) {
         let temp = 0
         // console.log(num + "\tnum == 2 ");
@@ -312,23 +402,24 @@ export class MainComponent {
               temp++
             }
             if (temp > 1) {
-              console.log("==========================")
-              this.randomN1(this.getRandomNumber(0, 9))
+              isresult = 2;
             }
             // else{
             //     temp=0
             // }
             // console.log(temp)
           });
-        } else {
-
         }
 
       } else {
-        // console.log(num + "\tnum > 2 ");
+        console.log(num + "\tnum > 2 ");
       }
     }
+    return isresult
   }
+
+
+
 
 
 

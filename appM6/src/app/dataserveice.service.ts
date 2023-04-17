@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class DataserveiceService {
 
-  apiEndpoint = 'https://nodejsapim6.herokuapp.com';
+  apiEndpoint = 'https://thankful-blue-bullfrog.cyclic.app';
   apiEndpointLocal = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient) {
