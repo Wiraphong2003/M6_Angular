@@ -1,0 +1,33 @@
+<div class="container" style="justify-content: center;display: flex;justify-items: center;">
+
+  <mat-card
+    style="padding: 10px; width: 400px;height: 450px; justify-content: center;display: flex;justify-items: center;background-color: rgb(240, 240, 240);margin-top: 10%;">
+
+    <!-- <input type="text" name="" id="" [(ngModel)]="username"> <br>
+  <input type="password" name="" id="" [(ngModel)]="password"> <br> -->
+    <!-- <button (click)="login()">Login</button> -->
+    <p style="text-align: center;font-size: 30px; margin-bottom: 50px;">Login</p>
+    <p>
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Placeholder" [(ngModel)]="this.username">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Password</mat-label>
+
+        <!-- <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="this.password"> -->
+        <input matInput placeholder="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="this.password">
+
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+    <div style="display: flex;justify-content: center;">
+      <button mat-raised-button color="primary" style="width: 100px;" (click)="login()">Login</button>
+    </div>
+
+  </mat-card>
+</div>
