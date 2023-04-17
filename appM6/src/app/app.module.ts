@@ -40,7 +40,7 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 
 import { FileSaverModule } from 'ngx-filesaver';
-
+// import { CanvasModule } from 'angular-canvas';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +48,7 @@ import { FileSaverModule } from 'ngx-filesaver';
     MainComponent
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

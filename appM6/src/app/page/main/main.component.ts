@@ -6,10 +6,11 @@ import { LocalService } from 'src/app/local.service';
 import { Image } from './imageD.model';
 
 
-
+import { Pipe, PipeTransform } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import * as JSZip from 'jszip';
 // import { saveAs } from 'file-saver';
-
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -21,10 +22,12 @@ export class MainComponent {
   @ViewChild('canvas', { static: true }) myCanvas !: ElementRef;
   @ViewChild('Arraycanvas', { static: true }) Arraycanvas!: ElementRef[];
 
+
+  // myDate = new Date();
   ctx!: CanvasRenderingContext2D;
   areAllImagesLoaded = false;
 
-  myDate !: any;
+  // myDate !: any;
   imageuser !: any;
   t1 !: any;
   t2 !: any;
@@ -43,8 +46,17 @@ export class MainComponent {
   isShowG = false;
   isSelected = false;
   checked = false;
+  date_value!: any;
+  todayNumber: number = Date.now();
+  todayDate: Date = new Date();
+  todayString: string = new Date().toDateString();
+  todayISOString: string = new Date().toISOString();
 
 
+  canvas  !: HTMLCanvasElement;
+  context !: CanvasRenderingContext2D | undefined;
+  listcanvas: HTMLCanvasElement[] = [];
+  DATE!: any;
   All: any[] = [];
   ALL1: any[] = [];
   imagesD: Image[] = [
@@ -53,28 +65,45 @@ export class MainComponent {
     { src: '' + this.local.getData("img1"), alt: 'Image 3' },
   ];
   arrayOfIndexes: any[] = []
-
-
-
-
-
-
+  getDate !: any;
+  tempdata!: any;
   constructor(
     private dataService: DataserveiceService,
     private http: HttpClient,
     private local: LocalService,
     private el: ElementRef,
     // private datePipe: DatePipe
+    // private datePipe: DatePipe
   ) {
     // this.myDate = new Date();
     // this.myDate = this.datePipe.transform(this.myDate, 'dd-MM-yyyy');
     // console.log(this.myDate);
 
+    // let myDates = this.datePipe.transform('dd-MM-yyyy');
+    // this.getDate = myDates;
+    // this.date_value = this.todayISOString;
     console.log(local.getData("img1"));
     this.imageuser = local.getData("img1");
 
+    this.date_value = this.todayISOString.split("T", 1);
+    console.log(this.date_value);
+    let ss: any[] = []
+    this.date_value.forEach((element: any) => {
+      console.log(element);
+      ss = element.split("-");
+    });
+    console.log(ss);
+    let getdatetemp = "";
 
+    for (let index = ss.length - 1; index >= 0; index--) {
+      const element = ss[index];
+      getdatetemp = getdatetemp + "-" + element
+    }
+    console.log(getdatetemp);
+    this.DATE = getdatetemp.slice(1, getdatetemp.length)
 
+    //  this.tempdata = this.date_value.split("-");
+    // console.log(this.tempdata);
 
 
     // http.get(dataService.apiEndpoint + '/image/' + local.getData("USER")).subscribe((data: any) => {
@@ -85,28 +114,28 @@ export class MainComponent {
     // });
 
     http.get(dataService.apiEndpoint + '/Lottary/1').subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
       this.t1 = data;
     });
 
     http.get(dataService.apiEndpoint + '/Lottary/2').subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
       this.t2 = data;
     });
 
 
     http.get(dataService.apiEndpoint + '/Lottary/3').subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
       this.t3 = data;
     });
 
     http.get(dataService.apiEndpoint + '/Lottary/4').subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
       this.t4 = data;
     });
 
     http.get(dataService.apiEndpoint + '/Lottary/5').subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
       this.t5 = data;
     });
 
@@ -121,7 +150,7 @@ export class MainComponent {
   async Cimg(ee: any) {
 
     this.All = this.arrayOfIndexes.filter(item => item !== item);
-    console.log(ee);
+    // console.log(ee);
     ee.forEach((element: any) => {
       this.All.push(element)
     });
@@ -131,24 +160,25 @@ export class MainComponent {
     let text = "";
 
     // if (confirm("กรุณากรอกข้อมูลให้ครบถ้วน") == true) {
-
     text = "Create image";
+
     this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
-    // this.listimages = this.listimages.filter(item => item !== item);
+    this.listcanvas = this.listcanvas.filter(item => item !== item);
     console.log(ee);
     for (let index = 0; index < ee.length; index++) {
       const element = this.ALL1[index];
       const nameimg = element.name;
-      console.log(nameimg);
+      // console.log(nameimg);
       // this.arrayOfIndexes.push(index)
       // console.log(this.arrayOfIndexes);
-      let canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
-      const context = canvas.getContext('2d')
+      this.canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
 
+      const context = this.canvas.getContext('2d')
+      //  this.context = context;
       if (context) {
         this.random();
 
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         context.strokeStyle = 'red';
         context.fillStyle = 'rgba(17, 0, 255, 0.5)';
 
@@ -169,10 +199,18 @@ export class MainComponent {
         context.shadowBlur = 3;
 
 
+        context.font = "32px Superspace"
+        context.strokeStyle = "black";
+        context.lineWidth = 8;
+        context.strokeText(nameimg, (w / 2) - (lenHH * 7), 145);
+        context.fillStyle = "#FFD51E";
+        context.fillText(nameimg, (w / 2) - (lenHH * 7), 145);
 
-        this.drawStroked(context, nameimg, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8) //ชื่อหวย
+
+        // this.drawStroked(context, nameimg, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8) //ชื่อหวย
+
         for (let index = 0; index < ee.length; index++) {
-          this.drawStroked(context, this.myDate, (w / 2) - 30, 170, "18px chuanchiim", "white", "", 0)
+          this.drawStroked(context, this.DATE, (w / 2) - 30, 170, "18px chuanchiim", "white", "", 0)
         }//for2
 
 
@@ -198,8 +236,127 @@ export class MainComponent {
             this.drawStroked(context, element, (60 * index) + 140, 360, "36px chuanchiim", "#FFD51E", "black", 5)
           });
         }//for5
+
+
+      }//if context
+      let jsons = {
+        "A": this.A,
+        "B": this.B,
+        "A1": this.A1,
+        "B1": this.B1,
+        "C": this.C
       }
+      // this.saveCanvasAs(this.canvas, nameimg)
+      // console.log(context);
+      // console.log(this.canvas);
+      this.listcanvas.push(this.canvas);
+      // const filename = `image-${index}.png`;
+      // this.downloadCanvas(this.canvas, filename);
+
+      // console.log(jsons);
     }//for 1
+    console.log(this.listcanvas);
+
+  }
+
+  downloadCanvas(canvas: any, filename: any) {
+    // Convert canvas to data URL
+    for (let index = 0; index < filename.length; index++) {
+      const element = filename[index];
+      const dataURL = canvas.toDataURL();
+
+      // Create temporary link
+      const link = document.createElement('a');
+      link.href = dataURL;
+      link.download = filename;
+      // Trigger download
+      link.click();
+    }
+
+  }
+
+  convertCanvasToImage(aaa: HTMLCanvasElement) {
+    var image = new Image();
+    image.src = aaa.toDataURL("image/png");
+    return image;
+  }
+
+  download_img(ee: any) {
+    // this.c = document.getElementById("mcanvas");
+    for (let index = 0; index < ee.length; index++) {
+
+      const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
+
+      // const canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
+      // const canvas = <HTMLCanvasElement>document.getElementById('#ccanvas');
+
+      // const canvas = document.getElementById('myCanvas');
+      const imgData = canvas.toDataURL('image/png');
+
+      const link = document.createElement('a');
+      link.href = imgData;
+      link.download = 'my-image.png';
+      link.click();
+
+      // const canvas = document.getElementById('my-canvas');
+      // const context = canvas.getContext('2d');
+
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      // img.src = 'https://example.com/image.jpg';
+      img.onload = function () {
+        // context.drawImage(img, 0, 0);
+        const dataURL = canvas.toDataURL();
+
+        // Create a new link element
+        const link = document.createElement('a');
+        link.href = dataURL;
+        link.download = 'my-image.png';
+
+        // Trigger a click event on the link element to initiate download
+        link.click();
+      };
+    }
+  }
+
+  saveCanvasAs(canvas: HTMLCanvasElement, fileName: any) {
+    // get image data and transform mime type to application/octet-stream
+    var canvasDataUrl = canvas.toDataURL("image/png").replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
+    var link = document.createElement('a'); // create an anchor tag
+
+    // set parameters for downloading
+    link.setAttribute('href', canvasDataUrl);
+    link.setAttribute('target', '_blank');
+    link.setAttribute('download', fileName);
+
+    // compat mode for dispatching click on your anchor
+    if (document.createEvent) {
+      var evtObj = document.createEvent('MouseEvents');
+      evtObj.initEvent('click', true, true);
+      link.dispatchEvent(evtObj);
+    } else if (link.click) {
+      link.click();
+    }
+  }
+
+
+  Dowload(ee: any) {
+    console.log("Dowload");
+    for (let index = 0; index < ee.length; index++) {
+      const element = ee[index];
+      const canvasDataUrl = this.canvas.toDataURL('image/png');
+      console.log(canvasDataUrl);
+
+      const img = new Image();
+      img.src = canvasDataUrl;
+      img.onload = () => {
+        const link = document.createElement('a');
+        link.href = canvasDataUrl;
+        link.download = 'image.png';
+        link.click();
+      };
+    }
+
   }
 
   getRandomNumber(min: number, max: number, previous?: number): number {
@@ -218,7 +375,6 @@ export class MainComponent {
       arr.push(num);
       previous = num;
     }
-
     return arr;
   }
 
@@ -226,8 +382,8 @@ export class MainComponent {
     let s1 = this.getRandomNumber(0, 4);
     let arr: number[] = []
     let num = number.toString();
-    console.log("NUMGET: " + num)
-    console.log("S1: " + s1)
+    // console.log("NUMGET: " + num)
+    // console.log("S1: " + s1)
     if (s1 == 0) {
       arr = [
         this.getRandomNumber(0, 9) + num,
@@ -273,11 +429,11 @@ export class MainComponent {
     for (let i = 0; i < arr.length; i++) {
       let ck = this.checkindex(arr[i], arr);
       if (ck == 2) {
-        console.log("num Angil:\t" + arr[i])
-        console.log("============CK2===============")
+        // console.log("num Angil:\t" + arr[i])
+        // console.log("============CK2===============")
         arr[i] = this.getRandomNumber(0, 99)
       } else if (ck == 1) {
-        console.log("=============CK1==============")
+        // console.log("=============CK1==============")
         arr[i] = this.getRandomNumber(0, 9) + arr[i];
       } else {
         // console.log("=============CK0==============")
@@ -290,10 +446,10 @@ export class MainComponent {
   generateArray(num1: any, num2: any): number[] {
     let arr: number[] = []
     arr = [
-      this.getRandomNumber(0, 999),
-      this.getRandomNumber(0, 999),
-      this.getRandomNumber(0, 999),
-      this.getRandomNumber(0, 999),
+      this.getRandomNumber(100, 999),
+      this.getRandomNumber(100, 999),
+      this.getRandomNumber(100, 999),
+      this.getRandomNumber(100, 999),
     ]
 
     for (let index = 0; index < arr.length; index++) {
@@ -304,8 +460,7 @@ export class MainComponent {
       } else if (cks == 2) {
         arr[index] = this.getRandomNumber(1, 9) + arr[index];
       } else {
-        console.log("generateArray else");
-
+        // console.log("generateArray else");
       }
       cks = this.checkindextree(arr[index], arr);
     }
@@ -314,15 +469,15 @@ export class MainComponent {
   checkindextree(em: any, arr: any) {
     let result !: number;
     if (em.toString().length == 1) {
-      console.log("common==0: " + em);
+      // console.log("common==0: " + em);
       result = 1
     }
     else if (em.toString().length == 2) {
-      console.log("common==1: " + em);
+      // console.log("common==1: " + em);
       result = 2
     }
     else {
-      console.log("commonelse: " + em);
+      // console.log("commonelse: " + em);
     }
     return result;
   }
@@ -365,17 +520,17 @@ export class MainComponent {
     const arr2 = this.randomN1(randomNum2);
 
     arrsum = this.intersect_arrays(arr1, arr2);
-    console.log("SSS:\t" + arrsum);
+    // console.log("SSS:\t" + arrsum);
     if (arrsum.length > 0) {
-      console.log("=========intersect_arrays==========");
+      // console.log("=========intersect_arrays==========");
       this.random()
     }
 
 
 
-    console.log("Arr1: " + arr1)
-    console.log("Arr2: " + arr2)
-    console.log(myArray);
+// console.log("Arr1: " + arr1)
+// console.log("Arr2: " + arr2)
+// console.log(myArray);
 
     this.C = myArray;
     this.A = randomNum1;
@@ -434,8 +589,8 @@ export class MainComponent {
 
 
   loadImage(url: string): Promise<HTMLImageElement> {
-    console.log("loadImage");
-    console.log("url: " + url);
+  // console.log("loadImage");
+  // console.log("url: " + url);
 
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -446,31 +601,26 @@ export class MainComponent {
     });
   }
 
-  Dowload() {
-    console.log("Dowload");
-
-  }
-
-  // downloadImagesALL(images: any[], zipName: string) {
-  //   let zipFile: JSZip = new JSZip();
-  //   let imgFolder!: any;
-  //   imgFolder = zipFile.folder('images');
-  //   images.forEach((image, index) => {
-  //     const xhr = new XMLHttpRequest();
-  //     xhr.open('GET', image.src, true);
-  //     xhr.responseType = 'blob';
-  //     xhr.onload = () => {
-  //       const blob = xhr.response;
-  //       imgFolder.file(`${image.alt}.jpg`, blob);
-  //       if (index === images.length - 1) {
-  //         zipFile.generateAsync({ type: 'blob' }).then((content: any) => {
-  //           saveAs(content, `${zipName}.zip`);
-  //         });
-  //       }
-  //     };
-  //     xhr.send();
-  //   });
-  // }
+// downloadImagesALL(images: any[], zipName: string) {
+//   let zipFile: JSZip = new JSZip();
+//   let imgFolder!: any;
+//   imgFolder = zipFile.folder('images');
+//   images.forEach((image, index) => {
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('GET', image.src, true);
+//     xhr.responseType = 'blob';
+//     xhr.onload = () => {
+//       const blob = xhr.response;
+//       imgFolder.file(`${image.alt}.jpg`, blob);
+//       if (index === images.length - 1) {
+//         zipFile.generateAsync({ type: 'blob' }).then((content: any) => {
+//           saveAs(content, `${zipName}.zip`);
+//         });
+//       }
+//     };
+//     xhr.send();
+//   });
+// }
 
   trackByFn(index: any) {
     return (index);

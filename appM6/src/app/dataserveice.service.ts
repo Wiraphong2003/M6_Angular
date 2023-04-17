@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class DataserveiceService {
 
-  apiEndpoint = 'https://thankful-blue-bullfrog.cyclic.app';
-  apiEndpointLocal = 'http://localhost:3000';
+  // apiEndpoint = 'https://a1-5ym4.onrender.com';
+  apiEndpoint = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient) {
 
