@@ -34,11 +34,15 @@ export class MainComponent {
   t6 !: any;
   type !: any;
   Lottary !: any;
-
+  A!: any;
+  B!: any;
+  A1: any[] = [];
+  B1: any[] = [];
   isShowG = false;
   isSelected = false;
-
   checked = false;
+
+
   All: any[] = [];
   ALL1: any[] = [];
   imagesD: Image[] = [
@@ -46,8 +50,9 @@ export class MainComponent {
     { src: '' + this.local.getData("img1"), alt: 'Image 2' },
     { src: '' + this.local.getData("img1"), alt: 'Image 3' },
   ];
-
   arrayOfIndexes: any[] = []
+
+
 
 
 
@@ -139,6 +144,7 @@ export class MainComponent {
       const context = canvas.getContext('2d')
 
       if (context) {
+        this.random();
 
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.strokeStyle = 'red';
@@ -164,19 +170,18 @@ export class MainComponent {
           this.drawStroked(context, this.myDate, (w / 2) - 30, 170, "18px chuanchiim", "white", "", 0)
 
           for (let index = 0; index < ee.length; index++) { // ตัวเลข  0  0
-            this.drawStroked(context, "1", ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
-            this.drawStroked(context, "2", ((w / 2) + 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
+            this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
+            this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
 
             for (let index = 0; index < ee.length; index++) {
 
-              let A1 = ["12", "23", "31"];
-              let A2 = ["44", "33", "11"];
-              A1.forEach((element, index) => {
+
+              this.A1.forEach((element, index) => {
                 // context.fillText(element, (80 * index) + 155, 250);
                 this.drawStroked(context, element, (70 * index) + 160, 280, "60px chuanchiim", "#FFD51E", "black", 5)
                 // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
               });
-              A2.forEach((element, index) => {
+              this.B1.forEach((element, index) => {
                 this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
               });
 
@@ -194,6 +199,137 @@ export class MainComponent {
     }//for 1
 
   }
+
+  getRandomNumber(min: number, max: number, previous?: number): number {
+    let num = Math.floor(Math.random() * (max - min + 1) + min);
+    while (num === previous) {
+      num = Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    return num;
+  }
+  createRandomArray(length: number, min: number, max: number, num1: number, num2: number): number[] {
+    const arr: number[] = [num1, num2];
+    let previous: number | undefined;
+
+    for (let i = 0; i < length - 2; i++) {
+      const num = this.getRandomNumber(min, max, previous);
+      arr.push(num);
+      previous = num;
+    }
+
+    return arr;
+  }
+
+  randomN1(number: any): number[] {
+    let s1 = this.getRandomNumber(0, 4);
+    let arr: number[] = []
+    let num = number.toString();
+    console.log("NUMGET: " + num)
+    console.log("S1: " + s1)
+    if (s1 == 0) {
+      arr = [
+        this.getRandomNumber(0, 9) + num,
+        num + this.getRandomNumber(0, 9),
+        this.getRandomNumber(0, 99)
+      ];
+    } else if (s1 == 1) {
+      arr = [
+        num + this.getRandomNumber(0, 9),
+        this.getRandomNumber(0, 9) + num,
+        this.getRandomNumber(0, 9) + num
+      ];
+    } else if (s1 == 2) {
+      arr = [
+        this.getRandomNumber(0, 9) + num,
+        num + this.getRandomNumber(0, 9),
+        this.getRandomNumber(0, 9) + num,
+      ];
+    } else if (s1 == 3) {
+      arr = [
+        this.getRandomNumber(0, 9) + num,
+        num + this.getRandomNumber(0, 9),
+        num + this.getRandomNumber(0, 9)
+      ];
+    } else if (s1 == 4) {
+      arr = [
+        num + this.getRandomNumber(0, 9),
+        this.getRandomNumber(0, 9) + num,
+        num + this.getRandomNumber(0, 9)
+      ];
+    }
+    else if (s1 == 5) {
+      arr = [
+        this.getRandomNumber(0, 9) + num,
+        this.getRandomNumber(0, 99),
+        num + this.getRandomNumber(0, 9)
+      ];
+    }
+    else {
+      console.log("s1 ERROR")
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      this.checkindex(arr[i], arr)
+    }
+    return arr
+  }
+
+  random() {
+    let previousNumber: number | undefined;
+
+    const randomNum1 = this.getRandomNumber(0, 9);
+    const randomNum2 = this.getRandomNumber(0, 9, randomNum1);
+
+
+    // console.log(randomNum1);
+    // console.log(randomNum2);
+
+
+    const arr1 = this.randomN1(randomNum1);
+    const arr2 = this.randomN1(randomNum2);
+    console.log("Arr1: " + arr1)
+    console.log("Arr2: " + arr2)
+
+    this.A = randomNum1;
+    this.B = randomNum2;
+    this.A1 = arr1;
+    this.B1 = arr2;
+  }
+
+  checkindex(num: any, arr: any) {
+    let len = num.toString().length
+    if (len > 0) {
+
+      if (len == 1) {
+        // console.log(num + "\tnum == 1 ");
+        this.randomN1(this.getRandomNumber(0, 9))
+      } else if (len == 2) {
+        let temp = 0
+        // console.log(num + "\tnum == 2 ");
+        if (arr.includes(num)) {
+          arr.forEach((ee: any) => {
+            if (ee == num) {
+              temp++
+            }
+            if (temp > 1) {
+              console.log("==========================")
+              this.randomN1(this.getRandomNumber(0, 9))
+            }
+            // else{
+            //     temp=0
+            // }
+            // console.log(temp)
+          });
+        } else {
+
+        }
+
+      } else {
+        // console.log(num + "\tnum > 2 ");
+      }
+    }
+  }
+
 
 
   drawStroked(ctx: CanvasRenderingContext2D, text: any, x: any, y: any, font: any, color: any, strokeStyle: any, lineWidth: any) {
