@@ -112,37 +112,46 @@ export class MainComponent {
     //   this.imageuser = img;
     //   console.log("img: " + this.imageuser);
     // });
+    this.t1 = dataService.t1;
+    this.t2 = dataService.t2;
+    this.t3 = dataService.t3;
+    this.t4 = dataService.t4;
+    this.t5 = dataService.t5;
+    this.Lottary = dataService.Lottary;
+    
+    // http.get(dataService.apiEndpoint + '/Lottary/1').subscribe((data: any) => {
+    //   // console.log(data);
+    //   this.t1 = data;
+    // });
 
-    http.get(dataService.apiEndpoint + '/Lottary/1').subscribe((data: any) => {
-      // console.log(data);
-      this.t1 = data;
-    });
-
-    http.get(dataService.apiEndpoint + '/Lottary/2').subscribe((data: any) => {
-      // console.log(data);
-      this.t2 = data;
-    });
 
 
-    http.get(dataService.apiEndpoint + '/Lottary/3').subscribe((data: any) => {
-      // console.log(data);
-      this.t3 = data;
-    });
+    // http.get(dataService.apiEndpoint + '/Lottary/2').subscribe((data: any) => {
+    //   // console.log(data);
+    //   this.t2 = data;
+    // });
 
-    http.get(dataService.apiEndpoint + '/Lottary/4').subscribe((data: any) => {
-      // console.log(data);
-      this.t4 = data;
-    });
 
-    http.get(dataService.apiEndpoint + '/Lottary/5').subscribe((data: any) => {
-      // console.log(data);
-      this.t5 = data;
-    });
+    // http.get(dataService.apiEndpoint + '/Lottary/3').subscribe((data: any) => {
+    //   // console.log(data);
+    //   this.t3 = data;
+    // });
 
-    http.get(dataService.apiEndpoint + '/read').subscribe((data: any) => {
-      console.log(data);
-      this.Lottary = data;
-    });
+    // http.get(dataService.apiEndpoint + '/Lottary/4').subscribe((data: any) => {
+    //   // console.log(data);
+    //   // this.t4 = data;
+    // });
+
+    // http.get(dataService.apiEndpoint + '/Lottary/5').subscribe((data: any) => {
+    //   console.log(data);
+    //   this.t5 = data;
+    // });
+
+    // http.get(dataService.apiEndpoint + '/read').subscribe((data: any) => {
+    //   console.log(data);
+    //   this.Lottary = data;
+    // });
+
 
 
   }
@@ -528,9 +537,9 @@ export class MainComponent {
 
 
 
-// console.log("Arr1: " + arr1)
-// console.log("Arr2: " + arr2)
-// console.log(myArray);
+    // console.log("Arr1: " + arr1)
+    // console.log("Arr2: " + arr2)
+    // console.log(myArray);
 
     this.C = myArray;
     this.A = randomNum1;
@@ -589,8 +598,8 @@ export class MainComponent {
 
 
   loadImage(url: string): Promise<HTMLImageElement> {
-  // console.log("loadImage");
-  // console.log("url: " + url);
+    // console.log("loadImage");
+    // console.log("url: " + url);
 
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -601,26 +610,26 @@ export class MainComponent {
     });
   }
 
-// downloadImagesALL(images: any[], zipName: string) {
-//   let zipFile: JSZip = new JSZip();
-//   let imgFolder!: any;
-//   imgFolder = zipFile.folder('images');
-//   images.forEach((image, index) => {
-//     const xhr = new XMLHttpRequest();
-//     xhr.open('GET', image.src, true);
-//     xhr.responseType = 'blob';
-//     xhr.onload = () => {
-//       const blob = xhr.response;
-//       imgFolder.file(`${image.alt}.jpg`, blob);
-//       if (index === images.length - 1) {
-//         zipFile.generateAsync({ type: 'blob' }).then((content: any) => {
-//           saveAs(content, `${zipName}.zip`);
-//         });
-//       }
-//     };
-//     xhr.send();
-//   });
-// }
+  // downloadImagesALL(images: any[], zipName: string) {
+  //   let zipFile: JSZip = new JSZip();
+  //   let imgFolder!: any;
+  //   imgFolder = zipFile.folder('images');
+  //   images.forEach((image, index) => {
+  //     const xhr = new XMLHttpRequest();
+  //     xhr.open('GET', image.src, true);
+  //     xhr.responseType = 'blob';
+  //     xhr.onload = () => {
+  //       const blob = xhr.response;
+  //       imgFolder.file(`${image.alt}.jpg`, blob);
+  //       if (index === images.length - 1) {
+  //         zipFile.generateAsync({ type: 'blob' }).then((content: any) => {
+  //           saveAs(content, `${zipName}.zip`);
+  //         });
+  //       }
+  //     };
+  //     xhr.send();
+  //   });
+  // }
 
   trackByFn(index: any) {
     return (index);

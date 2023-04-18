@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row" style="margin-top: 50px;">
     <div class="col-sm-5">
-      <h1 style=" font-family: Superspace;">{{ date_value | date :'d/M/yy'}}</h1>
+      <h1 style=" font-family: Superspace;">วันที่ {{ date_value | date :'d/M/yy'}}</h1>
       <div *ngIf="!isShowG">
         <!-- <canvas #canvas style="border: 1px solid" width="500" height="500">
                                         imgsss
@@ -30,34 +30,17 @@
         </mdb-carousel>
       </div>
 
-      <!-- <script>
-                          var c = document.getElementById("mcanvas");
-                          var ctx = c.getContext("2d");
-                          ctx.beginPath();
-                          ctx.arc(100, 75, 50, 0, 2 * Math.PI);
-                          ctx.stroke();
-
-                          function download_image() {
-                            console.log("dowload")
-                            var canvas = document.getElementById("mcanvas");
-                            image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-                            var link = document.createElement('a');
-                            link.download = "my-image.png";
-                            link.href = image;
-                            link.click();
-                          }
-                        </script> -->
-
-      <div class="row" style="margin-top: 50px; width: 100%;;">
+      <!-- <div class="row" style="margin-top: 50px; width: 100%;;">
         <div class="col-sm" style="display: grid; margin: auto;">
           <button type="button" class="btn btn-outline-primary" style="margin-top: 5px;">Color</button>
           <button type="button" class="btn btn-outline-primary" style="margin-top: 5px;">Move</button>
           <button type="button" class="btn btn-outline-primary" style="margin-top: 5px;">set Number</button>
 
         </div>
+      </div> -->
 
-      </div>
     </div>
+
     <div class="col-sm-7">
       <div class="row">
         <div class="col-sm">
@@ -142,7 +125,7 @@
         </div>
       </div>
     </div>
-    {{ALL1|json}}
+    <!-- {{ALL1|json}} -->
   </div>
 
 
