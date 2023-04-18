@@ -118,7 +118,7 @@ export class MainComponent {
     this.t4 = dataService.t4;
     this.t5 = dataService.t5;
     this.Lottary = dataService.Lottary;
-    
+
     // http.get(dataService.apiEndpoint + '/Lottary/1').subscribe((data: any) => {
     //   // console.log(data);
     //   this.t1 = data;
@@ -156,6 +156,9 @@ export class MainComponent {
 
   }
 
+
+
+
   async Cimg(ee: any) {
 
     this.All = this.arrayOfIndexes.filter(item => item !== item);
@@ -168,8 +171,8 @@ export class MainComponent {
     // });
     let text = "";
 
-    // if (confirm("กรุณากรอกข้อมูลให้ครบถ้วน") == true) {
-    text = "Create image";
+    // if (confirm("คุณต้องการจะสร้างรูปใช่หรือไม่") == true) {
+
 
     this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
     this.listcanvas = this.listcanvas.filter(item => item !== item);
@@ -219,7 +222,7 @@ export class MainComponent {
         // this.drawStroked(context, nameimg, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8) //ชื่อหวย
 
         for (let index = 0; index < ee.length; index++) {
-          this.drawStroked(context, this.DATE, (w / 2) - 30, 170, "18px chuanchiim", "white", "", 0)
+          this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px chuanchiim", "white", "", 0)
         }//for2
 
 
@@ -264,8 +267,103 @@ export class MainComponent {
 
       // console.log(jsons);
     }//for 1
-    console.log(this.listcanvas);
 
+
+    if (confirm("คุณต้องการจะสร้างรูปใช่หรือไม่") == true) {
+      this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
+      this.listcanvas = this.listcanvas.filter(item => item !== item);
+      console.log(ee);
+      for (let index = 0; index < ee.length; index++) {
+        const element = this.ALL1[index];
+        const nameimg = element.name;
+        // console.log(nameimg);
+        // this.arrayOfIndexes.push(index)
+        // console.log(this.arrayOfIndexes);
+        this.canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
+
+        const context = this.canvas.getContext('2d')
+        //  this.context = context;
+        if (context) {
+          this.random();
+          context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          context.strokeStyle = 'red';
+          context.fillStyle = 'rgba(17, 0, 255, 0.5)';
+
+          const imgs = await (this.loadImage(this.local.getData("img1") + ''));
+
+          // Calculate the new width and height
+          const newWidth = 500;
+          const newHeight = (imgs.height / imgs.width) * newWidth;
+
+          // Draw the resized image on the canvas
+          context.drawImage(imgs, 0, 0, newWidth, newHeight);
+
+          let w = 500;
+          let h = 500;
+          let lenHH = nameimg.length;
+          context.shadowOffsetX = 4;
+          context.shadowOffsetY = 4;
+          context.shadowBlur = 3;
+
+
+          context.font = "32px Superspace"
+          context.strokeStyle = "black";
+          context.lineWidth = 8;
+          context.strokeText(nameimg, (w / 2) - (lenHH * 7), 145);
+          context.fillStyle = "#FFD51E";
+          context.fillText(nameimg, (w / 2) - (lenHH * 7), 145);
+
+
+          // this.drawStroked(context, nameimg, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8) //ชื่อหวย
+
+          for (let index = 0; index < ee.length; index++) {
+            this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px chuanchiim", "white", "", 0)
+          }//for2
+
+
+          for (let index = 0; index < ee.length; index++) { // ตัวเลข  0  0
+            this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
+            this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
+          }//for3
+
+
+          for (let index = 0; index < ee.length; index++) {
+            this.A1.forEach((element, index) => {
+              // context.fillText(element, (80 * index) + 155, 250);
+              this.drawStroked(context, element, (70 * index) + 160, 280, "60px chuanchiim", "#FFD51E", "black", 5)
+              // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
+            });
+            this.B1.forEach((element, index) => {
+              this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
+            });
+          }//for4
+
+          for (let index = 0; index < ee.length; index++) {
+            this.C.forEach((element, index) => {
+              this.drawStroked(context, element, (60 * index) + 140, 360, "36px chuanchiim", "#FFD51E", "black", 5)
+            });
+          }//for5
+
+
+        }//if context
+        let jsons = {
+          "A": this.A,
+          "B": this.B,
+          "A1": this.A1,
+          "B1": this.B1,
+          "C": this.C
+        }
+        // this.saveCanvasAs(this.canvas, nameimg)
+        // console.log(context);
+        // console.log(this.canvas);
+        this.listcanvas.push(this.canvas);
+        // const filename = `image-${index}.png`;
+        // this.downloadCanvas(this.canvas, filename);
+
+        // console.log(jsons);
+      }//for 1
+    } //if confriam
+    console.log(this.listcanvas);
   }
 
   downloadCanvas(canvas: any, filename: any) {
@@ -325,6 +423,29 @@ export class MainComponent {
         // Trigger a click event on the link element to initiate download
         link.click();
       };
+    }
+  }
+
+  Dloadimage(canvas: any) {
+    console.log("LOADIMAGE");
+    // console.log(canvas);
+    for (let index = 0; index < canvas.length; index++) {
+      const element = canvas[index];
+      console.log(element);
+
+    }
+  }
+
+  downloadImagesFromCanvas(canvasArray: any) {
+    for (let i = 0; i < canvasArray.length; i++) {
+      console.log(canvasArray[i]);
+      const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png');
+      link.download = `image-${i}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   }
 
@@ -693,7 +814,6 @@ export class MainComponent {
   saveAs(content: any, arg1: string) {
     throw new Error('Function not implemented.');
   }
-
 
 
 
