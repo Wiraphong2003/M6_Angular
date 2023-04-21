@@ -1,6 +1,6 @@
 // import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { DataserveiceService } from 'src/app/dataserveice.service';
 import { LocalService } from 'src/app/local.service';
 import { Image } from './imageD.model';
@@ -8,17 +8,17 @@ import { Image } from './imageD.model';
 
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import * as JSZip from 'jszip';
+import JSZip from 'jszip';
 // import { saveAs } from 'file-saver';
 import { formatDate } from '@angular/common';
-
-
+import { Router } from '@angular/router';
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   @ViewChild('canvas', { static: true }) myCanvas !: ElementRef;
   @ViewChild('Arraycanvas', { static: true }) Arraycanvas!: ElementRef[];
 
@@ -64,6 +64,8 @@ export class MainComponent {
     { src: '' + this.local.getData("img1"), alt: 'Image 2' },
     { src: '' + this.local.getData("img1"), alt: 'Image 3' },
   ];
+
+  listdataURL: any[] = [];
   arrayOfIndexes: any[] = []
   getDate !: any;
   tempdata!: any;
@@ -72,6 +74,7 @@ export class MainComponent {
     private http: HttpClient,
     private local: LocalService,
     private el: ElementRef,
+    private router: Router,
     // private datePipe: DatePipe
     // private datePipe: DatePipe
   ) {
@@ -155,6 +158,10 @@ export class MainComponent {
 
 
   }
+  ngOnInit(): void {
+    // getImage();
+
+  }
 
 
 
@@ -176,15 +183,31 @@ export class MainComponent {
 
     this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
     this.listcanvas = this.listcanvas.filter(item => item !== item);
+    this.listdataURL = this.listdataURL.filter(item => item !== item);
+
+    // for (let index = 0; index < ee.length; index++) {
+    //   this.canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
+    //   let context !: CanvasRenderingContext2D;
+    //   context = <CanvasRenderingContext2D>this.canvas.getContext('2d')
+    //   const image = await this.loadImagesss(this.local.getData("img1") + '');
+    //   const newWidth = 500;
+    //   const newHeight = (image.height / image.width) * newWidth;
+    //   console.log(context);
+    //   context.drawImage(image, 0, 0, newWidth, newHeight);
+
+    //   const pngDataUrl = this.canvas.toDataURL("image/png");
+    //   console.log(pngDataUrl);
+    // }
+
     console.log(ee);
     for (let index = 0; index < ee.length; index++) {
-      const element = this.ALL1[index];
-      const nameimg = element.name;
+      const elements = this.ALL1[index];
+      const nameimg = elements.name;
       // console.log(nameimg);
       // this.arrayOfIndexes.push(index)
       // console.log(this.arrayOfIndexes);
-      this.canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
-
+      // this.canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
+      this.canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
       const context = this.canvas.getContext('2d')
       //  this.context = context;
       if (context) {
@@ -194,14 +217,32 @@ export class MainComponent {
         context.strokeStyle = 'red';
         context.fillStyle = 'rgba(17, 0, 255, 0.5)';
 
-        const imgs = await (this.loadImage(this.local.getData("img1") + ''));
 
-        // Calculate the new width and height
-        const newWidth = 500;
-        const newHeight = (imgs.height / imgs.width) * newWidth;
+        // const imgs = await (this.loadImage(this.local.getData("img1") + ''));
+        // const image = await this.loadImagesss(this.local.getData("img1") + '');
+        // const newWidth = 500;
+        // const newHeight = (image.height / image.width) * newWidth;
 
-        // Draw the resized image on the canvas
-        context.drawImage(imgs, 0, 0, newWidth, newHeight);
+
+        // context.drawImage(image, 0, 0, newWidth, newHeight);
+
+
+        // var img = new Image;
+        // img.onload = function () {
+        //   context.drawImage(img, 0, 0); // Or at whatever offset you like
+        // };
+        // img.src = strDataURI;
+
+        const img = new Image();
+        // img.src = this.local.getData("img1") + '';
+        img.onload = function () {
+          const newWidth = 500;
+          const newHeight = (img.height / img.width) * newWidth;
+          context.drawImage(img, 0, 0, newWidth, newHeight);
+          // const dataURL = this.canvas.toDataURL();
+        };
+        // img.src = 'appM6/src/assets/tempimage.jpg';
+        img.src = this.local.getData("img1") + '';
 
         let w = 500;
         let h = 500;
@@ -249,7 +290,6 @@ export class MainComponent {
           });
         }//for5
 
-
       }//if context
       let jsons = {
         "A": this.A,
@@ -262,136 +302,73 @@ export class MainComponent {
       // console.log(context);
       // console.log(this.canvas);
       this.listcanvas.push(this.canvas);
-      // const filename = `image-${index}.png`;
-      // this.downloadCanvas(this.canvas, filename);
 
-      // console.log(jsons);
+      // let canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
+      const pngDataUrl = this.canvas.toDataURL("image/png");
+      console.log(pngDataUrl);
+
+      this.listdataURL.push(pngDataUrl);
+
     }//for 1
+
     console.log(this.listcanvas);
-  }
-
-  downloadCanvas(canvas: any, filename: any) {
-    // Convert canvas to data URL
-    for (let index = 0; index < filename.length; index++) {
-      const element = filename[index];
-      const dataURL = canvas.toDataURL();
-
-      // Create temporary link
-      const link = document.createElement('a');
-      link.href = dataURL;
-      link.download = filename;
-      // Trigger download
-      link.click();
-    }
+    console.log(this.listdataURL);
 
   }
 
-  convertCanvasToImage(aaa: HTMLCanvasElement) {
-    var image = new Image();
-    image.src = aaa.toDataURL("image/png");
-    return image;
+  async loadImagesss(src: string): Promise<HTMLImageElement> {
+    const image = new Image();
+    image.src = src;
+    return new Promise(resolve => {
+      image.onload = (ev) => {
+        resolve(image);
+        console.log(image);
+      }
+    });
   }
 
-  download_img(ee: any) {
-    // this.c = document.getElementById("mcanvas");
-    for (let index = 0; index < ee.length; index++) {
 
+
+  async candown(array: any) {
+    this.listdataURL = this.listdataURL.filter(item => item !== item);
+    const zip = new JSZip();
+
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index];
       const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
 
-      // const canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
-      // const canvas = <HTMLCanvasElement>document.getElementById('#ccanvas');
+      // const context = <CanvasRenderingContext2D>canvas.getContext('2d');
 
-      // const canvas = document.getElementById('myCanvas');
-      const imgData = canvas.toDataURL('image/png');
+      // context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-      const link = document.createElement('a');
-      link.href = imgData;
-      link.download = 'my-image.png';
-      link.click();
-
-      // const canvas = document.getElementById('my-canvas');
-      // const context = canvas.getContext('2d');
-
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      // img.src = 'https://example.com/image.jpg';
-      img.onload = function () {
-        // context.drawImage(img, 0, 0);
-        const dataURL = canvas.toDataURL();
-
-        // Create a new link element
-        const link = document.createElement('a');
-        link.href = dataURL;
-        link.download = 'my-image.png';
-
-        // Trigger a click event on the link element to initiate download
-        link.click();
-      };
-    }
-  }
-
-  Dloadimage(canvas: any) {
-    console.log("LOADIMAGE");
-    // console.log(canvas);
-    for (let index = 0; index < canvas.length; index++) {
-      const element = canvas[index];
-      console.log(element);
-
-    }
-  }
-
-  downloadImagesFromCanvas(canvasArray: any) {
-    for (let i = 0; i < canvasArray.length; i++) {
-      console.log(canvasArray[i]);
-      const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
-      const link = document.createElement('a');
-      link.href = canvas.toDataURL('image/png');
-      link.download = `image-${i}.png`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  }
-
-  saveCanvasAs(canvas: HTMLCanvasElement, fileName: any) {
-    // get image data and transform mime type to application/octet-stream
-    var canvasDataUrl = canvas.toDataURL("image/png").replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
-    var link = document.createElement('a'); // create an anchor tag
-
-    // set parameters for downloading
-    link.setAttribute('href', canvasDataUrl);
-    link.setAttribute('target', '_blank');
-    link.setAttribute('download', fileName);
-
-    // compat mode for dispatching click on your anchor
-    if (document.createEvent) {
-      var evtObj = document.createEvent('MouseEvents');
-      evtObj.initEvent('click', true, true);
-      link.dispatchEvent(evtObj);
-    } else if (link.click) {
-      link.click();
-    }
-  }
+      // let images !: CanvasImageSource;
+      // images = await (this.loadImage(this.local.getData("img1") + ''));
 
 
-  Dowload(ee: any) {
-    console.log("Dowload");
-    for (let index = 0; index < ee.length; index++) {
-      const element = ee[index];
-      const canvasDataUrl = this.canvas.toDataURL('image/png');
-      console.log(canvasDataUrl);
 
-      const img = new Image();
-      img.src = canvasDataUrl;
-      img.onload = () => {
-        const link = document.createElement('a');
-        link.href = canvasDataUrl;
-        link.download = 'image.png';
-        link.click();
-      };
+      // const newWidth = 500;
+      // const newHeight = (images.height / images.width) * newWidth;
+      // context.drawImage(images, 0, 0, newWidth, newHeight);
+      // context.drawImage(images, 0, 0);
+
+
+      // console.log(context);
+      const pngDataUrl = canvas.toDataURL("image/png");
+      console.log(pngDataUrl);
+
+      this.listdataURL.push(pngDataUrl);
+      // zip.file(`image-${index}.png`, pngDataUrl.substr(pngDataUrl.indexOf(',') + 1), { base64: true });
     }
 
+    // zip.generateAsync({ type: "blob" }).then((blob) => {
+    //   const url = window.URL.createObjectURL(blob);
+    //   const link = document.createElement('a');
+    //   link.href = url;
+    //   link.download = 'images.zip';
+    //   link.click();
+    // });
   }
+
 
   getRandomNumber(min: number, max: number, previous?: number): number {
     let num = Math.floor(Math.random() * (max - min + 1) + min);
@@ -635,34 +612,11 @@ export class MainComponent {
     });
   }
 
-  // downloadImagesALL(images: any[], zipName: string) {
-  //   let zipFile: JSZip = new JSZip();
-  //   let imgFolder!: any;
-  //   imgFolder = zipFile.folder('images');
-  //   images.forEach((image, index) => {
-  //     const xhr = new XMLHttpRequest();
-  //     xhr.open('GET', image.src, true);
-  //     xhr.responseType = 'blob';
-  //     xhr.onload = () => {
-  //       const blob = xhr.response;
-  //       imgFolder.file(`${image.alt}.jpg`, blob);
-  //       if (index === images.length - 1) {
-  //         zipFile.generateAsync({ type: 'blob' }).then((content: any) => {
-  //           saveAs(content, `${zipName}.zip`);
-  //         });
-  //       }
-  //     };
-  //     xhr.send();
-  //   });
-  // }
+
 
   trackByFn(index: any) {
     return (index);
   }
-
-
-
-
 
   checkbox(obj: any) {
     const lid = obj.lid;
@@ -713,7 +667,6 @@ export class MainComponent {
   remove() {
     this.ALL1 = this.ALL1.filter(item => item !== item);
   }
-
 
   saveAs(content: any, arg1: string) {
     throw new Error('Function not implemented.');

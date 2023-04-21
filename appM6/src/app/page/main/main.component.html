@@ -1,8 +1,4 @@
-<head>
-  <!-- <script src="./mainjs.js">
-
-  </script> -->
-</head>
+<!-- <script src="/appM6//src//assets//mainjs//sc.js"></script> -->
 <div class="container">
   <div class="row" style="margin-top: 50px;">
     <div class="col-sm-5">
@@ -19,7 +15,7 @@
         <!-- {{isShowG}} -->
         <mdb-carousel [animation]="'slide'">
           <mdb-carousel-item *ngFor="let a of ALL1;index as i; trackBy:trackByFn">
-            <canvas id="canvas-{{i}}" attr.id="canvas-{{i}}" width="500" height="500">
+            <canvas attr.id="canvas-{{i}}" width="500" height="500">
             </canvas>
             <!-- <canvas id="ccanvas" attr.id="canvas-{{i}}" width="500" height="500">
                         </canvas> -->
@@ -112,17 +108,30 @@
               Image</button>
 
 
+<!-- <button type="button" class="btn btn-outline-primary" style="margin-top: 0px;margin-left: 20px;"
+                                                                                                id="download" (click)="candown('canvas','png')">
+                                                                                                  Dowload
+                                                                                                </button> -->
+<!-- <button type="button" class="btn btn-outline-primary" style="margin-top: 0px;margin-left: 20px;" id="download"
+                          (click)="downloadImagesALL(imagesD, 'myImages')">
+                          Dowload
+                        </button> -->
             <button type="button" class="btn btn-outline-primary" style="margin-top: 0px;margin-left: 20px;"
-              (click)="downloadImagesFromCanvas(listcanvas)">
+              id="download" (click)="candown(ALL1)">
               Dowload
             </button>
-
+            <!-- <script src="/appM6//src//assets//mainjs//sc.js">
+                                                                                                                                                                                                  function name() {
+                                                                                                                                                                                                    alert("I am Lucifer");
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                </script> -->
 
           </section>
         </div>
       </div>
     </div>
     <!-- {{ALL1|json}} -->
+    {{listdataURL|json}}
   </div>
 
 

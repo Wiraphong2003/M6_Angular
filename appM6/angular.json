@@ -38,7 +38,8 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/chart.js/dist/chart.js"
+              "node_modules/chart.js/dist/chart.js",
+              "src/assets/mainjs/sc.js"
             ]
           },
           "configurations": {
@@ -103,7 +104,9 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "assets/sc.js"
+            ]
           }
         }
       }
