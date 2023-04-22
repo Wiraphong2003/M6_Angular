@@ -56,7 +56,7 @@ export class MainComponent implements OnInit {
   canvas  !: HTMLCanvasElement;
   context !: CanvasRenderingContext2D | undefined;
   listcanvas: HTMLCanvasElement[] = [];
-  DATE!: any;
+  DATE!: any | GlobalEventHandlers;
   All: any[] = [];
   ALL1: any[] = [];
   imagesD: Image[] = [
@@ -78,13 +78,7 @@ export class MainComponent implements OnInit {
     // private datePipe: DatePipe
     // private datePipe: DatePipe
   ) {
-    // this.myDate = new Date();
-    // this.myDate = this.datePipe.transform(this.myDate, 'dd-MM-yyyy');
-    // console.log(this.myDate);
 
-    // let myDates = this.datePipe.transform('dd-MM-yyyy');
-    // this.getDate = myDates;
-    // this.date_value = this.todayISOString;
     console.log(local.getData("img1"));
     this.imageuser = local.getData("img1");
 
@@ -173,76 +167,27 @@ export class MainComponent implements OnInit {
     ee.forEach((element: any) => {
       this.All.push(element)
     });
-    // this.dialog.open(ConfirmationDialogComponent, {
-    //   minWidth: '300px'
-    // });
-    let text = "";
-
-    // if (confirm("คุณต้องการจะสร้างรูปใช่หรือไม่") == true) {
-
 
     this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
     this.listcanvas = this.listcanvas.filter(item => item !== item);
     this.listdataURL = this.listdataURL.filter(item => item !== item);
 
-    // for (let index = 0; index < ee.length; index++) {
-    //   this.canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-    //   let context !: CanvasRenderingContext2D;
-    //   context = <CanvasRenderingContext2D>this.canvas.getContext('2d')
-    //   const image = await this.loadImagesss(this.local.getData("img1") + '');
-    //   const newWidth = 500;
-    //   const newHeight = (image.height / image.width) * newWidth;
-    //   console.log(context);
-    //   context.drawImage(image, 0, 0, newWidth, newHeight);
-
-    //   const pngDataUrl = this.canvas.toDataURL("image/png");
-    //   console.log(pngDataUrl);
-    // }
-
     console.log(ee);
+
     for (let index = 0; index < ee.length; index++) {
       const elements = this.ALL1[index];
       const nameimg = elements.name;
-      // console.log(nameimg);
-      // this.arrayOfIndexes.push(index)
-      // console.log(this.arrayOfIndexes);
-      // this.canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
+
+
       this.canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
       const context = this.canvas.getContext('2d')
+
+
       //  this.context = context;
       if (context) {
         this.random();
 
         context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        context.strokeStyle = 'red';
-        context.fillStyle = 'rgba(17, 0, 255, 0.5)';
-
-
-        // const imgs = await (this.loadImage(this.local.getData("img1") + ''));
-        // const image = await this.loadImagesss(this.local.getData("img1") + '');
-        // const newWidth = 500;
-        // const newHeight = (image.height / image.width) * newWidth;
-
-
-        // context.drawImage(image, 0, 0, newWidth, newHeight);
-
-
-        // var img = new Image;
-        // img.onload = function () {
-        //   context.drawImage(img, 0, 0); // Or at whatever offset you like
-        // };
-        // img.src = strDataURI;
-
-        const img = new Image();
-        // img.src = this.local.getData("img1") + '';
-        img.onload = function () {
-          const newWidth = 500;
-          const newHeight = (img.height / img.width) * newWidth;
-          context.drawImage(img, 0, 0, newWidth, newHeight);
-          // const dataURL = this.canvas.toDataURL();
-        };
-        // img.src = 'appM6/src/assets/tempimage.jpg';
-        img.src = this.local.getData("img1") + '';
 
         let w = 500;
         let h = 500;
@@ -255,6 +200,7 @@ export class MainComponent implements OnInit {
         context.font = "32px Superspace"
         context.strokeStyle = "black";
         context.lineWidth = 8;
+
         context.strokeText(nameimg, (w / 2) - (lenHH * 7), 145);
         context.fillStyle = "#FFD51E";
         context.fillText(nameimg, (w / 2) - (lenHH * 7), 145);
@@ -290,31 +236,86 @@ export class MainComponent implements OnInit {
           });
         }//for5
 
+
+        const Dtext = this.canvas.toDataURL("image/png");
+        // console.log(Dtext);
+
+        const imgs = new Image();
+        const text = new Image();
+        let im = this.loadImagesss(this.local.getData("img1") + '');
+        imgs.src = "../../../assets/tempimage.jpg";
+        text.src = Dtext;
+
+
+        // imgs.onload = () => {
+        //   context.drawImage(imgs, 0, 0, newWidth, newHeight);
+        //   context.drawImage(text, 0, 0)
+        // };
+
+        var myImg = new Image();
+        myImg.src = (this.local.getData("img1") + '');
+
+        const newWidth = 500;
+        const newHeight = (myImg.height / myImg.width) * newWidth;
+
+        myImg.onload = function () {
+          context.drawImage(myImg, 0, 0, newWidth, newHeight);
+          context.drawImage(text, 0, 0);
+        };
+
+
+
+        const png = this.canvas.toDataURL("image/png");
+        console.log(png);
+
+
+        this.listdataURL.push(png);
+        this.listcanvas.push(this.canvas);
+
       }//if context
-      let jsons = {
-        "A": this.A,
-        "B": this.B,
-        "A1": this.A1,
-        "B1": this.B1,
-        "C": this.C
-      }
-      // this.saveCanvasAs(this.canvas, nameimg)
-      // console.log(context);
-      // console.log(this.canvas);
-      this.listcanvas.push(this.canvas);
 
-      // let canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-      const pngDataUrl = this.canvas.toDataURL("image/png");
-      console.log(pngDataUrl);
-
-      this.listdataURL.push(pngDataUrl);
+      // let jsons = {
+      //   "A": this.A,
+      //   "B": this.B,
+      //   "A1": this.A1,
+      //   "B1": this.B1,
+      //   "C": this.C
+      // }
 
     }//for 1
 
+    // for (let index = 0; index < this.listdataURL.length; index++) {
+    //   const element = this.listdataURL[index];
+
+    //   const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
+    //   const context = canvas.getContext('2d')
+
+
+    //   if (context) {
+
+
+    //     const imgs = new Image();
+
+    //     imgs.src = "../../../assets/tempimage.jpg";
+    //     const newWidth = 500;
+    //     const newHeight = (imgs.height / imgs.width) * newWidth;
+
+    //     imgs.onload = () => {
+    //       context.drawImage(imgs, 0, 0, newWidth, newHeight);
+    //     };
+
+
+    //     const png = canvas.toDataURL("image/png");
+    //     console.log(png);
+    //     this.listdataURL.push(png);
+
+    //   }
+
+    // }
     console.log(this.listcanvas);
     console.log(this.listdataURL);
-
   }
+
 
   async loadImagesss(src: string): Promise<HTMLImageElement> {
     const image = new Image();
@@ -328,45 +329,60 @@ export class MainComponent implements OnInit {
   }
 
 
-
   async candown(array: any) {
-    this.listdataURL = this.listdataURL.filter(item => item !== item);
+
     const zip = new JSZip();
+    // this.listdataURL = this.listdataURL.filter(item => item !== item);
+    console.log(this.listdataURL);
 
-    for (let index = 0; index < array.length; index++) {
-      const element = array[index];
-      const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
+    for (let index = 0; index < this.listdataURL.length; index++) {
+      const element = this.listdataURL[index];
+      console.log(element);
 
-      // const context = <CanvasRenderingContext2D>canvas.getContext('2d');
+      zip.file(`image-${index}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
 
-      // context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-      // let images !: CanvasImageSource;
-      // images = await (this.loadImage(this.local.getData("img1") + ''));
-
-
-
-      // const newWidth = 500;
-      // const newHeight = (images.height / images.width) * newWidth;
-      // context.drawImage(images, 0, 0, newWidth, newHeight);
-      // context.drawImage(images, 0, 0);
-
-
-      // console.log(context);
-      const pngDataUrl = canvas.toDataURL("image/png");
-      console.log(pngDataUrl);
-
-      this.listdataURL.push(pngDataUrl);
-      // zip.file(`image-${index}.png`, pngDataUrl.substr(pngDataUrl.indexOf(',') + 1), { base64: true });
     }
 
-    // zip.generateAsync({ type: "blob" }).then((blob) => {
-    //   const url = window.URL.createObjectURL(blob);
-    //   const link = document.createElement('a');
-    //   link.href = url;
-    //   link.download = 'images.zip';
-    //   link.click();
+    // this.listdataURL.forEach(element => {
+    //   console.log(element);
     // });
+
+    // for (let index = 0; index < array.length; index++) {
+    //   const element = array[index];
+    //   const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
+
+    //   // const context = <CanvasRenderingContext2D>canvas.getContext('2d');
+
+    //   // context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    //   // let images !: CanvasImageSource;
+    //   // images = await (this.loadImage(this.local.getData("img1") + ''));
+
+
+
+    //   // const newWidth = 500;
+    //   // const newHeight = (images.height / images.width) * newWidth;
+    //   // context.drawImage(images, 0, 0, newWidth, newHeight);
+    //   // context.drawImage(images, 0, 0);
+
+
+    //   // console.log(context);
+    //   const pngDataUrl = canvas.toDataURL("image/png");
+    //   console.log(pngDataUrl);
+
+    //   // this.listdataURL.push(pngDataUrl);
+    //   // zip.file(`image-${index}.png`, pngDataUrl.substr(pngDataUrl.indexOf(',') + 1), { base64: true });
+    // }
+
+    zip.generateAsync({ type: "blob" }).then((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'images.zip';
+      link.click();
+    });
+
+    this.listdataURL = this.listdataURL.filter(item => item !== item);
   }
 
 
