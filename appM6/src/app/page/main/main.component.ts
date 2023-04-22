@@ -187,7 +187,7 @@ export class MainComponent implements OnInit {
       else if (this.local.getData("USER") == 'user2') {
         img.src = "../../../assets/img/user2_1.jpg"
       }else{
-        
+
       }
       // img.src = this.local.getData("img1") + "";
       const newWidth = 500;
@@ -215,7 +215,6 @@ export class MainComponent implements OnInit {
         context.fillText(element.name, (w / 2) - (lenHH * 7), 145);
 
 
-        // this.drawStroked(context, nameimg, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8) //ชื่อหวย
 
         for (let index = 0; index < array.length; index++) {
           // this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px chuanchiim", "white", "", 0)
