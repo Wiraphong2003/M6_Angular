@@ -22,7 +22,7 @@ export class LoginComponent {
       "username": "user1",
       "password": "1234",
       "status": "1",
-      "img1": "https://i.ibb.co/L8zp1sk/340618868-899903277951742-6679712580878809918-n-1-1.png"
+      "img1": "https://i.ibb.co/tMBQHrk/340618868-899903277951742-6679712580878809918-n.jpg"
     },
     {
       "cid": "2",

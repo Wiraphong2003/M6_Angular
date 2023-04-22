@@ -7,7 +7,8 @@
         <!-- <canvas #canvas style="border: 1px solid" width="500" height="500">
                                         imgsss
         </canvas> -->
-        <img src={{imageuser}} alt="" width="500px" height="500px">
+        <img id="imageQ" src={{imageuser}} alt="" width="500px" height="500px"
+          style="background-image: url(../../../assets/img/user1_1.jpg);">
         <!-- <img src="../../../assets/tempimage.jpg" alt="" width="500px" height="500px"> -->
 
       </div>
@@ -103,8 +104,10 @@
           <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
             <!-- <button type="button" (click)="createImage()" class="btn btn-success" style="margin-top:0px">Create
                                                               Image</button> -->
-            <button type="button" (click)="Cimg(ALL1)" class="btn btn-success" style="margin-top:0px">Gent
-              Image</button>
+            <!-- <button type="button" (click)="Cimg(ALL1)" class="btn btn-success" style="margin-top:0px">Create Image</button> -->
+            
+            <button type="button" (click)="todateURL(ALL1)" class="btn btn-success" style="margin-top:0px">Create Image</button>
+
             <button type="button" class="btn btn-outline-primary" style="margin-top: 0px;margin-left: 20px;">Check
               Image</button>
 
@@ -132,7 +135,7 @@
       </div>
     </div>
     <!-- {{ALL1|json}} -->
-    {{listdataURL|json}}
+    <!-- {{listdataURL|json}} -->
   </div>
 
 
