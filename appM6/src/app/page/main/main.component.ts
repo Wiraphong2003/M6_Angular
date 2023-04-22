@@ -186,6 +186,8 @@ export class MainComponent implements OnInit {
       }
       else if (this.local.getData("USER") == 'user2') {
         img.src = "../../../assets/img/user2_1.jpg"
+      }else{
+        
       }
       // img.src = this.local.getData("img1") + "";
       const newWidth = 500;

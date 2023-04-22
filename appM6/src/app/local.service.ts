@@ -21,3 +21,6 @@ export class LocalService {
     localStorage.clear();
   }
 }
+
+
+// ng build--configuration production
