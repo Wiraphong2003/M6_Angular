@@ -259,6 +259,7 @@ export class MainComponent implements OnInit {
         const newHeight = (myImg.height / myImg.width) * newWidth;
 
         myImg.onload = function () {
+
           context.drawImage(myImg, 0, 0, newWidth, newHeight);
           context.drawImage(text, 0, 0);
         };
