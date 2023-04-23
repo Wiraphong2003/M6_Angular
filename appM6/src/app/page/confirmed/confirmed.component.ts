@@ -1,10 +1,7 @@
 
-import { Component, Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-confirmed',
   templateUrl: './confirmed.component.html',
@@ -12,33 +9,16 @@ export interface DialogData {
 })
 export class ConfirmedComponent {
   constructor(
-    public dialogRef: MatDialogRef<ConfirmedComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-
+    private dialogRef: MatDialogRef<ConfirmedComponent>
   ) { }
 
-
-  onNoClick(): void {
+  close() {
     console.log("close");
-
     this.dialogRef.close();
   }
+
   ok() {
     console.log("OK");
-    this.dialogRef.close();
+    this.close();
   }
-
-
-  public decline() {
-    this.dialogRef.close(false);
-  }
-
-  public accept() {
-    this.dialogRef.close(true);
-  }
-
-  public dismiss() {
-    // this.activeModal.dismiss();
-  }
-
 }
