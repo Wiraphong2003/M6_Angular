@@ -6,6 +6,7 @@ import t2 from '../assets/H2.json'
 import t3 from '../assets/H3.json'
 import t4 from '../assets/H4.json'
 import t5 from '../assets/H5.json'
+import datauser from '../assets/datauser.json'
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class DataserveiceService {
   t3 !: any;
   t4 !: any;
   t5 !: any;
+  datauser !:any;
 
   constructor(private httpClient: HttpClient) {
     this.Lottary = data;
@@ -28,5 +30,6 @@ export class DataserveiceService {
     this.t3 = t3;
     this.t4 = t4;
     this.t5 = t5;
+    this.datauser = datauser;
   }
 }

@@ -40,12 +40,14 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 
 import { FileSaverModule } from 'ngx-filesaver';
+import { ConfirmedComponent } from './page/confirmed/confirmed.component';
 // import { CanvasModule } from 'angular-canvas';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    ConfirmedComponent
   ],
   imports: [
 

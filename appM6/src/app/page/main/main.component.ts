@@ -13,6 +13,12 @@ import JSZip from 'jszip';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { saveAs } from 'file-saver';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmedComponent } from '../confirmed/confirmed.component';
+
+
+
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -69,12 +75,17 @@ export class MainComponent implements OnInit {
   arrayOfIndexes: any[] = []
   getDate !: any;
   tempdata!: any;
+
+  animal!: string;
+  name!: string;
+
   constructor(
     private dataService: DataserveiceService,
     private http: HttpClient,
     private local: LocalService,
     private el: ElementRef,
     private router: Router,
+    public dialog: MatDialog
     // private datePipe: DatePipe
     // private datePipe: DatePipe
   ) {
@@ -159,12 +170,6 @@ export class MainComponent implements OnInit {
 
   async todateURL(array: any) {
 
-    this.All = this.arrayOfIndexes.filter(item => item !== item);
-    // console.log(ee);
-    array.forEach((element: any) => {
-      this.All.push(element)
-    });
-
     this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
     this.listcanvas = this.listcanvas.filter(item => item !== item);
     this.listdataURL = this.listdataURL.filter(item => item !== item);
@@ -186,8 +191,8 @@ export class MainComponent implements OnInit {
       }
       else if (this.local.getData("USER") == 'user2') {
         img.src = "../../../assets/img/user2_1.jpg"
-      }else{
-
+      } else {
+        console.log("image user else");
       }
       // img.src = this.local.getData("img1") + "";
       const newWidth = 500;
@@ -265,16 +270,25 @@ export class MainComponent implements OnInit {
       // console.log(png);
       // }
 
+      this.name = "คุณต้องการจะสร้างรูปภาพใช่หรือไม่"
+      this.dialog.open(ConfirmedComponent, {
+        data: { name: this.name, animal: this.animal },
+      });
+
+      // dialogRef.afterClosed().subscribe(result => {
+      //   console.log('The dialog was closed');
+      //   this.animal = result;
+      // });
+
+
     }
   }
 
   async Cimg(ee: any) {
 
-    this.All = this.arrayOfIndexes.filter(item => item !== item);
+
     // console.log(ee);
-    ee.forEach((element: any) => {
-      this.All.push(element)
-    });
+
 
     this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
     this.listcanvas = this.listcanvas.filter(item => item !== item);
@@ -470,7 +484,7 @@ export class MainComponent implements OnInit {
       const element = this.listdataURL[index];
       const name = this.ALL1[index].name;
 
-            // console.log(element);
+      // console.log(element);
 
       zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
 

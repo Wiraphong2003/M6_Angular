@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataserveiceService } from 'src/app/dataserveice.service';
 import { LocalService } from 'src/app/local.service';
 
 @Component({
@@ -9,34 +10,21 @@ import { LocalService } from 'src/app/local.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
+  texError = ""
   username!: String;
   password!: String;
   hide: any;
   menu: any;
   data!: any;
   res !: any;
-  dataUser = [
-    {
-      "cid": "1",
-      "username": "user1",
-      "password": "1234",
-      "status": "1",
-      "img1": "https://i.ibb.co/tMBQHrk/340618868-899903277951742-6679712580878809918-n.jpg"
-    },
-    {
-      "cid": "2",
-      "username": "user2",
-      "password": "1234",
-      "status": "2",
-      "img1": "https://i.ibb.co/SdccY5n/imgtemp0.jpg"
-    }
-  ]
+  dataUser!: any;
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private Local: LocalService) {
+    private Local: LocalService,
+    private dataservice: DataserveiceService) {
+    this.dataUser = dataservice.datauser;
   }
   login() {
     console.log('OK');
@@ -44,22 +32,58 @@ export class LoginComponent {
       "username": this.username,
       "password": this.password
     }
-    console.log(this.dataUser);
+
+    let ischk = false;
+    let paw = ""
+    // console.log(this.dataUser);
     console.log(json);
-    this.dataUser.forEach(element => {
-      if (element.username === json.username) {
-        console.log("username here");
-        if (element.username === json.username) {
+    for (let index = 0; index < this.dataUser.length; index++) {
+      const element = this.dataUser[index];
+      if (element.username == json.username) {
+        ischk = true;
+
+        console.log("this ts a user " + element.username);
+
+        if (json.password == element.password) {
+          console.log("password pass");
           this.Local.saveData("USER", element.username)
           this.Local.saveData("status", element.status)
           this.Local.saveData("img1", element.img1)
           this.router.navigateByUrl('/main');
+        } else {
+          console.log("password  Fiall");
+          this.texError = "รหัสผ่านไม่ถูกต้อง"
         }
-        console.log("Password Not Found");
       } else {
         console.log("not Found Username");
+        this.texError = "บัญชีผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
       }
-    });
+    }
+    // this.dataUser.forEach(element => {
+    //   // console.log(element.username);
+    //   // console.log(element.password);
+    //   // console.log(json.username);
+    //   // console.log(json.password);
+
+    //   if (element.username === json.username) {
+    //     ischk = true;
+    //     paw = element.password
+    //     console.log("this ts a user " + element.username);
+    //     stop;
+    //   } else {
+    //     console.log("not Found Username");
+    //     this.texError = "บัญชีผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
+    //   }
+    // });
+
+    // if (ischk) {
+    //   if (json.password === paw) {
+    //     console.log("password pass");
+    //   } else {
+    //     console.log("password  Fiall");
+    //     this.texError = "รหัสผ่านไม่ถูกต้อง"
+    //   }
+    // }
 
     // let json = {
     //   "username": "user1"
