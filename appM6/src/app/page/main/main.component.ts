@@ -165,9 +165,8 @@ export class MainComponent implements OnInit {
   }
   ngOnInit(): void {
 
-    try {
-      let array!: any;
-      array = [
+    // let array!: any;
+    let array = [
         {
           "lid": 18,
           "name": " ดาวโจนส์VIP",
@@ -186,114 +185,221 @@ export class MainComponent implements OnInit {
           "type": 1,
           "cid": 1
         }
-      ]
-      // let array: any[] = []
+    ]
 
-      // getImage();
-      this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
-      this.listcanvas = this.listcanvas.filter(item => item !== item);
-      this.listdataURL = this.listdataURL.filter(item => item !== item);
+    this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
+    this.listcanvas = this.listcanvas.filter(item => item !== item);
+    this.listdataURL = this.listdataURL.filter(item => item !== item);
 
-      for (let index = 0; index < array.length; index++) {
-        const element = array[index];
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index];
 
-        // const img = await (this.loadImagesss(this.local.getData("img1") + ''));
-        // const newWidth = 500;
-        // const newHeight = (img.height / img.width) * newWidth;
-        // context.drawImage(img, 0, 0, newWidth, newHeight)
+      // const img = await (this.loadImagesss(this.local.getData("img1") + ''));
+      // const newWidth = 500;
+      // const newHeight = (img.height / img.width) * newWidth;
+      // context.drawImage(img, 0, 0, newWidth, newHeight)
 
-        const img = new Image()
-        // img.src = "../../../assets/img/user1_1.jpg"
-        if (this.local.getData("USER") == 'user1') {
-          img.src = "../../../assets/img/user1_1.jpg"
-        }
-        else if (this.local.getData("USER") == 'user2') {
-          img.src = "../../../assets/img/user2_1.jpg"
-        } else {
-          console.log("image user else");
-        }
-        // img.src = this.local.getData("img1") + "";
+      const img = new Image()
+      // img.src = "../../../assets/img/user1_1.jpg"
+      if (this.local.getData("USER") == 'user1') {
+        img.src = "../../../assets/img/user1_1.jpg"
+      }
+      else if (this.local.getData("USER") == 'user2') {
+        img.src = "../../../assets/img/user2_1.jpg"
+      } else {
+        console.log("image user else");
+      }
+      // img.src = this.local.getData("img1") + "";
+
+      img.onload = () => {
+        const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
+        const context = <CanvasRenderingContext2D>canvas.getContext('2d');
         const newWidth = 500;
         const newHeight = (img.height / img.width) * newWidth;
-        img.onload = () => {
-          const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-          const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          context.drawImage(img, 0, 0, newWidth, newHeight)
-          this.random();
-          let w = 500;
-          let h = 500;
-          let lenHH = element.name.length;
-          context.shadowOffsetX = 4;
-          context.shadowOffsetY = 4;
-          context.shadowBlur = 3;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(img, 0, 0, newWidth, newHeight)
+        this.random();
+        let w = 500;
+        let h = 500;
+        let lenHH = element.name.length;
+        context.shadowOffsetX = 4;
+        context.shadowOffsetY = 4;
+        context.shadowBlur = 3;
 
 
-          context.font = "32px Superspace"
-          context.strokeStyle = "black";
-          context.lineWidth = 8;
+        context.font = "32px Superspace"
+        context.strokeStyle = "black";
+        context.lineWidth = 8;
 
-          context.strokeText(element.name, (w / 2) - (lenHH * 7), 145);
-          context.fillStyle = "#FFD51E";
-          context.fillText(element.name, (w / 2) - (lenHH * 7), 145);
+        context.strokeText(element.name, (w / 2) - (lenHH * 7), 145);
+        context.fillStyle = "#FFD51E";
+        context.fillText(element.name, (w / 2) - (lenHH * 7), 145);
 
 
 
-          for (let index = 0; index < array.length; index++) {
-            // this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px chuanchiim", "white", "", 0)
-            let x = (w / 2) - 34
-            let y = 170
-            context.font = "18px chuanchiim"
-            context.strokeStyle = ""
-            context.lineWidth = 0
-            context.strokeText(this.DATE, x, y);
-            context.fillStyle = "white"
-            context.fillText(this.DATE, x, y);
+        for (let index = 0; index < array.length; index++) {
+          // this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px chuanchiim", "white", "", 0)
+          let x = (w / 2) - 34
+          let y = 170
+          context.font = "18px chuanchiim"
+          context.strokeStyle = ""
+          context.lineWidth = 0
+          context.strokeText(this.DATE, x, y);
+          context.fillStyle = "white"
+          context.fillText(this.DATE, x, y);
 
-            // this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
+          // this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
 
-            context.font = "90px chuanchiim"
-            context.strokeStyle = "black"
-            context.lineWidth = 10
-            context.strokeText(this.A, ((w / 2) - 50) - 15, 230);
-            context.fillStyle = "#FFD51E"
-            context.fillText(this.A, ((w / 2) - 50) - 15, 230);
+          context.font = "90px chuanchiim"
+          context.strokeStyle = "black"
+          context.lineWidth = 10
+          context.strokeText(this.A, ((w / 2) - 50) - 15, 230);
+          context.fillStyle = "#FFD51E"
+          context.fillText(this.A, ((w / 2) - 50) - 15, 230);
 
 
-            this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
+          this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
 
-            this.A1.forEach((element, index) => {
-              // context.fillText(element, (80 * index) + 155, 250);
-              this.drawStroked(context, element, (70 * index) + 160, 280, "60px chuanchiim", "#FFD51E", "black", 5)
-              // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
-            });
-            this.B1.forEach((element, index) => {
-              this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
-            });
+          this.A1.forEach((element, index) => {
+            // context.fillText(element, (80 * index) + 155, 250);
+            this.drawStroked(context, element, (70 * index) + 160, 280, "60px chuanchiim", "#FFD51E", "black", 5)
+            // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
+          });
+          this.B1.forEach((element, index) => {
+            this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
+          });
 
-            this.C.forEach((element, index) => {
-              this.drawStroked(context, element, (60 * index) + 140, 360, "36px chuanchiim", "#FFD51E", "black", 5)
-            });
-          }//for2
-
-          // const png = canvas.toDataURL("image/jpg");
-          // console.log(png);
-        }
+          this.C.forEach((element, index) => {
+            this.drawStroked(context, element, (60 * index) + 140, 360, "36px chuanchiim", "#FFD51E", "black", 5)
+          });
+        }//for2
 
         // const png = canvas.toDataURL("image/jpg");
         // console.log(png);
-        // }
-
       }
-    } catch {
-      console.log("CON");
+
+      // const png = canvas.toDataURL("image/jpg");
+      // console.log(png);
+      // }
+
     }
+
   }
+
 
   async todateURL(array: any) {
 
+    this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
+    this.listcanvas = this.listcanvas.filter(item => item !== item);
+    this.listdataURL = this.listdataURL.filter(item => item !== item);
 
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index];
+      console.log(element.name);
+
+
+      // const img = await (this.loadImagesss(this.local.getData("img1") + ''));
+      // const newWidth = 500;
+      // const newHeight = (img.height / img.width) * newWidth;
+      // context.drawImage(img, 0, 0, newWidth, newHeight)
+
+      const img = new Image()
+      // img.src = "../../../assets/img/user1_1.jpg"
+      if (this.local.getData("USER") == 'user1') {
+        img.src = "../../../assets/img/user1_1.jpg"
+      }
+      else if (this.local.getData("USER") == 'user2') {
+        img.src = "../../../assets/img/user2_1.jpg"
+      } else {
+        console.log("image user else");
+      }
+      // img.src = this.local.getData("img1") + "";
+      const newWidth = 500;
+      const newHeight = (img.height / img.width) * newWidth;
+      img.onload = () => {
+        const canvas = <HTMLCanvasElement>document. getElementById('canvas-' + index);
+        const context = <CanvasRenderingContext2D>canvas.getContext('2d')
+
+        this.random();
+        let w = 500;
+        let h = 500;
+        let lenHH = element.name.length;
+        context.shadowOffsetX = 4;
+        context.shadowOffsetY = 4;
+        context.shadowBlur = 3;
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(img, 0, 0, newWidth, newHeight)
+
+        context.font = "32px Superspace"
+        context.strokeStyle = "black";
+        context.lineWidth = 8;
+
+        context.strokeText(element.name, (w / 2) - (lenHH * 7), 145);
+        context.fillStyle = "#FFD51E";
+        context.fillText(element.name, (w / 2) - (lenHH * 7), 145);
+
+
+
+        for (let index = 0; index < array.length; index++) {
+          // this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px chuanchiim", "white", "", 0)
+          let x = (w / 2) - 34
+          let y = 170
+          context.font = "18px Chuanchiim"
+          context.strokeStyle = ""
+          context.lineWidth = 0
+          context.strokeText(this.DATE, x, y);
+          context.fillStyle = "white"
+          context.fillText(this.DATE, x, y);
+
+          // this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
+
+          context.font = "90px Chuanchiim"
+          context.strokeStyle = "black"
+          context.lineWidth = 10
+          context.strokeText(this.A, ((w / 2) - 50) - 15, 230);
+          context.fillStyle = "#FFD51E"
+          context.fillText(this.A, ((w / 2) - 50) - 15, 230);
+
+
+          this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
+
+          this.A1.forEach((element, index) => {
+            // context.fillText(element, (80 * index) + 155, 250);
+            this.drawStroked(context, element, (70 * index) + 160, 280, "60px Chuanchiim", "#FFD51E", "black", 5)
+            // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
+          });
+          this.B1.forEach((element, index) => {
+            this.drawStroked(context, element, (70 * index) + 160, 320, "60px Chuanchiim", "#FFD51E", "black", 5)
+          });
+
+          this.C.forEach((element, index) => {
+            this.drawStroked(context, element, (60 * index) + 140, 360, "36px Chuanchiim", "#FFD51E", "black", 5)
+          });
+        }//for2
+
+        const png = canvas.toDataURL("image/jpg");
+        // console.log(png);
+        this.listdataURL.push(png)
+      }
+
+      // const png = canvas.toDataURL("image/jpg");
+      // console.log(png);
+      // }
+
+    }
+
+    // if (confirm("ยืนยันการสร้างรูปภาพ") === true) {
+    //   console.log("confirm");
+    //   this.gettoURL(array);
+    // }
+    this.dataService.ALL = array;
+    // this.dialog.open(ConfirmedComponent, {
+    //   // minWidth: '300px'
+    // });
+  }
+
+  gettoURL(array: any) {
     this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
     this.listcanvas = this.listcanvas.filter(item => item !== item);
     this.listdataURL = this.listdataURL.filter(item => item !== item);
@@ -324,8 +430,7 @@ export class MainComponent implements OnInit {
       img.onload = () => {
         const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
         const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.drawImage(img, 0, 0, newWidth, newHeight)
+
         this.random();
         let w = 500;
         let h = 500;
@@ -334,6 +439,8 @@ export class MainComponent implements OnInit {
         context.shadowOffsetY = 4;
         context.shadowBlur = 3;
 
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(img, 0, 0, newWidth, newHeight)
 
         context.font = "32px Superspace"
         context.strokeStyle = "black";
@@ -395,187 +502,6 @@ export class MainComponent implements OnInit {
       // }
 
     }
-
-    // this.dialog.open(ConfirmedComponent, {
-    //   // minWidth: '300px'
-    // });
-  }
-
-  async Cimg(ee: any) {
-
-
-    // console.log(ee);
-
-
-    this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
-    this.listcanvas = this.listcanvas.filter(item => item !== item);
-    this.listdataURL = this.listdataURL.filter(item => item !== item);
-
-    console.log(ee);
-
-    for (let index = 0; index < ee.length; index++) {
-      const elements = this.ALL1[index];
-      const nameimg = elements.name;
-
-      // const image = <HTMLImageElement>document.getElementById("imageQ")
-      // console.log(image);
-
-      // const newWidth = 500;
-      // const newHeight = (image.height / image.width) * newWidth;
-
-      this.canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-      const context = this.canvas.getContext('2d')
-
-
-
-      //  this.context = context;
-      if (context) {
-        this.random();
-
-        context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        // context.drawImage(image, 0, 0, newWidth, newHeight);
-
-        let w = 500;
-        let h = 500;
-        let lenHH = nameimg.length;
-        context.shadowOffsetX = 4;
-        context.shadowOffsetY = 4;
-        context.shadowBlur = 3;
-
-
-        context.font = "32px Superspace"
-        context.strokeStyle = "black";
-        context.lineWidth = 8;
-
-        context.strokeText(nameimg, (w / 2) - (lenHH * 7), 145);
-        context.fillStyle = "#FFD51E";
-        context.fillText(nameimg, (w / 2) - (lenHH * 7), 145);
-
-
-        // this.drawStroked(context, nameimg, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8) //ชื่อหวย
-
-        for (let index = 0; index < ee.length; index++) {
-          // this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px chuanchiim", "white", "", 0)
-          let x = (w / 2) - 34
-          let y = 170
-          context.font = "18px chuanchiim"
-          context.strokeStyle = ""
-          context.lineWidth = 0
-          context.strokeText(this.DATE, x, y);
-          context.fillStyle = "white"
-          context.fillText(this.DATE, x, y);
-        }//for2
-
-
-        for (let index = 0; index < ee.length; index++) { // ตัวเลข  0  0
-          this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
-
-          this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
-        }//for3
-
-
-        for (let index = 0; index < ee.length; index++) {
-          this.A1.forEach((element, index) => {
-            // context.fillText(element, (80 * index) + 155, 250);
-            this.drawStroked(context, element, (70 * index) + 160, 280, "60px chuanchiim", "#FFD51E", "black", 5)
-            // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
-          });
-          this.B1.forEach((element, index) => {
-            this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
-          });
-        }//for4
-
-        for (let index = 0; index < ee.length; index++) {
-          this.C.forEach((element, index) => {
-            this.drawStroked(context, element, (60 * index) + 140, 360, "36px chuanchiim", "#FFD51E", "black", 5)
-          });
-        }//for5
-
-        // const dateURL = this.canvas.toDataURL("image/png");
-        // console.log(dateURL);
-
-        const Dtext = this.canvas.toDataURL("image/png");
-        const text = new Image();
-        text.src = Dtext;
-        const img = new Image()
-
-        // img.src = this.local.getData("img1") + '';
-        img.src = '../../../assets/tempimage.jpg';
-        const newWidth = 500;
-        const newHeight = (img.height / img.width) * newWidth;
-        img.onload = () => {
-          context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-          context.drawImage(img, 0, 0, newWidth, newHeight);
-          context.drawImage(text, 0, 0, newWidth, newHeight)
-        }
-        const png = this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        console.log(png);
-        this.listdataURL.push(png);
-
-        // const newWidth = 500;
-        // const newHeight = (imgs.height / imgs.width) * newWidth;
-        // imgs.src = this.local.getData("img1") + '';
-        // imgs.onload = () => {
-        //   context.drawImage(imgs, 0, 0, newWidth, newHeight);
-        // };
-
-
-        // var myImg = new Image();
-        // myImg.src = (this.local.getData("img1") + '');
-
-        // myImg.onload = () => {
-        //   context.drawImage(myImg, 0, 0, newWidth, newHeight);
-        //   context.drawImage(text, 0, 0);
-        // };
-        // const ima = <HTMLImageElement>document.getElementById("imageQ").src = png;
-
-
-
-        this.listcanvas.push(this.canvas);
-
-      }//if context
-
-      // let jsons = {
-      //   "A": this.A,
-      //   "B": this.B,
-      //   "A1": this.A1,
-      //   "B1": this.B1,
-      //   "C": this.C
-      // }
-
-    }//for 1
-
-    // for (let index = 0; index < this.listdataURL.length; index++) {
-    //   const element = this.listdataURL[index];
-
-    //   const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-    //   const context = canvas.getContext('2d')
-
-
-    //   if (context) {
-
-
-    //     const imgs = new Image();
-
-    //     imgs.src = "../../../assets/tempimage.jpg";
-    //     const newWidth = 500;
-    //     const newHeight = (imgs.height / imgs.width) * newWidth;
-
-    //     imgs.onload = () => {
-    //       context.drawImage(imgs, 0, 0, newWidth, newHeight);
-    //     };
-
-
-    //     const png = canvas.toDataURL("image/png");
-    //     console.log(png);
-    //     this.listdataURL.push(png);
-
-    //   }
-
-    // }
-    // console.log(this.listcanvas);
-    // console.log(this.listdataURL);
   }
 
 

@@ -1,6 +1,8 @@
 
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { DataserveiceService } from 'src/app/dataserveice.service';
+import { LocalService } from 'src/app/local.service';
 
 @Component({
   selector: 'app-confirmed',
@@ -8,9 +10,14 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./confirmed.component.scss']
 })
 export class ConfirmedComponent {
+  ALL !: any;
   constructor(
-    private dialogRef: MatDialogRef<ConfirmedComponent>
-  ) { }
+    private dialogRef: MatDialogRef<ConfirmedComponent>,
+    private dataService: DataserveiceService,
+    private local: LocalService
+  ) {
+    this.ALL = dataService.ALL;
+  }
 
   close() {
     console.log("close");
@@ -19,6 +26,9 @@ export class ConfirmedComponent {
 
   ok() {
     console.log("OK");
+    let array !: any;
+    array = this.ALL;
+    console.log(array);
     this.close();
   }
 }

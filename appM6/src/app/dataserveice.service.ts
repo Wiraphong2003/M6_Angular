@@ -22,6 +22,7 @@ export class DataserveiceService {
   t4 !: any;
   t5 !: any;
   datauser !:any;
+  ALL !: any;
 
   constructor(private httpClient: HttpClient) {
     this.Lottary = data;
