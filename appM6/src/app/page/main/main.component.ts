@@ -293,7 +293,7 @@ export class MainComponent implements OnInit {
     // }else{
     //   this.isShowG  = true
     // }
-    this.isShowG = true
+
     this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
     this.listcanvas = this.listcanvas.filter(item => item !== item);
     this.listdataURL = this.listdataURL.filter(item => item !== item);
@@ -302,7 +302,7 @@ export class MainComponent implements OnInit {
       const element = array[index];
       // console.log(element.name);
 
-      const img = new Image()
+      let img = new Image()
       // img.src = "../../../assets/img/user1_1.jpg"
       if (this.local.getData("USER") == 'user1') {
         img.src = "../../../assets/img/user1_1.jpg"
@@ -332,7 +332,6 @@ export class MainComponent implements OnInit {
         // context.shadowBlur = 3;
 
         context.clearRect(0, 0, canvas.width, canvas.height);
-        context.font = "18px Chuanchiim"
         context.drawImage(img, 0, 0, newWidth, newHeight)
 
         context.font = "32px Superspace"
@@ -413,6 +412,7 @@ export class MainComponent implements OnInit {
     // this.dialog.open(ConfirmedComponent, {
     //   // minWidth: '300px'
     // });
+    this.isShowG = true
 
   }
 
@@ -810,23 +810,20 @@ export class MainComponent implements OnInit {
   }
 
   checkbox(obj: any) {
+    // this.isShowG = false
     const lid = obj.lid;
     const index = this.ALL1.findIndex((element) => element.lid === lid);
     console.log(lid);
-
     if (index >= 0) {
 
-      // The checkbox is already selected, so remove it from the array
       this.ALL1.splice(index, 1);
       this.isShowG = false
     } else {
       this.isShowG = true
-      // The checkbox is not selected, so add it to the array
       this.ALL1.push(obj);
-
-      // Remove any existing items from the array with the same `lid` value
-      // this.ALL1 = this.ALL1.filter((element) => element.lid !== lid);
     }
+    this.todateURL(this.ALL1);
+    // this.isShowG = false
   }
 
   checkALL() {
@@ -845,6 +842,8 @@ export class MainComponent implements OnInit {
         this.ALL1.push(element)
       });
     }
+    this.todateURL(this.ALL1);
+    // this.isShowG = false
   }
 
 
