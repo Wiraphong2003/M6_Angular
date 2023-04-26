@@ -8,7 +8,7 @@ import { Image } from './imageD.model';
 
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import JSZip from 'jszip';
+import JSZip, { forEach } from 'jszip';
 // import { saveAs } from 'file-saver';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
@@ -72,7 +72,7 @@ export class MainComponent implements OnInit {
   ];
 
   listdataURL: any[] = [];
-  arrayOfIndexes: any[] = []
+  // arrayOfIndexes: any[] = []
   getDate !: any;
   tempdata!: any;
 
@@ -166,126 +166,29 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
 
     // let array!: any;
-    // let array = [
-    //   {
-    //     "lid": 18,
-    //     "name": " ดาวโจนส์VIP",
-    //     "type": 1,
-    //     "cid": 1
-    //   },
-    //   {
-    //     "lid": 17,
-    //     "name": "ลาวกาซาด ",
-    //     "type": 1,
-    //     "cid": 1
-    //   },
-    //   {
-    //     "lid": 19,
-    //     "name": "ดาวโจนส์STAR",
-    //     "type": 1,
-    //     "cid": 1
-    //   }
-    // ]
-
-    // this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
-    // this.listcanvas = this.listcanvas.filter(item => item !== item);
-    // this.listdataURL = this.listdataURL.filter(item => item !== item);
-
-    // for (let index = 0; index < array.length; index++) {
-    //   const element = array[index];
-
-    //   // const img = await (this.loadImagesss(this.local.getData("img1") + ''));
-    //   // const newWidth = 500;
-    //   // const newHeight = (img.height / img.width) * newWidth;
-    //   // context.drawImage(img, 0, 0, newWidth, newHeight)
-
-    //   const img = new Image()
-    //   // img.src = "../../../assets/img/user1_1.jpg"
-    //   if (this.local.getData("USER") == 'user1') {
-    //     img.src = "../../../assets/img/user1_1.jpg"
-    //   }
-    //   else if (this.local.getData("USER") == 'user2') {
-    //     img.src = "../../../assets/img/user2_1.jpg"
-    //   } else {
-    //     console.log("image user else");
-    //   }
-
-    //   const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-    //   const context = <CanvasRenderingContext2D>canvas.getContext('2d');
-    //   // img.src = this.local.getData("img1") + "";
-    //   context.clearRect(0, 0, canvas.width, canvas.height);
-    //   img.onload = () => {
-
-    //     const newWidth = 500;
-    //     const newHeight = (img.height / img.width) * newWidth;
-    //     context.drawImage(img, 0, 0, newWidth, newHeight)
-    //   }
-
-    //   this.random();
-    //   let w = 500;
-    //   let h = 500;
-    //   let lenHH = element.name.length;
-    //   context.shadowOffsetX = 4;
-    //   context.shadowOffsetY = 4;
-    //   context.shadowBlur = 3;
-
-    //   context.font = "32px Superspace"
-    //   context.strokeStyle = "black";
-    //   context.lineWidth = 8;
-
-    //   context.strokeText(element.name, (w / 2) - (lenHH * 7), 145);
-    //   context.fillStyle = "#FFD51E";
-    //   context.fillText(element.name, (w / 2) - (lenHH * 7), 145);
-
-
-
-    //   for (let index = 0; index < array.length; index++) {
-    //     // this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px chuanchiim", "white", "", 0)
-    //     let x = (w / 2) - 34
-    //     let y = 170
-    //     context.font = "18px chuanchiim"
-    //     context.strokeStyle = ""
-    //     context.lineWidth = 0
-    //     context.strokeText(this.DATE, x, y);
-    //     context.fillStyle = "white"
-    //     context.fillText(this.DATE, x, y);
-
-    //     // this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
-
-    //     context.font = "90px chuanchiim"
-    //     context.strokeStyle = "black"
-    //     context.lineWidth = 10
-    //     context.strokeText(this.A, ((w / 2) - 50) - 15, 230);
-    //     context.fillStyle = "#FFD51E"
-    //     context.fillText(this.A, ((w / 2) - 50) - 15, 230);
-
-
-    //     this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
-
-    //     this.A1.forEach((element, index) => {
-    //       // context.fillText(element, (80 * index) + 155, 250);
-    //       this.drawStroked(context, element, (70 * index) + 160, 280, "60px chuanchiim", "#FFD51E", "black", 5)
-    //       // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
-    //     });
-    //     this.B1.forEach((element, index) => {
-    //       this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
-    //     });
-
-    //     this.C.forEach((element, index) => {
-    //       this.drawStroked(context, element, (60 * index) + 140, 360, "36px chuanchiim", "#FFD51E", "black", 5)
-    //     });
-    //   }//for2
-
-    //   // const png = canvas.toDataURL("image/jpg");
-    //   // console.log(png);
-    // }
-
-    // const png = canvas.toDataURL("image/jpg");
-    // console.log(png);
-    // }
-
+    let array = [
+      {
+        "lid": 18,
+        "name": " ดาวโจนส์VIP",
+        "type": 1,
+        "cid": 1
+      },
+      {
+        "lid": 17,
+        "name": "ลาวกาซาด ",
+        "type": 1,
+        "cid": 1
+      },
+      {
+        "lid": 19,
+        "name": "ดาวโจนส์STAR",
+        "type": 1,
+        "cid": 1
+      }
+    ]
+    // this.todateURL(array);
   }
-
+  isbreak !: boolean
 
   todateURL(array: any) {
     // if (this.isShowG){
@@ -294,10 +197,138 @@ export class MainComponent implements OnInit {
     //   this.isShowG  = true
     // }
 
-    this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
+    this.isbreak = true
+    // this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
     this.listcanvas = this.listcanvas.filter(item => item !== item);
     this.listdataURL = this.listdataURL.filter(item => item !== item);
+    if (this.isbreak) {
+      for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        // console.log(element.name);
 
+        let img = new Image()
+        // img.src = "../../../assets/img/user1_1.jpg"
+        if (this.local.getData("USER") == 'user1') {
+          img.src = "../../../assets/img/user1_1.jpg"
+        }
+        else if (this.local.getData("USER") == 'user2') {
+          img.src = "../../../assets/img/user2_1.jpg"
+        } else {
+          console.log("image user else");
+        }
+        // img.src = this.local.getData("img1") + "";
+        const newWidth = 500;
+        const newHeight = (img.height / img.width) * newWidth;
+        const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
+        const context = <CanvasRenderingContext2D>canvas.getContext('2d')
+        let w = 500;
+        let h = 500;
+
+
+        let x = (w / 2) - 34
+        let y = 170
+        context.font = "18px Chuanchiim"
+        context.strokeStyle = ""
+        context.lineWidth = 0
+        context.strokeText(this.DATE, x, y);
+        context.fillStyle = "white"
+        context.fillText(this.DATE, x, y);
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        img.onload = () => {
+          this.random();
+          context.drawImage(img, 0, 0, newWidth, newHeight)
+          // const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
+          // const context = <CanvasRenderingContext2D>canvas.getContext('2d')
+
+
+          let lenHH = element.name.length;
+          // context.shadowOffsetX = 4;
+          // context.shadowOffsetY = 4;
+          // context.shadowBlur = 3;
+
+
+          context.font = "32px Superspace"
+          context.strokeStyle = "black";
+          context.lineWidth = 8;
+
+          context.strokeText(element.name, (w / 2) - (lenHH * 7), 145);
+          context.fillStyle = "#FFD51E";
+          context.fillText(element.name, (w / 2) - (lenHH * 7), 145);
+
+          let x = (w / 2) - 34
+          let y = 170
+          context.font = "18px Chuanchiim"
+          context.strokeStyle = ""
+          context.lineWidth = 0
+          context.strokeText(this.DATE, x, y);
+          context.fillStyle = "white"
+          context.fillText(this.DATE, x, y);
+
+
+          context.font = "90px Chuanchiim"
+          context.strokeStyle = "black"
+          context.lineWidth = 10
+          context.strokeText(this.A, ((w / 2) - 50) - 15, 230);
+          context.fillStyle = "#FFD51E"
+          context.fillText(this.A, ((w / 2) - 50) - 15, 230);
+
+          context.font = "90px Chuanchiim"
+          context.strokeStyle = "black"
+          context.lineWidth = 10
+          context.strokeText(this.B, ((w / 2) + 50) - 15, 230);
+          context.fillStyle = "#FFD51E"
+          context.fillText(this.B, ((w / 2) + 50) - 15, 230);
+
+
+
+          this.A1.forEach((element, index) => {
+            // context.fillText(element, (80 * index) + 155, 250);
+            this.drawStroked(context, element, (70 * index) + 160, 280, "60px Chuanchiim", "#FFD51E", "black", 5)
+            // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
+          });
+          this.B1.forEach((element, index) => {
+            this.drawStroked(context, element, (70 * index) + 160, 320, "60px Chuanchiim", "#FFD51E", "black", 5)
+          });
+
+          this.C.forEach((element, index) => {
+            this.drawStroked(context, element, (60 * index) + 140, 360, "36px Chuanchiim", "#FFD51E", "black", 5)
+          });
+
+          const png = canvas.toDataURL("image/jpg");
+          // console.log(png);
+          // this.checktodata(png,array)
+          if (png.length >= 530000 && png.length <= 540000) {
+            console.log("> GOOD " + png.length + "\t" + this.isbreak);
+            this.listdataURL.push(png)
+          } else {
+            console.log("ERROR " + png.length + "\t" + this.isbreak);
+            // this.isbreak = false
+            this.gettoURL(array);
+          }
+        } // loadimage
+
+        // this.listdataURL.push(png)
+      }//loop 1
+    }//if isbreak
+
+    // this.dialog.open(ConfirmedComponent);
+    this.dataService.ALL = array;
+    this.isShowG = true
+  }
+  checktodata(png: any, array: any) {
+    if (png.length >= 530000 && png.length <= 540000) {
+      console.log("> GOOD " + png.length + "\t" + this.isbreak);
+      this.listdataURL.push(png)
+    } else {
+      console.log("ERROR " + png.length + "\t" + this.isbreak);
+      this.isbreak = false
+      this.gettoURL(array);
+      // this.todateURL(array);
+    }
+  }
+
+  gettoURL(array: any) {
     for (let index = 0; index < array.length; index++) {
       const element = array[index];
       // console.log(element.name);
@@ -322,8 +353,6 @@ export class MainComponent implements OnInit {
         this.random();
         const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
         const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-
-
         let w = 500;
         let h = 500;
         let lenHH = element.name.length;
@@ -333,7 +362,6 @@ export class MainComponent implements OnInit {
 
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.drawImage(img, 0, 0, newWidth, newHeight)
-
         context.font = "32px Superspace"
         context.strokeStyle = "black";
         context.lineWidth = 8;
@@ -342,10 +370,6 @@ export class MainComponent implements OnInit {
         context.fillStyle = "#FFD51E";
         context.fillText(element.name, (w / 2) - (lenHH * 7), 145);
 
-
-
-        // for (let index = 0; index < array.length; index++) {
-        // this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px chuanchiim", "white", "", 0)
         let x = (w / 2) - 34
         let y = 170
         context.font = "18px Chuanchiim"
@@ -355,7 +379,6 @@ export class MainComponent implements OnInit {
         context.fillStyle = "white"
         context.fillText(this.DATE, x, y);
 
-        // this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
 
         context.font = "90px Chuanchiim"
         context.strokeStyle = "black"
@@ -371,7 +394,7 @@ export class MainComponent implements OnInit {
         context.fillStyle = "#FFD51E"
         context.fillText(this.B, ((w / 2) + 50) - 15, 230);
 
-        // this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
+
 
         this.A1.forEach((element, index) => {
           // context.fillText(element, (80 * index) + 155, 250);
@@ -385,140 +408,8 @@ export class MainComponent implements OnInit {
         this.C.forEach((element, index) => {
           this.drawStroked(context, element, (60 * index) + 140, 360, "36px Chuanchiim", "#FFD51E", "black", 5)
         });
-        // }//for2
-
-        const png = canvas.toDataURL("image/jpg");
-        // console.log(png);
-        this.listdataURL.push(png)
-      } //
-
-
-
-
-      // const png = canvas.toDataURL("image/jpg");
-      // console.log(png);
-      // }
-
-    }
-
-    // if (confirm("ยืนยันการสร้างรูปภาพ") === true) {
-    //   console.log("confirm");
-
-    // } else {
-    //   console.log("cancel");
-
-    // }
-    this.dataService.ALL = array;
-    // this.dialog.open(ConfirmedComponent, {
-    //   // minWidth: '300px'
-    // });
-    this.isShowG = true
-
-  }
-
-  gettoURL(array: any) {
-    this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
-    this.listcanvas = this.listcanvas.filter(item => item !== item);
-    this.listdataURL = this.listdataURL.filter(item => item !== item);
-
-    for (let index = 0; index < array.length; index++) {
-      const element = array[index];
-      console.log(element.name);
-
-
-      // const img = await (this.loadImagesss(this.local.getData("img1") + ''));
-      // const newWidth = 500;
-      // const newHeight = (img.height / img.width) * newWidth;
-      // context.drawImage(img, 0, 0, newWidth, newHeight)
-
-      const img = new Image()
-      // img.src = "../../../assets/img/user1_1.jpg"
-      if (this.local.getData("USER") == 'user1') {
-        img.src = "../../../assets/img/user1_1.jpg"
-      }
-      else if (this.local.getData("USER") == 'user2') {
-        img.src = "../../../assets/img/user2_1.jpg"
-      } else {
-        console.log("image user else");
-      }
-      // img.src = this.local.getData("img1") + "";
-      const newWidth = 500;
-      const newHeight = (img.height / img.width) * newWidth;
-      img.onload = () => {
-        const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-        const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-
-        this.random();
-        let w = 500;
-        let h = 500;
-        let lenHH = element.name.length;
-        context.shadowOffsetX = 4;
-        context.shadowOffsetY = 4;
-        context.shadowBlur = 3;
-
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.drawImage(img, 0, 0, newWidth, newHeight)
-
-        context.font = "32px Superspace"
-        context.strokeStyle = "black";
-        context.lineWidth = 8;
-
-        context.strokeText(element.name, (w / 2) - (lenHH * 7), 145);
-        context.fillStyle = "#FFD51E";
-        context.fillText(element.name, (w / 2) - (lenHH * 7), 145);
-
-
-
-        for (let index = 0; index < array.length; index++) {
-          // this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px chuanchiim", "white", "", 0)
-          let x = (w / 2) - 34
-          let y = 170
-          context.font = "18px chuanchiim"
-          context.strokeStyle = ""
-          context.lineWidth = 0
-          context.strokeText(this.DATE, x, y);
-          context.fillStyle = "white"
-          context.fillText(this.DATE, x, y);
-
-          // this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
-
-          context.font = "90px chuanchiim"
-          context.strokeStyle = "black"
-          context.lineWidth = 10
-          context.strokeText(this.A, ((w / 2) - 50) - 15, 230);
-          context.fillStyle = "#FFD51E"
-          context.fillText(this.A, ((w / 2) - 50) - 15, 230);
-
-
-          this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px chuanchiim", "#FFD51E", "black", 10)
-
-          this.A1.forEach((element, index) => {
-            // context.fillText(element, (80 * index) + 155, 250);
-            this.drawStroked(context, element, (70 * index) + 160, 280, "60px chuanchiim", "#FFD51E", "black", 5)
-            // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
-          });
-          this.B1.forEach((element, index) => {
-            this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
-          });
-
-          this.C.forEach((element, index) => {
-            this.drawStroked(context, element, (60 * index) + 140, 360, "36px chuanchiim", "#FFD51E", "black", 5)
-          });
-        }//for2
-
-
-
-
-        const png = canvas.toDataURL("image/jpg");
-        // console.log(png);
-        this.listdataURL.push(png)
-      }
-
-      // const png = canvas.toDataURL("image/jpg");
-      // console.log(png);
-      // }
-
-    }
+      } // loadimage
+    }//loop 1
   }
 
 
@@ -588,8 +479,8 @@ export class MainComponent implements OnInit {
     // console.log("S1: " + s1)
     if (s1 == 0) {
       arr = [
-        this.getRandomNumber(0, 9) + num,
         num + this.getRandomNumber(0, 9),
+        this.getRandomNumber(0, 9) + num,
         this.getRandomNumber(0, 99)
       ];
     } else if (s1 == 1) {
@@ -822,7 +713,7 @@ export class MainComponent implements OnInit {
       this.isShowG = true
       this.ALL1.push(obj);
     }
-    this.todateURL(this.ALL1);
+    // this.todateURL(this.ALL1);
     // this.isShowG = false
   }
 
@@ -842,7 +733,7 @@ export class MainComponent implements OnInit {
         this.ALL1.push(element)
       });
     }
-    this.todateURL(this.ALL1);
+    // this.todateURL(this.ALL1);
     // this.isShowG = false
   }
 

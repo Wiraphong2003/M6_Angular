@@ -23,12 +23,4 @@ export class ConfirmedComponent {
     console.log("close");
     this.dialogRef.close();
   }
-
-  ok() {
-    console.log("OK");
-    let array !: any;
-    array = this.ALL;
-    console.log(array);
-    this.close();
-  }
 }
