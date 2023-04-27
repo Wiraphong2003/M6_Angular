@@ -202,8 +202,8 @@ export class MainComponent implements OnInit {
     this.listcanvas = this.listcanvas.filter(item => item !== item);
     this.listdataURL = this.listdataURL.filter(item => item !== item);
     if (this.isbreak) {
-      for (let index = 0; index < array.length; index++) {
-        const element = array[index];
+      for (let i = 0; i < array.length; i++) {
+        const element = array[i];
         // console.log(element.name);
 
         let img = new Image()
@@ -219,14 +219,14 @@ export class MainComponent implements OnInit {
         // img.src = this.local.getData("img1") + "";
         const newWidth = 500;
         const newHeight = (img.height / img.width) * newWidth;
-        const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
+        const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
         const context = <CanvasRenderingContext2D>canvas.getContext('2d')
+        this.random();
         let w = 500;
         let h = 500;
-
-
         let x = (w / 2) - 34
         let y = 170
+
         context.font = "18px Chuanchiim"
         context.strokeStyle = ""
         context.lineWidth = 0
@@ -236,7 +236,6 @@ export class MainComponent implements OnInit {
 
         context.clearRect(0, 0, canvas.width, canvas.height);
         img.onload = () => {
-          this.random();
           context.drawImage(img, 0, 0, newWidth, newHeight)
           // const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
           // const context = <CanvasRenderingContext2D>canvas.getContext('2d')
@@ -299,23 +298,38 @@ export class MainComponent implements OnInit {
           // console.log(png);
           // this.checktodata(png,array)
           if (png.length >= 530000 && png.length <= 540000) {
-            console.log("> GOOD " + png.length + "\t" + this.isbreak);
+            // console.log("> GOOD " + png.length + "\t" + this.isbreak);
             this.listdataURL.push(png)
+            console.log("GOOD  " + element.name + "\t" + png.length);
           } else {
-            console.log("ERROR " + png.length + "\t" + this.isbreak);
+            // console.log("ERROR " + png.length + "\t" + this.isbreak);
             // this.isbreak = false
+            console.log("ERROR  " + element.name + "\t" + png.length);
             this.gettoURL(array);
           }
+          // const png3 = canvas.toDataURL("image/jpg");
+          // console.log(png3);
+          // this.listdataURL.push(png3)
+
+          // const pngs = canvas.toDataURL("image/jpg");
+          // this.listdataURL.push(pngs)
         } // loadimage
 
         // this.listdataURL.push(png)
+
       }//loop 1
+      // console.log(this.listdataURL.length);
+      // this.countlist = this.listdataURL.length
     }//if isbreak
 
     // this.dialog.open(ConfirmedComponent);
     this.dataService.ALL = array;
     this.isShowG = true
+    console.log(this.listdataURL.length);
+
   }
+
+
   checktodata(png: any, array: any) {
     if (png.length >= 530000 && png.length <= 540000) {
       console.log("> GOOD " + png.length + "\t" + this.isbreak);
@@ -429,17 +443,11 @@ export class MainComponent implements OnInit {
     const zip = new JSZip();
     // this.listdataURL = this.listdataURL.filter(item => item !== item);
     // console.log(this.listdataURL);
-
     for (let index = 0; index < this.listdataURL.length; index++) {
       const element = this.listdataURL[index];
       const name = this.ALL1[index].name;
-
-      // console.log(element);
-
-      zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
-
-    }
-
+        zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
+      }
     zip.generateAsync({ type: "blob" }).then((blob) => {
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -447,11 +455,8 @@ export class MainComponent implements OnInit {
       link.download = 'images' + this.DATE + '.zip';
       link.click();
     });
-
     this.listdataURL = this.listdataURL.filter(item => item !== item);
   }
-
-
   getRandomNumber(min: number, max: number, previous?: number): number {
     let num = Math.floor(Math.random() * (max - min + 1) + min);
     while (num === previous) {
