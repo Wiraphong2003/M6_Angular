@@ -186,9 +186,22 @@ export class MainComponent implements OnInit {
         "cid": 1
       }
     ]
-    // this.todateURL(array);
+
   }
+
   isbreak !: boolean
+  ischs = 1;
+  Createimage(array: any) {
+    console.log(this.ischs);
+    if (this.ischs == 1) {
+      // this.gettoURL(array)
+      this.todateURL(array);
+      this.ischs++
+    } else {
+      this.todateURL(array);
+      // this.ischs++
+    }
+  }
 
   todateURL(array: any) {
     // if (this.isShowG){
@@ -224,67 +237,56 @@ export class MainComponent implements OnInit {
         this.random();
         let w = 500;
         let h = 500;
-        let x = (w / 2) - 34
-        let y = 170
-
-        context.font = "18px Chuanchiim"
-        context.strokeStyle = ""
-        context.lineWidth = 0
-        context.strokeText(this.DATE, x, y);
-        context.fillStyle = "white"
-        context.fillText(this.DATE, x, y);
-
         context.clearRect(0, 0, canvas.width, canvas.height);
+        // this.debug(img, newWidth, newHeight, element, w, i)
+
+
+        let lenHH = element.name.length;
+        this.drawStroked(context, element.name, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8)
+
+        this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px Chuanchiim", "white", "", 0)
+
+        this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
+
+        this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
+
+        this.A1.forEach((element, index) => {
+          // context.fillText(element, (80 * index) + 155, 250);
+          this.drawStroked(context, element, (70 * index) + 160, 280, "60px Chuanchiim", "#FFD51E", "black", 5)
+
+        });
+        this.B1.forEach((element, index) => {
+          this.drawStroked(context, element, (70 * index) + 160, 320, "60px Chuanchiim", "#FFD51E", "black", 5)
+        });
+
+        this.C.forEach((element, index) => {
+          this.drawStroked(context, element, (60 * index) + 140, 360, "36px Chuanchiim", "#FFD51E", "black", 5)
+        });
+
+
         img.onload = () => {
+          context.clearRect(0, 0, canvas.width, canvas.height);
           context.drawImage(img, 0, 0, newWidth, newHeight)
+          this.random();
           // const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
           // const context = <CanvasRenderingContext2D>canvas.getContext('2d')
 
 
           let lenHH = element.name.length;
-          // context.shadowOffsetX = 4;
-          // context.shadowOffsetY = 4;
-          // context.shadowBlur = 3;
 
+          this.drawStroked(context, element.name, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8)
 
-          context.font = "32px Superspace"
-          context.strokeStyle = "black";
-          context.lineWidth = 8;
+          this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px Chuanchiim", "white", "", 0)
 
-          context.strokeText(element.name, (w / 2) - (lenHH * 7), 145);
-          context.fillStyle = "#FFD51E";
-          context.fillText(element.name, (w / 2) - (lenHH * 7), 145);
+          this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
 
-          let x = (w / 2) - 34
-          let y = 170
-          context.font = "18px Chuanchiim"
-          context.strokeStyle = ""
-          context.lineWidth = 0
-          context.strokeText(this.DATE, x, y);
-          context.fillStyle = "white"
-          context.fillText(this.DATE, x, y);
-
-
-          context.font = "90px Chuanchiim"
-          context.strokeStyle = "black"
-          context.lineWidth = 10
-          context.strokeText(this.A, ((w / 2) - 50) - 15, 230);
-          context.fillStyle = "#FFD51E"
-          context.fillText(this.A, ((w / 2) - 50) - 15, 230);
-
-          context.font = "90px Chuanchiim"
-          context.strokeStyle = "black"
-          context.lineWidth = 10
-          context.strokeText(this.B, ((w / 2) + 50) - 15, 230);
-          context.fillStyle = "#FFD51E"
-          context.fillText(this.B, ((w / 2) + 50) - 15, 230);
-
+          this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
 
 
           this.A1.forEach((element, index) => {
             // context.fillText(element, (80 * index) + 155, 250);
             this.drawStroked(context, element, (70 * index) + 160, 280, "60px Chuanchiim", "#FFD51E", "black", 5)
-            // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
+
           });
           this.B1.forEach((element, index) => {
             this.drawStroked(context, element, (70 * index) + 160, 320, "60px Chuanchiim", "#FFD51E", "black", 5)
@@ -299,20 +301,18 @@ export class MainComponent implements OnInit {
           // this.checktodata(png,array)
           if (png.length >= 530000 && png.length <= 540000) {
             // console.log("> GOOD " + png.length + "\t" + this.isbreak);
-            this.listdataURL.push(png)
             console.log("GOOD  " + element.name + "\t" + png.length);
           } else {
             // console.log("ERROR " + png.length + "\t" + this.isbreak);
             // this.isbreak = false
             console.log("ERROR  " + element.name + "\t" + png.length);
             this.gettoURL(array);
+            // i--
           }
-          // const png3 = canvas.toDataURL("image/jpg");
-          // console.log(png3);
-          // this.listdataURL.push(png3)
 
-          // const pngs = canvas.toDataURL("image/jpg");
-          // this.listdataURL.push(pngs)
+          const pngs = canvas.toDataURL("image/jpg");
+          console.log("pngs     " + pngs.length);
+          this.listdataURL.push(png)
         } // loadimage
 
         // this.listdataURL.push(png)
@@ -322,11 +322,77 @@ export class MainComponent implements OnInit {
       // this.countlist = this.listdataURL.length
     }//if isbreak
 
+    // for (let index = 0; index < array.length; index++) {
+    //   const element = array[index];
+    //   const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
+    //   const png = canvas.toDataURL("image/jpg");
+    //   console.log(png);
+    // }
+
     // this.dialog.open(ConfirmedComponent);
     this.dataService.ALL = array;
     this.isShowG = true
     console.log(this.listdataURL.length);
 
+  }
+
+  debug(img: any, newWidth: any, newHeight: any, element: any, w: any, i: any) {
+    const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
+    const context = <CanvasRenderingContext2D>canvas.getContext('2d')
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(img, 0, 0, newWidth, newHeight)
+    this.random();
+    let lenHH = element.name.length;
+
+    context.font = "32px Superspace"
+    context.strokeStyle = "black";
+    context.lineWidth = 8;
+
+    context.strokeText(element.name, (w / 2) - (lenHH * 7), 145);
+    context.fillStyle = "#FFD51E";
+    context.fillText(element.name, (w / 2) - (lenHH * 7), 145);
+
+    let x = (w / 2) - 34
+    let y = 170
+    context.font = "18px Chuanchiim"
+    context.strokeStyle = ""
+    context.lineWidth = 0
+    context.strokeText(this.DATE, x, y);
+    context.fillStyle = "white"
+    context.fillText(this.DATE, x, y);
+
+
+    context.font = "90px Chuanchiim"
+    context.strokeStyle = "black"
+    context.lineWidth = 10
+    context.strokeText(this.A, ((w / 2) - 50) - 15, 230);
+    context.fillStyle = "#FFD51E"
+    context.fillText(this.A, ((w / 2) - 50) - 15, 230);
+
+    context.font = "90px Chuanchiim"
+    context.strokeStyle = "black"
+    context.lineWidth = 10
+    context.strokeText(this.B, ((w / 2) + 50) - 15, 230);
+    context.fillStyle = "#FFD51E"
+    context.fillText(this.B, ((w / 2) + 50) - 15, 230);
+
+
+
+    this.A1.forEach((element, index) => {
+      // context.fillText(element, (80 * index) + 155, 250);
+      this.drawStroked(context, element, (70 * index) + 160, 280, "60px Chuanchiim", "#FFD51E", "black", 5)
+      // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
+    });
+    this.B1.forEach((element, index) => {
+      this.drawStroked(context, element, (70 * index) + 160, 320, "60px Chuanchiim", "#FFD51E", "black", 5)
+    });
+
+    this.C.forEach((element, index) => {
+      this.drawStroked(context, element, (60 * index) + 140, 360, "36px Chuanchiim", "#FFD51E", "black", 5)
+    });
+
+    // const pngs = canvas.toDataURL("image/jpg");
+    // console.log("ERROR BF  " + element.name + "\t" + pngs.length);
   }
 
 
@@ -446,8 +512,8 @@ export class MainComponent implements OnInit {
     for (let index = 0; index < this.listdataURL.length; index++) {
       const element = this.listdataURL[index];
       const name = this.ALL1[index].name;
-        zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
-      }
+      zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
+    }
     zip.generateAsync({ type: "blob" }).then((blob) => {
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');

@@ -3,7 +3,7 @@
   <div class="row" style="margin-top: 50px;margin-left: 10px;">
     <div class="col-sm-5">
       <h1 style=" font-family: Superspace;">วันที่ {{ date_value | date :'d/M/yy'}}</h1>
-      
+
 
       <div *ngIf="!isShowG">
         <img id="imageQ" src={{imageuser}} alt="" width="500px" height="500px">
@@ -35,7 +35,7 @@
         </section>
         <br>
         <div class="row" style="padding: 10px;">
-          <button type="button" (click)="todateURL(ALL1)" class="btn btn-success" style="margin-top:0px;width: 100%;">Create
+          <button type="button" (click)="Createimage(ALL1)" class="btn btn-success" style="margin-top:0px;width: 100%;">Create
             Image</button>
 
           <button type="button" class="btn btn-outline-primary" style="margin-top: 0px;width: 100%;margin-top: 10px;"
