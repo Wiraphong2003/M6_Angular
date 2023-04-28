@@ -194,13 +194,17 @@ export class MainComponent implements OnInit {
   Createimage(array: any) {
     console.log(this.ischs);
     if (this.ischs == 1) {
-      // this.gettoURL(array)
-      this.todateURL(array);
+      this.todateURL(array)
+      if (confirm("ยืนยันการสร้างรูปภาพ") == true) {
+        this.todateURL(array);
+
+      }
       this.ischs++
     } else {
       this.todateURL(array);
       // this.ischs++
     }
+    console.log(this.listdataURL);
   }
 
   todateURL(array: any) {
@@ -313,9 +317,8 @@ export class MainComponent implements OnInit {
           const pngs = canvas.toDataURL("image/jpg");
           console.log("pngs     " + pngs.length);
           this.listdataURL.push(png)
+          console.log("==================");
         } // loadimage
-
-        // this.listdataURL.push(png)
 
       }//loop 1
       // console.log(this.listdataURL.length);
@@ -473,8 +476,6 @@ export class MainComponent implements OnInit {
         context.strokeText(this.B, ((w / 2) + 50) - 15, 230);
         context.fillStyle = "#FFD51E"
         context.fillText(this.B, ((w / 2) + 50) - 15, 230);
-
-
 
         this.A1.forEach((element, index) => {
           // context.fillText(element, (80 * index) + 155, 250);

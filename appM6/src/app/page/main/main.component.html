@@ -1,21 +1,21 @@
-<script src="/appM6//src//assets//mainjs//sc.js"></script>
-<div class=".container-sm">
+<div class=".container-sm" id="container">
   <div class="row" style="margin-top: 50px;margin-left: 10px;">
-    <div class="col-sm-5">
+    <div class="col-sm">
       <h1 style=" font-family: Superspace;">วันที่ {{ date_value | date :'d/M/yy'}}</h1>
+      <div style="display: flex;justify-content: center">
+        <div *ngIf="!isShowG">
+          <img id="imageQ" src={{imageuser}} alt="" width="500px" height="500px">
+        </div>
 
-
-      <div *ngIf="!isShowG">
-        <img id="imageQ" src={{imageuser}} alt="" width="500px" height="500px">
+        <div style="width: 500px;height: 500px;" *ngIf="isShowG">
+          <mdb-carousel [animation]="'slide'">
+            <mdb-carousel-item *ngFor="let a of ALL1;index as i; trackBy:trackByFn">
+              <canvas attr.id="canvas-{{i}}" width="500" height="500"></canvas>
+            </mdb-carousel-item>
+          </mdb-carousel>
+        </div>
       </div>
 
-      <div style="width: 500px;height: 500px;" *ngIf="isShowG">
-        <mdb-carousel [animation]="'slide'">
-          <mdb-carousel-item *ngFor="let a of ALL1;index as i; trackBy:trackByFn">
-            <canvas attr.id="canvas-{{i}}" width="500" height="500"></canvas>
-          </mdb-carousel-item>
-        </mdb-carousel>
-      </div>
 
       <!-- <div style="width: 500px;height: 500px;" *ngIf="isShowG">
                                     <mdb-carousel [animation]="'slide'">
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <div class="col-sm-7">
+    <div class="col-sm" style="display: contents;">
       <div class="row">
         <div class="col-sm">
           <p style="text-align: center;">รายวัน</p>
@@ -98,6 +98,6 @@
         </div>
       </div>
     </div>
-    </div>
+  </div>
   <!-- {{listdataURL|json}} -->
 </div>
