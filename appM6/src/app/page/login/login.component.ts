@@ -49,7 +49,14 @@ export class LoginComponent {
           this.Local.saveData("USER", element.username)
           this.Local.saveData("status", element.status)
           this.Local.saveData("img1", element.img1)
-          this.router.navigateByUrl('/main');
+          // this.router.navigateByUrl('/main');
+          if ("user1" == json.username) {
+            this.router.navigateByUrl('/main');
+          } else if ("user2" == json.username) {
+            this.router.navigateByUrl('/main2');
+          }else{
+            this.texError = "บัญชีผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
+          }
         } else {
           console.log("password  Fiall");
           this.texError = "รหัสผ่านไม่ถูกต้อง"
