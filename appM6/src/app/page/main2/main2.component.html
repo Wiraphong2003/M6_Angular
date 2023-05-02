@@ -1,7 +1,8 @@
 <div class=".container-sm" id="container">
   <div class="row" style="margin-top: 50px;margin-left: 10px;">
     <div class="col-sm">
-      <h1 style=" font-family: Superspace;">วันที่ {{ date_value | date :'d/M/yy'}}</h1>
+      <h1 style=" font-family: Superspace;">วันที่ {{ date_value | date :'d/M/yy'}} อายุการใช้้งงานคงเหลือ</h1>
+
       <div style="display: flex;justify-content: center">
         <div *ngIf="!isShowG">
           <img id="imageQ" src={{imageuser}} alt="" width="500px" height="500px">
@@ -15,15 +16,6 @@
           </mdb-carousel>
         </div>
       </div>
-
-
-      <!-- <div style="width: 500px;height: 500px;" *ngIf="isShowG">
-                                    <mdb-carousel [animation]="'slide'">
-                                      <mdb-carousel-item *ngFor="let item of listdataURL;index as i; trackBy:trackByFn">
-                                        <img src={{item}} alt="" width="500" height="500">
-                                      </mdb-carousel-item>
-                                    </mdb-carousel>
-                                  </div> -->
 
       <div style="padding: 10px;width: 100%;">
         <hr>

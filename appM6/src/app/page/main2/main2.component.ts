@@ -829,11 +829,11 @@ export class Main2Component {
           // this.checktodata(png,array)
           if (png.length >= 460000 && png.length <= 500000) {
             // console.log("> GOOD " + png.length + "\t" + this.isbreak);
-            // console.log("GOOD  " + element.name + "\t" + png.length);
+            console.log("GOOD  " + element.name + "\t" + png.length);
           } else {
             // console.log("ERROR " + png.length + "\t" + this.isbreak);
             // this.isbreak = false
-            // console.log("ERROR  " + element.name + "\t" + png.length);
+            console.log("ERROR  " + element.name + "\t" + png.length);
             // this.gettoURL(array);
             // i--
           }
