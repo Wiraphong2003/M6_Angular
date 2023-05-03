@@ -445,6 +445,7 @@ export class MainComponent implements OnInit {
 
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.drawImage(img, 0, 0, newWidth, newHeight)
+        
         context.font = "32px Superspace"
         context.strokeStyle = "black";
         context.lineWidth = 8;

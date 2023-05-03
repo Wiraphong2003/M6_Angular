@@ -834,7 +834,7 @@ export class Main2Component {
             // console.log("ERROR " + png.length + "\t" + this.isbreak);
             // this.isbreak = false
             console.log("ERROR  " + element.name + "\t" + png.length);
-            // this.gettoURL(array);
+            this.gettoURL(array);
             // i--
           }
 
@@ -889,7 +889,9 @@ export class Main2Component {
         // context.shadowBlur = 3;
 
         context.clearRect(0, 0, canvas.width, canvas.height);
+
         context.drawImage(img, 0, 0, newWidth, newHeight)
+
         this.drawStrokedcenter(context, element.name, (w / 2) + 10, 370, "32px Chonburi", "#FFD51E", "black", 5)
 
 
