@@ -6,6 +6,11 @@
         <div *ngIf="!isShowG">
           <img id="imageQ" src={{imageuser}} alt="" width="500px" height="500px">
         </div>
+        <!-- <h3>Random Numbers:</h3>
+                <ul>
+                  <li *ngFor="let number of getRandomNumbers()">{{ number }}</li>
+                </ul> -->
+
 
         <div style="width: 500px;height: 500px;" *ngIf="isShowG">
           <mdb-carousel [animation]="'slide'">

@@ -29,6 +29,7 @@ export class Main2Component {
   areAllImagesLoaded = false;
 
   // myDate !: any;
+  arr: any[] = [];
   imageuser !: any;
   t1 = [
     {
@@ -645,7 +646,7 @@ export class Main2Component {
 
 
   canvas  !: HTMLCanvasElement;
-  context !: CanvasRenderingContext2D | undefined;
+  context !: CanvasRenderingContext2D;
   listcanvas: HTMLCanvasElement[] = [];
   DATE!: any | GlobalEventHandlers;
   All: any[] = [];
@@ -721,21 +722,21 @@ export class Main2Component {
     return (index);
   }
 
-  // Createimage(array: any) {
-  //   console.log(this.ischs);
-  //   if (this.ischs == 1) {
-  //     this.todateURL(array)
-  //     if (confirm("ยืนยันการสร้างรูปภาพ") == true) {
-  //       this.todateURL(array);
+  Createimage(array: any) {
+    console.log(this.ischs);
+    if (this.ischs == 1) {
+      this.todateURL(array)
+      if (confirm("ยืนยันการสร้างรูปภาพ") == true) {
+        this.todateURL(array);
 
-  //     }
-  //     this.ischs++
-  //   } else {
-  //     this.todateURL(array);
-  //     // this.ischs++
-  //   }
-  //   console.log(this.listdataURL);
-  // }
+      }
+      this.ischs++
+    } else {
+      this.todateURL(array);
+      // this.ischs++
+    }
+    console.log(this.listdataURL);
+  }
 
   todateURL(array: any) {
 
@@ -755,6 +756,7 @@ export class Main2Component {
 
         const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
         const context = <CanvasRenderingContext2D>canvas.getContext('2d')
+        // this.context = <CanvasRenderingContext2D>canvas.getContext('2d')
         this.random();
         let w = 500;
         let h = 500;
@@ -827,7 +829,7 @@ export class Main2Component {
           const png = canvas.toDataURL("image/jpg");
           // console.log(png);
           // this.checktodata(png,array)
-          if (png.length >= 460000 && png.length <= 500000) {
+          if (png.length >= 450000 && png.length <= 470000) {
             // console.log("> GOOD " + png.length + "\t" + this.isbreak);
             console.log("GOOD  " + element.name + "\t" + png.length);
           } else {
@@ -881,6 +883,7 @@ export class Main2Component {
         this.random();
         const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
         const context = <CanvasRenderingContext2D>canvas.getContext('2d')
+        // this.context =  <CanvasRenderingContext2D > canvas.getContext('2d')
         let w = 500;
         let h = 500;
         let lenHH = element.name.length;
@@ -939,75 +942,20 @@ export class Main2Component {
     return arr;
   }
 
-  randomN1(number: any): number[] {
-    let s1 = this.getRandomNumber(0, 4);
-    let arr: number[] = []
+  getRandomNumbers(number: any): number[] {
     let num = number.toString();
-    // console.log("NUMGET: " + num)
-    // console.log("S1: " + s1)
-    if (s1 == 0) {
-      arr = [
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-      ];
-    } else if (s1 == 1) {
-      arr = [
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-      ];
-    } else if (s1 == 2) {
-      arr = [
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-      ];
-    } else if (s1 == 3) {
-      arr = [
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-      ];
-    } else if (s1 == 4) {
-      arr = [
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-      ];
-    }
-    else if (s1 == 5) {
-      arr = [
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9),
-      ];
-    }
-    else {
-      console.log("s1 ERROR")
-    }
-
-    for (let i = 0; i < arr.length; i++) {
-      let ck = this.checkindex(arr[i], arr);
-      if (ck == 2) {
-        // console.log("num Angil:\t" + arr[i])
-        // console.log("============CK2===============")
-        arr[i] = this.getRandomNumber(0, 99)
-      } else if (ck == 1) {
-        // console.log("=============CK1==============")
-        arr[i] = this.getRandomNumber(0, 9) + arr[i];
-      } else {
-        // console.log("=============CK0==============")
-        ck = this.checkindex(arr[i], arr);
-      }
-    }
-    return arr
+    let result: number[] = []
+    const allNumbers: number[] = Array.from({ length: 9 }, (_, i) => i + 1);
+    const shuffledNumbers = allNumbers.sort(() => Math.random() - 0.5);
+    this.arr = shuffledNumbers.slice(0, 4);
+    result = [
+      num + this.arr[0],
+      num + this.arr[1],
+      num + this.arr[2],
+      num + this.arr[3]
+    ]
+    // console.log(result);
+    return result
   }
 
   generateArray(num1: any, num2: any): number[] {
@@ -1080,9 +1028,11 @@ export class Main2Component {
     const myArray = this.generateArray(randomNum1, randomNum2);
     let arrsum: any[] = []
 
-    const arr1 = this.randomN1(randomNum1);
-    const arr2 = this.randomN1(randomNum2);
+    // const arr1 = this.randomN1(randomNum1);
+    // const arr2 = this.randomN1(randomNum2);
 
+    const arr1 = this.getRandomNumbers(randomNum1)
+    const arr2 = this.getRandomNumbers(randomNum2)
     arrsum = this.intersect_arrays(arr1, arr2);
     // console.log("SSS:\t" + arrsum);
     if (arrsum.length > 0) {

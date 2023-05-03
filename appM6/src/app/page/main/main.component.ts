@@ -70,7 +70,7 @@ export class MainComponent implements OnInit {
     { src: '' + this.local.getData("img1"), alt: 'Image 2' },
     { src: '' + this.local.getData("img1"), alt: 'Image 3' },
   ];
-
+  arr: any[] = [];
   listdataURL: any[] = [];
   // arrayOfIndexes: any[] = []
   getDate !: any;
@@ -191,6 +191,7 @@ export class MainComponent implements OnInit {
 
   isbreak !: boolean
   ischs = 1;
+
   Createimage(array: any) {
     console.log(this.ischs);
     if (this.ischs == 1) {
@@ -238,7 +239,7 @@ export class MainComponent implements OnInit {
         const newHeight = (img.height / img.width) * newWidth;
         const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
         const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-        this.random();
+        // this.random();
         let w = 500;
         let h = 500;
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -344,7 +345,7 @@ export class MainComponent implements OnInit {
     const context = <CanvasRenderingContext2D>canvas.getContext('2d')
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(img, 0, 0, newWidth, newHeight)
-    this.random();
+    // this.random();
     let lenHH = element.name.length;
 
     context.font = "32px Superspace"
@@ -445,7 +446,7 @@ export class MainComponent implements OnInit {
 
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.drawImage(img, 0, 0, newWidth, newHeight)
-        
+
         context.font = "32px Superspace"
         context.strokeStyle = "black";
         context.lineWidth = 8;
@@ -495,18 +496,15 @@ export class MainComponent implements OnInit {
   }
 
 
-  async loadImagesss(src: string): Promise<HTMLImageElement> {
-    const image = new Image();
-    image.src = src;
-    return new Promise(resolve => {
-      image.onload = (ev) => {
-        resolve(image);
-      }
-    });
-  }
-
-
   async candown(array: any) {
+
+    if (this.ischs == 1) {
+     
+      this.ischs++
+    } else {
+
+      // this.ischs++
+    }
 
     const zip = new JSZip();
     // this.listdataURL = this.listdataURL.filter(item => item !== item);
@@ -525,6 +523,7 @@ export class MainComponent implements OnInit {
     });
     this.listdataURL = this.listdataURL.filter(item => item !== item);
   }
+
   getRandomNumber(min: number, max: number, previous?: number): number {
     let num = Math.floor(Math.random() * (max - min + 1) + min);
     while (num === previous) {
@@ -532,81 +531,21 @@ export class MainComponent implements OnInit {
     }
     return num;
   }
-  createRandomArray(length: number, min: number, max: number, num1: number, num2: number): number[] {
-    const arr: number[] = [num1, num2];
-    let previous: number | undefined;
 
-    for (let i = 0; i < length - 2; i++) {
-      const num = this.getRandomNumber(min, max, previous);
-      arr.push(num);
-      previous = num;
-    }
-    return arr;
-  }
 
-  randomN1(number: any): number[] {
-    let s1 = this.getRandomNumber(0, 4);
-    let arr: number[] = []
+  getRandomNumbers(number: any): number[] {
     let num = number.toString();
-    // console.log("NUMGET: " + num)
-    // console.log("S1: " + s1)
-    if (s1 == 0) {
-      arr = [
-        num + this.getRandomNumber(0, 9),
-        this.getRandomNumber(0, 9) + num,
-        this.getRandomNumber(0, 99)
-      ];
-    } else if (s1 == 1) {
-      arr = [
-        num + this.getRandomNumber(0, 9),
-        this.getRandomNumber(0, 9) + num,
-        this.getRandomNumber(0, 9) + num
-      ];
-    } else if (s1 == 2) {
-      arr = [
-        this.getRandomNumber(0, 9) + num,
-        num + this.getRandomNumber(0, 9),
-        this.getRandomNumber(0, 9) + num,
-      ];
-    } else if (s1 == 3) {
-      arr = [
-        this.getRandomNumber(0, 9) + num,
-        num + this.getRandomNumber(0, 9),
-        num + this.getRandomNumber(0, 9)
-      ];
-    } else if (s1 == 4) {
-      arr = [
-        num + this.getRandomNumber(0, 9),
-        this.getRandomNumber(0, 9) + num,
-        num + this.getRandomNumber(0, 9)
-      ];
-    }
-    else if (s1 == 5) {
-      arr = [
-        this.getRandomNumber(0, 9) + num,
-        this.getRandomNumber(0, 99),
-        num + this.getRandomNumber(0, 9)
-      ];
-    }
-    else {
-      console.log("s1 ERROR")
-    }
-
-    for (let i = 0; i < arr.length; i++) {
-      let ck = this.checkindex(arr[i], arr);
-      if (ck == 2) {
-        // console.log("num Angil:\t" + arr[i])
-        // console.log("============CK2===============")
-        arr[i] = this.getRandomNumber(0, 99)
-      } else if (ck == 1) {
-        // console.log("=============CK1==============")
-        arr[i] = this.getRandomNumber(0, 9) + arr[i];
-      } else {
-        // console.log("=============CK0==============")
-        ck = this.checkindex(arr[i], arr);
-      }
-    }
-    return arr
+    let result: number[] = []
+    const allNumbers: number[] = Array.from({ length: 9 }, (_, i) => i + 1);
+    const shuffledNumbers = allNumbers.sort(() => Math.random() - 0.5);
+    this.arr = shuffledNumbers.slice(0, 3);
+    result = [
+      num + this.arr[0],
+      num + this.arr[1],
+      num + this.arr[2]
+    ]
+    // console.log(result);
+    return result
   }
 
   generateArray(num1: any, num2: any): number[] {
@@ -682,8 +621,11 @@ export class MainComponent implements OnInit {
     const myArray = this.generateArray(randomNum1, randomNum2);
     let arrsum: any[] = []
 
-    const arr1 = this.randomN1(randomNum1);
-    const arr2 = this.randomN1(randomNum2);
+    // const arr1 = this.randomN1(randomNum1);
+    // const arr2 = this.randomN1(randomNum2);
+
+    const arr1 = this.getRandomNumbers(randomNum1)
+    const arr2 = this.getRandomNumbers(randomNum2)
 
     arrsum = this.intersect_arrays(arr1, arr2);
     // console.log("SSS:\t" + arrsum);
@@ -691,8 +633,6 @@ export class MainComponent implements OnInit {
       // console.log("=========intersect_arrays==========");
       this.random()
     }
-
-
 
     // console.log("Arr1: " + arr1)
     // console.log("Arr2: " + arr2)
@@ -705,45 +645,6 @@ export class MainComponent implements OnInit {
     this.B1 = arr2;
   }
 
-  checkindex(num: any, arr: any) {
-    let isresult!: number;
-    let len = num.toString().length
-    if (len > 0) {
-
-      if (len == 1) {
-        // console.log(num + "\tnum == 1 ");
-        isresult = 1;
-
-      } else if (len == 2) {
-        let temp = 0
-        // console.log(num + "\tnum == 2 ");
-        if (arr.includes(num)) {
-          arr.forEach((ee: any) => {
-            if (ee == num) {
-              temp++
-            }
-            if (temp > 1) {
-              isresult = 2;
-            }
-            // else{
-            //     temp=0
-            // }
-            // console.log(temp)
-          });
-        }
-
-      } else {
-        console.log(num + "\tnum > 2 ");
-      }
-    }
-    return isresult
-  }
-
-
-
-
-
-
   drawStroked(ctx: CanvasRenderingContext2D, text: any, x: any, y: any, font: any, color: any, strokeStyle: any, lineWidth: any) {
     ctx.font = font;
     ctx.strokeStyle = strokeStyle;
@@ -752,21 +653,6 @@ export class MainComponent implements OnInit {
     ctx.fillStyle = color;
     ctx.fillText(text, x, y);
   }
-
-
-  loadImage(url: string): Promise<HTMLImageElement> {
-    // console.log("loadImage");
-    // console.log("url: " + url);
-
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.onload = () =>
-        resolve(img);
-      img.onerror = reject;
-      img.src = url;
-    });
-  }
-
 
 
   trackByFn(index: any) {
@@ -811,22 +697,9 @@ export class MainComponent implements OnInit {
   }
 
 
-  checkis(ischk: boolean) {
-    if (ischk) {
-
-    } else {
-
-    }
-  }
   remove() {
     this.ALL1 = this.ALL1.filter(item => item !== item);
   }
-
-  saveAs(content: any, arg1: string) {
-    throw new Error('Function not implemented.');
-  }
-
-
 
 
 }
