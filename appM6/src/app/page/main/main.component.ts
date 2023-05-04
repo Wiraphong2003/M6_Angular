@@ -235,24 +235,24 @@ export class MainComponent implements OnInit {
         let lenHH = element.name.length;
         this.drawStroked(context, element.name, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8)
 
-        this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px Chuanchiim", "white", "", 0)
+        this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px Ch", "white", "", 0)
 
-        this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
+        this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px Ch", "#FFD51E", "black", 10)
 
-        this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
+        this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px Ch", "#FFD51E", "black", 10)
 
 
         this.A1.forEach((element, index) => {
           // context.fillText(element, (80 * index) + 155, 250);
-          this.drawStroked(context, element, (70 * index) + 160, 280, "60px Chuanchiim", "#FFD51E", "black", 5)
+          this.drawStroked(context, element, (70 * index) + 160, 280, "60px Ch", "#FFD51E", "black", 5)
 
         });
         this.B1.forEach((element, index) => {
-          this.drawStroked(context, element, (70 * index) + 160, 320, "60px Chuanchiim", "#FFD51E", "black", 5)
+          this.drawStroked(context, element, (70 * index) + 160, 320, "60px Ch", "#FFD51E", "black", 5)
         });
 
         this.C.forEach((element, index) => {
-          this.drawStroked(context, element, (60 * index) + 140, 360, "36px Chuanchiim", "#FFD51E", "black", 5)
+          this.drawStroked(context, element, (60 * index) + 140, 360, "36px Ch", "#FFD51E", "black", 5)
         });
 
         const png = canvas.toDataURL("image/jpg");
