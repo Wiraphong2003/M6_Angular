@@ -198,6 +198,8 @@ export class MainComponent implements OnInit {
       this.todateURL(array)
       if (confirm("ยืนยันการสร้างรูปภาพ") == true) {
         this.todateURL(array);
+      }
+      else {
 
       }
       this.ischs++
@@ -306,18 +308,18 @@ export class MainComponent implements OnInit {
           // this.checktodata(png,array)
           if (png.length >= 530000 && png.length <= 540000) {
             // console.log("> GOOD " + png.length + "\t" + this.isbreak);
-            console.log("GOOD  " + element.name + "\t" + png.length);
+            // console.log("GOOD  " + element.name + "\t" + png.length);
           } else {
             // console.log("ERROR " + png.length + "\t" + this.isbreak);
             // this.isbreak = false
-            console.log("ERROR  " + element.name + "\t" + png.length);
+            // console.log("ERROR  " + element.name + "\t" + png.length);
             this.gettoURL(array);
             // i--
           }
 
           const pngs = canvas.toDataURL("image/jpg");
-          console.log("pngs     " + pngs.length);
-          this.listdataURL.push(png)
+          // console.log("pngs     " + pngs.length);
+          this.listdataURL.push(pngs)
           console.log("==================");
         } // loadimage
 
@@ -337,67 +339,8 @@ export class MainComponent implements OnInit {
     this.dataService.ALL = array;
     this.isShowG = true
     console.log(this.listdataURL.length);
-
   }
 
-  debug(img: any, newWidth: any, newHeight: any, element: any, w: any, i: any) {
-    const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
-    const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(img, 0, 0, newWidth, newHeight)
-    // this.random();
-    let lenHH = element.name.length;
-
-    context.font = "32px Superspace"
-    context.strokeStyle = "black";
-    context.lineWidth = 8;
-
-    context.strokeText(element.name, (w / 2) - (lenHH * 7), 145);
-    context.fillStyle = "#FFD51E";
-    context.fillText(element.name, (w / 2) - (lenHH * 7), 145);
-
-    let x = (w / 2) - 34
-    let y = 170
-    context.font = "18px Chuanchiim"
-    context.strokeStyle = ""
-    context.lineWidth = 0
-    context.strokeText(this.DATE, x, y);
-    context.fillStyle = "white"
-    context.fillText(this.DATE, x, y);
-
-
-    context.font = "90px Chuanchiim"
-    context.strokeStyle = "black"
-    context.lineWidth = 10
-    context.strokeText(this.A, ((w / 2) - 50) - 15, 230);
-    context.fillStyle = "#FFD51E"
-    context.fillText(this.A, ((w / 2) - 50) - 15, 230);
-
-    context.font = "90px Chuanchiim"
-    context.strokeStyle = "black"
-    context.lineWidth = 10
-    context.strokeText(this.B, ((w / 2) + 50) - 15, 230);
-    context.fillStyle = "#FFD51E"
-    context.fillText(this.B, ((w / 2) + 50) - 15, 230);
-
-
-
-    this.A1.forEach((element, index) => {
-      // context.fillText(element, (80 * index) + 155, 250);
-      this.drawStroked(context, element, (70 * index) + 160, 280, "60px Chuanchiim", "#FFD51E", "black", 5)
-      // this.drawStroked(context, element, (70 * index) + 160, 320, "60px chuanchiim", "#FFD51E", "black", 5)
-    });
-    this.B1.forEach((element, index) => {
-      this.drawStroked(context, element, (70 * index) + 160, 320, "60px Chuanchiim", "#FFD51E", "black", 5)
-    });
-
-    this.C.forEach((element, index) => {
-      this.drawStroked(context, element, (60 * index) + 140, 360, "36px Chuanchiim", "#FFD51E", "black", 5)
-    });
-
-    // const pngs = canvas.toDataURL("image/jpg");
-    // console.log("ERROR BF  " + element.name + "\t" + pngs.length);
-  }
 
 
   checktodata(png: any, array: any) {
@@ -498,22 +441,50 @@ export class MainComponent implements OnInit {
 
   async candown(array: any) {
 
-    if (this.ischs == 1) {
-     
-      this.ischs++
-    } else {
+    try {
+      let temp = false
+      let isCKto = false;
+      for (let index = 0; index < this.listdataURL.length; index++) {
+        const element = this.listdataURL[index];
+        const name = this.ALL1[index].name;
+        console.log(element.length);
+        let data = element.length;
+        if (data >= 530000 && data <= 540000) {
+          // this.DOWLOADS();
+          isCKto = true;
+          break;
+        } else {
+          console.log("NOT DOWLOADS");
+          isCKto = false;
+          this.todateURL(this.ALL1);
+          break;
+          // alert("กรุณา Dowload อีกครั้ง")
+        }
+      }
+      if (isCKto) {
+        this.DOWLOADS();
+      } else {
+        // alert("confirm Dowload")
+        // this.DOWLOADS();
+        alert("กรุณา Dowload อีกครั้ง")
+      }
 
-      // this.ischs++
+    } catch (E) {
+      console.log("catch ERROR DOWLOAD");
+      this.todateURL(this.ALL1)
+      alert("กรุณา Dowload อีกครั้ง")
+      // console.log(this.listdataURL);
     }
+  }
 
+  DOWLOADS() {
     const zip = new JSZip();
-    // this.listdataURL = this.listdataURL.filter(item => item !== item);
-    // console.log(this.listdataURL);
     for (let index = 0; index < this.listdataURL.length; index++) {
       const element = this.listdataURL[index];
       const name = this.ALL1[index].name;
       zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
     }
+
     zip.generateAsync({ type: "blob" }).then((blob) => {
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -531,7 +502,6 @@ export class MainComponent implements OnInit {
     }
     return num;
   }
-
 
   getRandomNumbers(number: any): number[] {
     let num = number.toString();
@@ -695,7 +665,6 @@ export class MainComponent implements OnInit {
     // this.todateURL(this.ALL1);
     // this.isShowG = false
   }
-
 
   remove() {
     this.ALL1 = this.ALL1.filter(item => item !== item);
