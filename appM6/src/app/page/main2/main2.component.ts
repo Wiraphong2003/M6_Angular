@@ -711,12 +711,12 @@ export class Main2Component {
         if (data >= 450000 && data <= 470000) {
           this.DOWLOADS();
           isCKto = true;
-          break;
+          // break;
         } else {
           console.log("NOT DOWLOADS");
           isCKto = false;
           this.todateURL(this.ALL1);
-          break;
+          // break;
           // alert("กรุณา Dowload อีกครั้ง")
         }
       }
