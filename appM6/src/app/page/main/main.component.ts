@@ -195,12 +195,9 @@ export class MainComponent implements OnInit {
   Createimage(array: any) {
     console.log(this.ischs);
     if (this.ischs == 1) {
-      this.todateURL(array)
+      this.todateURL(array);
       if (confirm("ยืนยันการสร้างรูปภาพ") == true) {
         this.todateURL(array);
-      }
-      else {
-
       }
       this.ischs++
     } else {
@@ -210,43 +207,30 @@ export class MainComponent implements OnInit {
     console.log(this.listdataURL);
   }
 
-  todateURL(array: any) {
-    // if (this.isShowG){
-    //   this.isShowG =false
-    // }else{
-    //   this.isShowG  = true
-    // }
+  //
 
-    this.isbreak = true
-    // this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
+  todateURL(array: any) {
+
     this.listcanvas = this.listcanvas.filter(item => item !== item);
     this.listdataURL = this.listdataURL.filter(item => item !== item);
-    if (this.isbreak) {
-      for (let i = 0; i < array.length; i++) {
-        const element = array[i];
-        // console.log(element.name);
+    let i = 0;
+    while (i < array.length) {
+      const element = array[i];
+      const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
+      const context = <CanvasRenderingContext2D>canvas.getContext('2d')
 
-        let img = new Image()
-        // img.src = "../../../assets/img/user1_1.jpg"
-        if (this.local.getData("USER") == 'user1') {
-          img.src = "../../../assets/img/user1_1.jpg"
-        }
-        else if (this.local.getData("USER") == 'user2') {
-          img.src = "../../../assets/img/user2_1.jpg"
-        } else {
-          console.log("image user else");
-        }
-        // img.src = this.local.getData("img1") + "";
-        const newWidth = 500;
-        const newHeight = (img.height / img.width) * newWidth;
-        const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
-        const context = <CanvasRenderingContext2D>canvas.getContext('2d')
+      let img = new Image()
+      img.src = "../../../assets/img/user1_1.jpg"
+      const newWidth = 500;
+      const newHeight = 500;
+      // console.log("newHeight: " + newHeight);
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      img.onload = () => {
         // this.random();
         let w = 500;
         let h = 500;
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        // this.debug(img, newWidth, newHeight, element, w, i)
-
+        context.drawImage(img, 0, 0, newWidth, newHeight)
+        this.random();
 
         let lenHH = element.name.length;
         this.drawStroked(context, element.name, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8)
@@ -256,6 +240,7 @@ export class MainComponent implements OnInit {
         this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
 
         this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
+
 
         this.A1.forEach((element, index) => {
           // context.fillText(element, (80 * index) + 155, 250);
@@ -270,72 +255,31 @@ export class MainComponent implements OnInit {
           this.drawStroked(context, element, (60 * index) + 140, 360, "36px Chuanchiim", "#FFD51E", "black", 5)
         });
 
+        const png = canvas.toDataURL("image/jpg");
+        // console.log(png);
+        // this.checktodata(png,array)
+        if (png.length >= 530000 && png.length <= 540000) {
+          // console.log("> GOOD " + png.length + "\t" + this.isbreak);
+          console.log("GOOD " + i + " " + element.name + "\t" + png.length);
+          this.listdataURL.push(png)
 
-        img.onload = () => {
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          context.drawImage(img, 0, 0, newWidth, newHeight)
-          this.random();
-          // const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-          // const context = <CanvasRenderingContext2D>canvas.getContext('2d')
+        } else {
+          console.log("ERROR " + i + " " + element.name + "\t" + png.length);
+          // this.gettoURL(array);
+          // i--
+          // break;
+        }
 
+      } // loadimage
 
-          let lenHH = element.name.length;
+      // const pngs = canvas.toDataURL("image/jpg");
+      // // console.log("pngs     " + pngs.length);
+      // this.listdataURL.push(pngs)
+      // console.log("==================");
+      // i = i + 1
+      i++
+    }//loop 1
 
-          this.drawStroked(context, element.name, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8)
-
-          this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px Chuanchiim", "white", "", 0)
-
-          this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
-
-          this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
-
-
-          this.A1.forEach((element, index) => {
-            // context.fillText(element, (80 * index) + 155, 250);
-            this.drawStroked(context, element, (70 * index) + 160, 280, "60px Chuanchiim", "#FFD51E", "black", 5)
-
-          });
-          this.B1.forEach((element, index) => {
-            this.drawStroked(context, element, (70 * index) + 160, 320, "60px Chuanchiim", "#FFD51E", "black", 5)
-          });
-
-          this.C.forEach((element, index) => {
-            this.drawStroked(context, element, (60 * index) + 140, 360, "36px Chuanchiim", "#FFD51E", "black", 5)
-          });
-
-          const png = canvas.toDataURL("image/jpg");
-          // console.log(png);
-          // this.checktodata(png,array)
-          if (png.length >= 530000 && png.length <= 540000) {
-            // console.log("> GOOD " + png.length + "\t" + this.isbreak);
-            // console.log("GOOD  " + element.name + "\t" + png.length);
-          } else {
-            // console.log("ERROR " + png.length + "\t" + this.isbreak);
-            // this.isbreak = false
-            // console.log("ERROR  " + element.name + "\t" + png.length);
-            this.gettoURL(array);
-            // i--
-          }
-
-          const pngs = canvas.toDataURL("image/jpg");
-          // console.log("pngs     " + pngs.length);
-          this.listdataURL.push(pngs)
-          console.log("==================");
-        } // loadimage
-
-      }//loop 1
-      // console.log(this.listdataURL.length);
-      // this.countlist = this.listdataURL.length
-    }//if isbreak
-
-    // for (let index = 0; index < array.length; index++) {
-    //   const element = array[index];
-    //   const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-    //   const png = canvas.toDataURL("image/jpg");
-    //   console.log(png);
-    // }
-
-    // this.dialog.open(ConfirmedComponent);
     this.dataService.ALL = array;
     this.isShowG = true
     console.log(this.listdataURL.length);
@@ -440,41 +384,48 @@ export class MainComponent implements OnInit {
 
 
   async candown(array: any) {
-
-    try {
-      let temp = false
-      let isCKto = false;
-      for (let index = 0; index < this.listdataURL.length; index++) {
-        const element = this.listdataURL[index];
-        const name = this.ALL1[index].name;
-        console.log(element.length);
-        let data = element.length;
-        if (data >= 530000 && data <= 540000) {
-          this.DOWLOADS();
-          isCKto = true;
-          // break;
-        } else {
-          console.log("NOT DOWLOADS");
-          isCKto = false;
-          this.todateURL(this.ALL1);
-          // break;
-          // alert("กรุณา Dowload อีกครั้ง")
-        }
-      }
-      // if (isCKto) {
-      //   this.DOWLOADS();
-      // } else {
-      //   // alert("confirm Dowload")
-      //   // this.DOWLOADS();
-      //   alert("กรุณา Dowload อีกครั้ง")
-      // }
-
-    } catch (E) {
-      console.log("catch ERROR DOWLOAD");
-      this.todateURL(this.ALL1)
-      alert("กรุณา Dowload อีกครั้ง")
-      // console.log(this.listdataURL);
+    // console.log(this.listdataURL);
+    for (let index = 0; index < this.listdataURL.length; index++) {
+      const element = this.listdataURL[index];
+      console.log(element.length);
     }
+    this.DOWLOADS();
+    // try {
+    //   // let temp = false
+    //   // let isCKto = false;
+    //   // for (let index = 0; index < this.listdataURL.length; index++) {
+    //   //   const element = this.listdataURL[index];
+    //   //   const name = this.ALL1[index].name;
+    //   //   console.log(element.length);
+    //   //   let data = element.length;
+    //   //   if (data >= 530000 && data <= 540000) {
+    //   //     // this.DOWLOADS();
+    //   //     isCKto = true;
+    //   //     break;
+    //   //   } else {
+    //   //     console.log("NOT DOWLOADS");
+    //   //     isCKto = false;
+    //   //     this.todateURL(this.ALL1);
+    //   //     break;
+    //   //     // alert("กรุณา Dowload อีกครั้ง")
+    //   //   }
+    //   // }
+    //   // if (isCKto) {
+    //   //   this.DOWLOADS();
+    //   // } else {
+    //   //   // alert("confirm Dowload")
+    //   //   // this.DOWLOADS();
+    //   //   alert("กรุณา Dowload อีกครั้ง")
+    //   // }
+
+    //   this.DOWLOADS();
+
+    // } catch (E) {
+    //   console.log("catch ERROR DOWLOAD");
+    //   this.todateURL(this.ALL1)
+    //   alert("กรุณา Dowload อีกครั้ง")
+    //   // console.log(this.listdataURL);
+    // }
   }
 
   DOWLOADS() {

@@ -699,35 +699,34 @@ export class Main2Component {
   }
 
   async candown(array: any) {
-
     try {
-      let temp = false
-      let isCKto = false;
-      for (let index = 0; index < this.listdataURL.length; index++) {
-        const element = this.listdataURL[index];
-        const name = this.ALL1[index].name;
-        console.log(element.length);
-        let data = element.length;
-        if (data >= 450000 && data <= 470000) {
-          this.DOWLOADS();
-          isCKto = true;
-          // break;
-        } else {
-          console.log("NOT DOWLOADS");
-          isCKto = false;
-          this.todateURL(this.ALL1);
-          // break;
-          // alert("กรุณา Dowload อีกครั้ง")
-        }
-      }
-      // if (isCKto) {
-      //   this.DOWLOADS();
-      // } else {
-      //   // alert("confirm Dowload")
-      //   // this.DOWLOADS();
-      //   alert("กรุณา Dowload อีกครั้ง")
+      // let temp = false
+      // let isCKto = false;
+      // for (let index = 0; index < this.listdataURL.length; index++) {
+      //   const element = this.listdataURL[index];
+      //   const name = this.ALL1[index].name;
+      //   console.log(element.length);
+      //   let data = element.length;
+      //   if (data >= 450000 && data <= 470000) {
+      //     // this.DOWLOADS();
+      //     isCKto = true;
+      //     break;
+      //   } else {
+      //     console.log("NOT DOWLOADS");
+      //     isCKto = false;
+      //     this.todateURL(this.ALL1);
+      //     break;
+      //     // alert("กรุณา Dowload อีกครั้ง")
+      //   }
       // }
-
+      // // if (isCKto) {
+      // //   this.DOWLOADS();
+      // // } else {
+      // //   // alert("confirm Dowload")
+      // //   // this.DOWLOADS();
+      // //   alert("กรุณา Dowload อีกครั้ง")
+      // // }
+      this.DOWLOADS();
     } catch (E) {
       console.log("catch ERROR DOWLOAD");
       this.todateURL(this.ALL1)
@@ -788,7 +787,8 @@ export class Main2Component {
         let img = new Image()
         img.src = "../../../assets/img/user2_1.jpg"
         const newWidth = 500;
-        const newHeight = (img.height / img.width) * newWidth;
+        // const newHeight = (img.height / img.width) * newWidth;
+        const newHeight = 500;
 
         const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
         const context = <CanvasRenderingContext2D>canvas.getContext('2d')
