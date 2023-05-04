@@ -700,14 +700,50 @@ export class Main2Component {
 
   async candown(array: any) {
 
+    try {
+      let temp = false
+      let isCKto = false;
+      for (let index = 0; index < this.listdataURL.length; index++) {
+        const element = this.listdataURL[index];
+        const name = this.ALL1[index].name;
+        console.log(element.length);
+        let data = element.length;
+        if (data >= 450000 && data <= 470000) {
+          this.DOWLOADS();
+          isCKto = true;
+          break;
+        } else {
+          console.log("NOT DOWLOADS");
+          isCKto = false;
+          this.todateURL(this.ALL1);
+          break;
+          // alert("กรุณา Dowload อีกครั้ง")
+        }
+      }
+      // if (isCKto) {
+      //   this.DOWLOADS();
+      // } else {
+      //   // alert("confirm Dowload")
+      //   // this.DOWLOADS();
+      //   alert("กรุณา Dowload อีกครั้ง")
+      // }
+
+    } catch (E) {
+      console.log("catch ERROR DOWLOAD");
+      this.todateURL(this.ALL1)
+      alert("กรุณา Dowload อีกครั้ง")
+      // console.log(this.listdataURL);
+    }
+  }
+
+  DOWLOADS() {
     const zip = new JSZip();
-    // this.listdataURL = this.listdataURL.filter(item => item !== item);
-    // console.log(this.listdataURL);
     for (let index = 0; index < this.listdataURL.length; index++) {
       const element = this.listdataURL[index];
       const name = this.ALL1[index].name;
       zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
     }
+
     zip.generateAsync({ type: "blob" }).then((blob) => {
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');

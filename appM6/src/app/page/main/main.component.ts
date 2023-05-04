@@ -450,7 +450,7 @@ export class MainComponent implements OnInit {
         console.log(element.length);
         let data = element.length;
         if (data >= 530000 && data <= 540000) {
-          // this.DOWLOADS();
+          this.DOWLOADS();
           isCKto = true;
           break;
         } else {
@@ -461,13 +461,13 @@ export class MainComponent implements OnInit {
           // alert("กรุณา Dowload อีกครั้ง")
         }
       }
-      if (isCKto) {
-        this.DOWLOADS();
-      } else {
-        // alert("confirm Dowload")
-        // this.DOWLOADS();
-        alert("กรุณา Dowload อีกครั้ง")
-      }
+      // if (isCKto) {
+      //   this.DOWLOADS();
+      // } else {
+      //   // alert("confirm Dowload")
+      //   // this.DOWLOADS();
+      //   alert("กรุณา Dowload อีกครั้ง")
+      // }
 
     } catch (E) {
       console.log("catch ERROR DOWLOAD");
