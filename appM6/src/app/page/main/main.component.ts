@@ -60,7 +60,7 @@ export class MainComponent implements OnInit {
 
 
   canvas  !: HTMLCanvasElement;
-  context !: CanvasRenderingContext2D | undefined;
+  context !: CanvasRenderingContext2D;
   listcanvas: HTMLCanvasElement[] = [];
   DATE!: any | GlobalEventHandlers;
   All: any[] = [];
@@ -210,39 +210,38 @@ export class MainComponent implements OnInit {
   //
 
   todateURL(array: any) {
-
-    this.listcanvas = this.listcanvas.filter(item => item !== item);
     this.listdataURL = this.listdataURL.filter(item => item !== item);
     let i = 0;
     while (i < array.length) {
       const element = array[i];
       const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
       const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-
       let img = new Image()
 
       img.src = "../../../assets/img/user1_1.jpg"
+
       const newWidth = 500;
       const newHeight = 500;
       // console.log("newHeight: " + newHeight);
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      img.onload = () => {
 
-        // this.random();
+
+      img.onload = () => {
+        context.clearRect(0, 0, canvas.width, canvas.height);
         let w = 500;
         let h = 500;
+        let lenHH = element.name.length;
         context.drawImage(img, 0, 0, newWidth, newHeight)
         this.random();
 
-        let lenHH = element.name.length;
         this.drawStroked(context, element.name, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8)
+
+
 
         this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px Chuanchiim", "white", "", 0)
 
         this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
 
         this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
-
 
         this.A1.forEach((element, index) => {
           // context.fillText(element, (80 * index) + 155, 250);
@@ -264,20 +263,19 @@ export class MainComponent implements OnInit {
           // console.log("> GOOD " + png.length + "\t" + this.isbreak);
           console.log("GOOD " + i + " " + element.name + "\t" + png.length);
           this.listdataURL.push(png)
-
         } else {
           console.log("ERROR " + i + " " + element.name + "\t" + png.length);
           // this.gettoURL(array);
           // i--
-          // break;
         }
-
+        // this.random();
       } // loadimage
 
       // const pngs = canvas.toDataURL("image/jpg");
       // // console.log("pngs     " + pngs.length);
       // this.listdataURL.push(pngs)
-      // console.log("==================");
+      // console.log("==
+      ================");
       // i = i + 1
       i++
     }//loop 1
