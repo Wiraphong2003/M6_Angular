@@ -17,15 +17,20 @@ body {
 
 // @font-face {
 //   font-family: 'Chuanchiim';
-//   src: url('./assets/Chuanchiim\ Regular\ ver\ 1.00.ttf');
+//   src: url('./assets/Chuanchiim\ Bold\ ver\ 1.00.ttf');
 // }
 
 @font-face {
   font-family: 'Chuanchiim';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Chuanchiim'), url('./assets/Chuanchiim\ Regular\ ver\ 1.00.ttf')format('ttf');
+  src: url('./assets/chuanchiim_regular_v1-0.ttf');
 }
+
+// @font-face {
+//   font-family: 'Chuanchiim';
+//   font-style: normal;
+  //   font-weight: normal;
+  //   src: local('Chuanchiim'), url('./assets/Chuanchiim\ Regular\ ver\ 1.00.ttf')format('ttf');
+// }
 
 // @font-face {
 //   font-family: 'Chuanchiim';
@@ -37,9 +42,3 @@ body {
   font-family: 'Chonburi';
   src: url('./assets/Chonburi-Regular.ttf');
 }
-// @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
-// @import '~@fortawesome/fontawesome-free/scss/solid.scss';
-// @import '~@fortawesome/fontawesome-free/scss/regular.scss';
-// @import '~@fortawesome/fontawesome-free/scss/brands.scss';
-// @import "node_modules/bootstrap/scss/bootstrap";
-// @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
