@@ -220,12 +220,14 @@ export class MainComponent implements OnInit {
       const context = <CanvasRenderingContext2D>canvas.getContext('2d')
 
       let img = new Image()
+
       img.src = "../../../assets/img/user1_1.jpg"
       const newWidth = 500;
       const newHeight = 500;
       // console.log("newHeight: " + newHeight);
       context.clearRect(0, 0, canvas.width, canvas.height);
       img.onload = () => {
+
         // this.random();
         let w = 500;
         let h = 500;
