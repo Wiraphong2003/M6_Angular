@@ -241,7 +241,7 @@ export class MainComponent implements OnInit {
       }
       else {
         console.log("EEEEE");
-      } 
+      }
 
       let img = new Image()
 
@@ -269,24 +269,24 @@ export class MainComponent implements OnInit {
 
 
 
-        this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
+        this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230+10, "110px Chuanchiim", "#FFD51E", "black", 10)
 
 
 
-        this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
+        this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230+10, "110px Chuanchiim", "#FFD51E", "black", 10)
 
 
         this.A1.forEach((element, index) => {
           // context.fillText(element, (80 * index) + 155, 250);
-          this.drawStroked(context, element, (70 * index) + 160, 280, "60px Chuanchiim", "#FFD51E", "black", 5)
+          this.drawStroked(context, element, (70 * index) + 160, 290, "60px Chuanchiim", "#FFD51E", "black", 5)
         });
 
         this.B1.forEach((element, index) => {
-          this.drawStroked(context, element, (70 * index) + 160, 320, "60px Chuanchiim", "#FFD51E", "black", 5)
+          this.drawStroked(context, element, (70 * index) + 160, 340, "60px Chuanchiim", "#FFD51E", "black", 5)
         });
 
         this.C.forEach((element, index) => {
-          this.drawStroked(context, element, (60 * index) + 140, 360, "36px Chuanchiim", "#FFD51E", "black", 5)
+          this.drawStroked(context, element, (60 * index) + 140, 375, "36px Chuanchiim", "#FFD51E", "black", 5)
         });
 
         const png = canvas.toDataURL("image/jpg");
