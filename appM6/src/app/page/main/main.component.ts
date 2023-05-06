@@ -86,8 +86,6 @@ export class MainComponent implements OnInit {
     private el: ElementRef,
     private router: Router,
     public dialog: MatDialog
-    // private datePipe: DatePipe
-    // private datePipe: DatePipe
   ) {
 
     console.log(local.getData("img1"));
@@ -112,7 +110,6 @@ export class MainComponent implements OnInit {
 
     //  this.tempdata = this.date_value.split("-");
     // console.log(this.tempdata);
-
 
     // http.get(dataService.apiEndpoint + '/image/' + local.getData("USER")).subscribe((data: any) => {
     //   console.log(data);
@@ -159,7 +156,26 @@ export class MainComponent implements OnInit {
     //   console.log(data);
     //   this.Lottary = data;
     // });
-
+    let array = [
+      {
+        "lid": 18,
+        "name": " ดาวโจนส์VIP",
+        "type": 1,
+        "cid": 1
+      },
+      {
+        "lid": 17,
+        "name": "ลาวกาซาด ",
+        "type": 1,
+        "cid": 1
+      },
+      {
+        "lid": 19,
+        "name": "ดาวโจนส์STAR",
+        "type": 1,
+        "cid": 1
+      }
+    ]
 
 
   }
@@ -207,8 +223,6 @@ export class MainComponent implements OnInit {
     console.log(this.listdataURL);
   }
 
-  //
-
   todateURL(array: any) {
     this.listdataURL = this.listdataURL.filter(item => item !== item);
     let i = 0;
@@ -222,9 +236,12 @@ export class MainComponent implements OnInit {
       console.log(context.font);
       // context.font = "Chuanchiim"
       if (context.font == "10px sans-serif") {
-        console.log("GGGGG");
         context.font = "10px Chuanchiim"
+        console.log("GGGGG");
       }
+      else {
+        console.log("EEEEE");
+      } 
 
       let img = new Image()
 
@@ -262,8 +279,8 @@ export class MainComponent implements OnInit {
         this.A1.forEach((element, index) => {
           // context.fillText(element, (80 * index) + 155, 250);
           this.drawStroked(context, element, (70 * index) + 160, 280, "60px Chuanchiim", "#FFD51E", "black", 5)
-
         });
+
         this.B1.forEach((element, index) => {
           this.drawStroked(context, element, (70 * index) + 160, 320, "60px Chuanchiim", "#FFD51E", "black", 5)
         });

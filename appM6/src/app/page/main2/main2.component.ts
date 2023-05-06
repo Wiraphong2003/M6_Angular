@@ -770,53 +770,36 @@ export class Main2Component {
       this.todateURL(array);
       // this.ischs++
     }
-    console.log(this.listdataURL);
   }
 
   todateURL(array: any) {
-
-    this.isbreak = true
-    // this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
-    this.listcanvas = this.listcanvas.filter(item => item !== item);
     this.listdataURL = this.listdataURL.filter(item => item !== item);
-    if (this.isbreak) {
-      for (let i = 0; i < array.length; i++) {
-        const element = array[i];
-        // console.log(element.name);
+    for (let i = 0; i < array.length; i++) {
+      const element = array[i];
 
-        let img = new Image()
-        img.src = "../../../assets/img/user2_1.jpg"
-        const newWidth = 500;
-        // const newHeight = (img.height / img.width) * newWidth;
-        const newHeight = 500;
+      let img = new Image()
+      img.src = "../../../assets/img/user2_1.jpg"
+      const newWidth = 500;
+      const newHeight = 500;
+      const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
+      const context = <CanvasRenderingContext2D>canvas.getContext('2d')
 
-        const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
-        const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-        // this.context = <CanvasRenderingContext2D>canvas.getContext('2d')
-        this.random();
-        let w = 500;
-        let h = 500;
+      let w = 500;
+      let h = 500;
+      img.onload = () => {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        // this.debug(img, newWidth, newHeight, element, w, i)
-
-
-        let lenHH = element.name.length;
+        context.drawImage(img, 0, 0, newWidth, newHeight)
+        this.random();
 
         this.drawStrokedcenter(context, element.name, (w / 2) + 10, 370, "32px Chonburi", "#FFD51E", "black", 5)
-
-
         this.drawStroked(context, this.DATE, w - 70, 50, "10px Chonburi", "white", "", 1)
-
         this.drawStroked(context, this.A, ((w / 2) - 100), 160, "60px Chonburi", "white", "black", 2)
-
         this.drawStroked(context, this.B, ((w / 2) + 105), 160, "60px Chonburi", "white", "black", 2)
-
 
         this.A1.forEach((element, index) => {
           // context.fillText(element, (80 * index) + 155, 250);
           this.drawStroked(context, element, (60 * index) + 170, 230, "28px Chonburi", "white", "black", 1)
         });
-
 
         this.B1.forEach((element, index) => {
           this.drawStroked(context, element, (60 * index) + 170, 280, "28px Chonburi", "white", "black", 1)
@@ -826,75 +809,19 @@ export class Main2Component {
           this.drawStroked(context, element, (60 * index) + 200, 325, "20px Chonburi", "white", "black", 1)
         });
 
+        const png = canvas.toDataURL("image/jpg");
 
+        if (png.length >= 450000 && png.length <= 470000) {
+          console.log("GOOD  " + element.name + "\t" + png.length);
+        } else {
+          console.log("ERROR  " + element.name + "\t" + png.length);
+          // this.gettoURL(array);
+        }
+        const pngs = canvas.toDataURL("image/jpg");
+        this.listdataURL.push(pngs)
+      } // loadimage
 
-        img.onload = () => {
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          context.drawImage(img, 0, 0, newWidth, newHeight)
-          this.random();
-          // const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-          // const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-
-
-          let lenHH = element.name.length;
-
-          this.drawStrokedcenter(context, element.name, (w / 2) + 10, 370, "32px Chonburi", "#FFD51E", "black", 5)
-
-
-          this.drawStroked(context, this.DATE, w - 70, 50, "10px Chonburi", "white", "", 1)
-
-          this.drawStroked(context, this.A, ((w / 2) - 100), 160, "60px Chonburi", "white", "black", 2)
-
-          this.drawStroked(context, this.B, ((w / 2) + 105), 160, "60px Chonburi", "white", "black", 2)
-
-
-          this.A1.forEach((element, index) => {
-            // context.fillText(element, (80 * index) + 155, 250);
-            this.drawStroked(context, element, (60 * index) + 170, 230, "28px Chonburi", "white", "black", 1)
-          });
-
-
-          this.B1.forEach((element, index) => {
-            this.drawStroked(context, element, (60 * index) + 170, 280, "28px Chonburi", "white", "black", 1)
-          });
-
-          this.C.forEach((element, index) => {
-            this.drawStroked(context, element, (60 * index) + 200, 325, "20px Chonburi", "white", "black", 1)
-          });
-
-          const png = canvas.toDataURL("image/jpg");
-          // console.log(png);
-          // this.checktodata(png,array)
-          if (png.length >= 450000 && png.length <= 470000) {
-            // console.log("> GOOD " + png.length + "\t" + this.isbreak);
-            console.log("GOOD  " + element.name + "\t" + png.length);
-          } else {
-            // console.log("ERROR " + png.length + "\t" + this.isbreak);
-            // this.isbreak = false
-            console.log("ERROR  " + element.name + "\t" + png.length);
-            this.gettoURL(array);
-            // i--
-          }
-
-          const pngs = canvas.toDataURL("image/jpg");
-          console.log("pngs     " + pngs.length);
-          this.listdataURL.push(png)
-          // console.log("==================");
-        } // loadimage
-
-      }//loop 1
-      // console.log(this.listdataURL.length);
-      // this.countlist = this.listdataURL.length
-    }//if isbreak
-
-    // for (let index = 0; index < array.length; index++) {
-    //   const element = array[index];
-    //   const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-    //   const png = canvas.toDataURL("image/jpg");
-    //   console.log(png);
-    // }
-
-    // this.dialog.open(ConfirmedComponent);
+    }//loop 1
     this.dataService.ALL = array;
     this.isShowG = true
     console.log(this.listdataURL.length);
