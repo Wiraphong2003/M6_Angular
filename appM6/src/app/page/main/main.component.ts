@@ -212,10 +212,20 @@ export class MainComponent implements OnInit {
   todateURL(array: any) {
     this.listdataURL = this.listdataURL.filter(item => item !== item);
     let i = 0;
+
     while (i < array.length) {
       const element = array[i];
-      const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
-      const context = <CanvasRenderingContext2D>canvas.getContext('2d')
+
+      let canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
+      let context = <CanvasRenderingContext2D>canvas.getContext('2d')
+
+      console.log(context.font);
+      // context.font = "Chuanchiim"
+      if (context.font == "10px sans-serif") {
+        console.log("GGGGG");
+        context.font = "10px Chuanchiim"
+      }
+
       let img = new Image()
 
       img.src = "../../../assets/img/user1_1.jpg"
@@ -233,15 +243,21 @@ export class MainComponent implements OnInit {
         context.drawImage(img, 0, 0, newWidth, newHeight)
         this.random();
 
-        this.drawStroked(context, element.name, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8)
 
+
+        this.drawStroked(context, element.name, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8)
 
 
         this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px Chuanchiim", "white", "", 0)
 
+
+
         this.drawStroked(context, this.A, ((w / 2) - 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
 
+
+
         this.drawStroked(context, this.B, ((w / 2) + 50) - 15, 230, "90px Chuanchiim", "#FFD51E", "black", 10)
+
 
         this.A1.forEach((element, index) => {
           // context.fillText(element, (80 * index) + 155, 250);
@@ -262,21 +278,14 @@ export class MainComponent implements OnInit {
         if (png.length >= 530000 && png.length <= 540000) {
           // console.log("> GOOD " + png.length + "\t" + this.isbreak);
           console.log("GOOD " + i + " " + element.name + "\t" + png.length);
-          this.listdataURL.push(png)
+          // this.listdataURL.push(png)
         } else {
           console.log("ERROR " + i + " " + element.name + "\t" + png.length);
           // this.gettoURL(array);
           // i--
         }
-        // this.random();
+        this.listdataURL.push(png)
       } // loadimage
-
-      // const pngs = canvas.toDataURL("image/jpg");
-      // // console.log("pngs     " + pngs.length);
-      // this.listdataURL.push(pngs)
-      // console.log("==
-      ================");
-      // i = i + 1
       i++
     }//loop 1
 
@@ -284,8 +293,6 @@ export class MainComponent implements OnInit {
     this.isShowG = true
     console.log(this.listdataURL.length);
   }
-
-
 
   checktodata(png: any, array: any) {
     if (png.length >= 530000 && png.length <= 540000) {
