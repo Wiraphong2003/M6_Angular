@@ -1,5 +1,5 @@
-<div class=".container-sm" id="container">
-  <div class="row" style="margin-top: 50px;margin-left: 10px;">
+<div class="container" id="container" style="padding: 50px;">
+  <div class="row" style="margin-top: 20px;">
     <div class="col-sm">
       <h1 style=" font-family: Superspace;">วันที่ {{ date_value | date :'d/M/yy'}}</h1>
 
@@ -34,7 +34,7 @@
         </mdb-carousel>
       </div> -->
 
-      <div style="padding: 10px;width: 100%;">
+      <div style="padding: 10px;width: 500px;">
         <hr>
         <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
           <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkALL()">
@@ -49,7 +49,7 @@
             Image</button>
 
           <button type="button" class="btn btn-outline-primary" style="margin-top: 0px;width: 100%;margin-top: 10px;"
-            id="download" (click)="candown(ALL1)">
+            id="download" (click)="candown(ALL1 )">
             Dowload
           </button>
         </div>
