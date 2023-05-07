@@ -260,9 +260,7 @@ export class MainComponent implements OnInit {
         context.drawImage(img, 0, 0, newWidth, newHeight)
         this.random();
 
-
-
-        this.drawStroked(context, element.name, (w / 2) - (lenHH * 7), 145, "32px Superspace", "#FFD51E", "black", 8)
+        this.drawStroked(context, element.name, (w / 2) - (lenHH * 6.5), 140, "30px Superspace", "#FFD51E", "black", 8)
 
 
         this.drawStroked(context, this.DATE, (w / 2) - 34, 170, "18px Chuanchiim", "white", "", 0)

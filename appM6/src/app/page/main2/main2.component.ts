@@ -1050,16 +1050,11 @@ export class Main2Component {
     return isresult
   }
 
-
-
-
-
-
   drawStroked(ctx: CanvasRenderingContext2D, text: any, x: any, y: any, font: any, color: any, strokeStyle: any, lineWidth: any) {
     ctx.font = font;
-    ctx.strokeStyle = strokeStyle;
+    // ctx.strokeStyle = strokeStyle;
     ctx.lineWidth = lineWidth;
-    ctx.strokeText(text, x, y);
+    // ctx.strokeText(text, x, y);
     ctx.fillStyle = color;
     ctx.fillText(text, x, y);
   }
@@ -1067,9 +1062,9 @@ export class Main2Component {
   drawStrokedcenter(ctx: CanvasRenderingContext2D, text: any, x: any, y: any, font: any, color: any, strokeStyle: any, lineWidth: any) {
     ctx.font = font;
     ctx.textAlign = "center";
-    ctx.strokeStyle = strokeStyle;
+    // ctx.strokeStyle = strokeStyle;
     ctx.lineWidth = lineWidth;
-    ctx.strokeText(text, x, y);
+    // ctx.strokeText(text, x, y);
     ctx.fillStyle = color;
     ctx.fillText(text, x, y);
   }
