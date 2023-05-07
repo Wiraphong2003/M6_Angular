@@ -1,12 +1,12 @@
 // import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+// import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { DataserveiceService } from 'src/app/dataserveice.service';
 import { LocalService } from 'src/app/local.service';
 import { Image } from './imageD.model';
 
 
-import { Pipe, PipeTransform } from '@angular/core';
+import { OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import JSZip, { forEach } from 'jszip';
 // import { saveAs } from 'file-saver';
@@ -17,6 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmedComponent } from '../confirmed/confirmed.component';
 
 
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 
 @Component({
@@ -24,11 +25,9 @@ import { ConfirmedComponent } from '../confirmed/confirmed.component';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit,AfterViewInit {
   @ViewChild('canvas', { static: true }) myCanvas !: ElementRef;
   @ViewChild('Arraycanvas', { static: true }) Arraycanvas!: ElementRef[];
-
-
   // myDate = new Date();
   ctx!: CanvasRenderingContext2D;
   areAllImagesLoaded = false;
@@ -179,6 +178,10 @@ export class MainComponent implements OnInit {
 
 
   }
+  ngAfterViewInit(): void {
+    console.log("EE");
+
+  }
   ngOnInit(): void {
 
     // let array!: any;
@@ -307,6 +310,12 @@ export class MainComponent implements OnInit {
     this.dataService.ALL = array;
     this.isShowG = true
     console.log(this.listdataURL.length);
+  }
+
+  selectedImageIndex = 0;
+
+  onImageClick(index: number) {
+    this.selectedImageIndex = index;
   }
 
   checktodata(png: any, array: any) {

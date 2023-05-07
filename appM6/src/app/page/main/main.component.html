@@ -2,33 +2,37 @@
   <div class="row" style="margin-top: 50px;margin-left: 10px;">
     <div class="col-sm">
       <h1 style=" font-family: Superspace;">วันที่ {{ date_value | date :'d/M/yy'}}</h1>
-      <div style="display: flex;justify-content: center">
+
+      <div style="display: flex;justify-content: center;width: 500px;" >
         <div *ngIf="!isShowG">
-          <img id="imageQ" src={{imageuser}} alt="" width="500px" height="500px">
+          <img id="imageQ" src={{imageuser}} alt="" width="500" height="500">
         </div>
-        <!-- <h3>Random Numbers:</h3>
-                <ul>
-                  <li *ngFor="let number of getRandomNumbers()">{{ number }}</li>
-                </ul> -->
-
-
-        <div style="width: 500px;height: 500px;" *ngIf="isShowG">
+        <!-- <div style="width: 500px;height: 500px;" *ngIf="isShowG">
           <mdb-carousel [animation]="'slide'">
             <mdb-carousel-item *ngFor="let a of ALL1;index as i; trackBy:trackByFn">
               <canvas attr.id="canvas-{{i}}" width="500" height="500"></canvas>
             </mdb-carousel-item>
           </mdb-carousel>
+        </div> -->
+        <div class="slider" style="width: 500px;height: 500px;" *ngIf="isShowG">
+          <canvas *ngFor="let a of ALL1;index as i; trackBy:trackByFn" attr.id="canvas-{{i}}" width="500px"
+            height="500px" (click)="onImageClick(i)">
+          </canvas>
         </div>
       </div>
 
 
+
+
+
+
       <!-- <div style="width: 500px;height: 500px;" *ngIf="isShowG">
-                                    <mdb-carousel [animation]="'slide'">
-                                      <mdb-carousel-item *ngFor="let item of listdataURL;index as i; trackBy:trackByFn">
-                                        <img src={{item}} alt="" width="500" height="500">
-                                      </mdb-carousel-item>
-                                    </mdb-carousel>
-                                  </div> -->
+        <mdb-carousel [animation]="'slide'">
+          <mdb-carousel-item *ngFor="let item of listdataURL;index as i; trackBy:trackByFn">
+            <img src={{item}} alt="" width="500" height="500">
+          </mdb-carousel-item>
+        </mdb-carousel>
+      </div> -->
 
       <div style="padding: 10px;width: 100%;">
         <hr>
@@ -40,7 +44,8 @@
         </section>
         <br>
         <div class="row" style="padding: 10px;">
-          <button type="button" (click)="todateURL(ALL1)" class="btn btn-success" style="margin-top:0px;width: 100%;">Create
+          <button type="button" (click)="todateURL(ALL1)" class="btn btn-success"
+            style="margin-top:0px;width: 100%;">Create
             Image</button>
 
           <button type="button" class="btn btn-outline-primary" style="margin-top: 0px;width: 100%;margin-top: 10px;"

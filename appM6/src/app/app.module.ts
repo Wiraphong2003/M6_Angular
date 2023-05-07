@@ -42,6 +42,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { FileSaverModule } from 'ngx-filesaver';
 import { ConfirmedComponent } from './page/confirmed/confirmed.component';
 import { Main2Component } from './page/main2/main2.component';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
 // import { CanvasModule } from 'angular-canvas';
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { Main2Component } from './page/main2/main2.component';
     LoginComponent,
     MainComponent,
     ConfirmedComponent,
-    Main2Component
+    Main2Component,
+    ImageSliderComponent
   ],
   imports: [
 
