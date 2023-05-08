@@ -662,33 +662,44 @@ export class Main2Component {
   name!: string;
   isbreak !: boolean
   ischs = 1;
+  currentDateTime: any;
   constructor(
     private dataService: DataserveiceService,
     private http: HttpClient,
     private local: LocalService,
     private el: ElementRef,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public date: DatePipe
   ) {
-    console.log(local.getData("img1"));
+    this.currentDateTime = this.date.transform((new Date), 'dd/MM/yyyy');
+    let AAA: any[] = []
+    AAA = this.currentDateTime.split("/")
+    console.log(AAA);
+    let str = ""
+    AAA.forEach(element => {
+      str += element + "-"
+    });
+    // console.log(str.substring(0,str.length-1));
+    this.DATE = str.substring(0, str.length - 1)
     this.imageuser = local.getData("img1");
 
-    this.date_value = this.todayISOString.split("T", 1);
-    console.log(this.date_value);
-    let ss: any[] = []
-    this.date_value.forEach((element: any) => {
-      console.log(element);
-      ss = element.split("-");
-    });
-    console.log(ss);
-    let getdatetemp = "";
+    // this.date_value = this.todayISOString.split("T", 1);
+    // console.log(this.date_value);
+    // let ss: any[] = []
+    // this.date_value.forEach((element: any) => {
+    //   console.log(element);
+    //   ss = element.split("-");
+    // });
+    // console.log(ss);
+    // let getdatetemp = "";
 
-    for (let index = ss.length - 1; index >= 0; index--) {
-      const element = ss[index];
-      getdatetemp = getdatetemp + "-" + element
-    }
-    console.log(getdatetemp);
-    this.DATE = getdatetemp.slice(1, getdatetemp.length)
+    // for (let index = ss.length - 1; index >= 0; index--) {
+    //   const element = ss[index];
+    //   getdatetemp = getdatetemp + "-" + element
+    // }
+    // console.log(getdatetemp);
+    // this.DATE = getdatetemp.slice(1, getdatetemp.length)
 
     // this.t1 = dataService.t1;
     // this.t2 = dataService.t2;
@@ -700,32 +711,6 @@ export class Main2Component {
 
   async candown(array: any) {
     try {
-      // let temp = false
-      // let isCKto = false;
-      // for (let index = 0; index < this.listdataURL.length; index++) {
-      //   const element = this.listdataURL[index];
-      //   const name = this.ALL1[index].name;
-      //   console.log(element.length);
-      //   let data = element.length;
-      //   if (data >= 450000 && data <= 470000) {
-      //     // this.DOWLOADS();
-      //     isCKto = true;
-      //     break;
-      //   } else {
-      //     console.log("NOT DOWLOADS");
-      //     isCKto = false;
-      //     this.todateURL(this.ALL1);
-      //     break;
-      //     // alert("กรุณา Dowload อีกครั้ง")
-      //   }
-      // }
-      // // if (isCKto) {
-      // //   this.DOWLOADS();
-      // // } else {
-      // //   // alert("confirm Dowload")
-      // //   // this.DOWLOADS();
-      // //   alert("กรุณา Dowload อีกครั้ง")
-      // // }
       this.DOWLOADS();
     } catch (E) {
       console.log("catch ERROR DOWLOAD");
@@ -792,7 +777,7 @@ export class Main2Component {
         this.random();
 
         this.drawStrokedcenter(context, element.name, (w / 2) + 10, 370, "32px Chonburi", "#FFD51E", "black", 5)
-        this.drawStroked(context, this.DATE, w - 70, 50, "10px Chonburi", "white", "", 1)
+        this.drawStroked(context, this.currentDateTime, w - 80, 50, "12px Chonburi", "white", "", 1)
         this.drawStroked(context, this.A, ((w / 2) - 100), 160, "60px Chonburi", "white", "black", 2)
         this.drawStroked(context, this.B, ((w / 2) + 105), 160, "60px Chonburi", "white", "black", 2)
 
@@ -908,7 +893,7 @@ export class Main2Component {
   getRandomNumbers(number: any): number[] {
     let num = number.toString();
     let result: number[] = []
-    const allNumbers: number[] = Array.from({ length: 9 }, (_, i) => i + 1);
+    const allNumbers: number[] = Array.from({ length: 9 }, (_, i) => i + 0);
     const shuffledNumbers = allNumbers.sort(() => Math.random() - 0.5);
     this.arr = shuffledNumbers.slice(0, 4);
     result = [

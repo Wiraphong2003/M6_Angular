@@ -90,7 +90,7 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
     FileSaverModule
 
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -77,35 +77,44 @@ export class MainComponent implements OnInit,AfterViewInit {
 
   animal!: string;
   name!: string;
-
+  currentDateTime:any;
   constructor(
     private dataService: DataserveiceService,
     private http: HttpClient,
     private local: LocalService,
     private el: ElementRef,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public date : DatePipe
   ) {
-
-    console.log(local.getData("img1"));
+    this.currentDateTime = this.date.transform((new Date), 'dd/MM/yyyy');
+    let AAA:any[] = []
+    AAA = this.currentDateTime.split("/")
+    console.log(AAA);
+    let str =""
+    AAA.forEach(element => {
+      str += element+"-"
+    });
+    // console.log(str.substring(0,str.length-1));
+    this.DATE = str.substring(0, str.length - 1)
     this.imageuser = local.getData("img1");
 
-    this.date_value = this.todayISOString.split("T", 1);
-    console.log(this.date_value);
-    let ss: any[] = []
-    this.date_value.forEach((element: any) => {
-      console.log(element);
-      ss = element.split("-");
-    });
-    console.log(ss);
-    let getdatetemp = "";
+    // this.date_value = this.todayISOString.split("T", 1);
+    // console.log(this.date_value);
+    // let ss: any[] = []
+    // this.date_value.forEach((element: any) => {
+    //   console.log(element);
+    //   ss = element.split("-");
+    // });
+    // console.log(ss);
+    // let getdatetemp = "";
 
-    for (let index = ss.length - 1; index >= 0; index--) {
-      const element = ss[index];
-      getdatetemp = getdatetemp + "-" + element
-    }
-    console.log(getdatetemp);
-    this.DATE = getdatetemp.slice(1, getdatetemp.length)
+    // for (let index = ss.length - 1; index >= 0; index--) {
+    //   const element = ss[index];
+    //   getdatetemp = getdatetemp + "-" + element
+    // }
+
+    // this.DATE = getdatetemp.slice(1, getdatetemp.length)
 
     //  this.tempdata = this.date_value.split("-");
     // console.log(this.tempdata);
@@ -488,7 +497,7 @@ export class MainComponent implements OnInit,AfterViewInit {
   getRandomNumbers(number: any): number[] {
     let num = number.toString();
     let result: number[] = []
-    const allNumbers: number[] = Array.from({ length: 9 }, (_, i) => i + 1);
+    const allNumbers: number[] = Array.from({ length: 9 }, (_, i) => i + 0);
     const shuffledNumbers = allNumbers.sort(() => Math.random() - 0.5);
     this.arr = shuffledNumbers.slice(0, 3);
     result = [
