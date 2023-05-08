@@ -6,11 +6,15 @@
     <!-- <input type="text" name="" id="" [(ngModel)]="username"> <br>
   <input type="password" name="" id="" [(ngModel)]="password"> <br> -->
     <!-- <button (click)="login()">Login</button> -->
-    <p style="text-align: center;font-size: 30px; margin-bottom: 50px;">Login</p>
+    <p style="text-align: center;font-size: 80px; margin-bottom: 70px;margin-top: 50px;">
+      <!-- <img src="./../../../assets/img/m6-logo.png" alt="" width="200px" height="200px"> -->
+      M6
+    </p>
+    <!-- <img src="./../../../assets/img/M6.png" alt="" width="200px" height="200px"> -->
     <p>
       <mat-form-field appearance="outline" style="width: 100%;">
         <mat-label>Username</mat-label>
-        <input matInput placeholder="Placeholder" [(ngModel)]="this.username">
+        <input matInput placeholder="username" [(ngModel)]="this.username">
       </mat-form-field>
 
       <mat-form-field appearance="outline" style="width: 100%;">
@@ -26,7 +30,7 @@
       </mat-form-field>
     </p>
     <div style="display: flex;justify-content: center;">
-      <button mat-raised-button color="primary" style="width: 100px;" (click)="login()">Login</button>
+      <button mat-raised-button style="width: 100px;color: rgb(240, 240, 240);background-color: rgb(42, 42, 42);" (click)="login()">Login</button>
     </div>
     <p style="text-align: center;margin-top: 20px;color: brown;">{{texError}}</p>
 
