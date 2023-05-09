@@ -1,3 +1,7 @@
+// #container{
+//   background-color: rgb(244, 244, 244);
+// }
+
 .responsive {
   width: 100%;
   max-width: 500;
@@ -34,9 +38,9 @@ img.selected {
   border-color: blue;
 }
 
-.scro{
+.scro {
   height: 300px;
-    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
 }
 
 .example-viewport {
@@ -47,4 +51,158 @@ img.selected {
 
 .example-item {
   height: 50px;
+}
+
+.res {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.cssbuttons-io-button {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.5em 0.8em 1.2em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(0deg, rgb(33, 150, 20) 0%, rgb(105, 236, 65) 100%);
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+  justify-content: center;
+  width: 200px;
+}
+
+.cssbuttons-io-button svg {
+  margin-right: 8px;
+}
+
+.cssbuttons-io-button:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #4d36d0be;
+}
+
+.cssbuttons-io-button:active {
+  box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
+}
+
+
+.card {
+  box-sizing: border-box;
+  width: 190px;
+  height: 254px;
+  background: rgba(217, 217, 217, 0.58);
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-weight: bolder;
+  color: black;
+}
+
+.card:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+
+.card:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
+
+button {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #00000080;
+  text-shadow: none;
+  background: transparent;
+  box-shadow: transparent;
+  border: 1px solid #00000080;
+  transition: 0.5s ease;
+  user-select: none;
+}
+
+#btn:hover,
+:focus {
+  color: #ffffff;
+  background: #008cff;
+  border: 1px solid #008cff;
+  text-shadow: 0 0 5px #ffffff,
+    0 0 10px #ffffff,
+    0 0 20px #ffffff;
+  box-shadow: 0 0 5px #008cff,
+    0 0 20px #008cff,
+    0 0 50px #008cff,
+    0 0 100px #008cff;
+}
+
+
+
+/* Hide the default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1.3em;
+  width: 1.3em;
+  background-color: #ccc;
+  border-radius: 100%;
+  background: #e8e8e8;
+  box-shadow: 3px 3px 5px #c5c5c5,
+    -3px -3px 5px #ffffff;
+  transition-duration: 0.5s;
+}
+
+.container input:checked~.checkmark {
+  box-shadow: inset 3px 3px 5px #c5c5c5,
+    inset -3px -3px 5px #ffffff;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  opacity: 0;
+}
+
+.container input:checked~.checkmark:after {
+  opacity: 1;
+}
+
+.container .checkmark:after {
+  left: 0.45em;
+  top: 0.4em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid darkgray;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
 }

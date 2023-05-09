@@ -661,6 +661,7 @@ export class Main3Component implements OnInit {
     public date: DatePipe,
     private local: LocalService
   ) {
+
     this.isdisplay = dataService.isdispaly;
     this.currentDateTime = this.date.transform((new Date), 'dd/MM/yyyy');
     let AAA: any[] = []
@@ -684,7 +685,7 @@ export class Main3Component implements OnInit {
   onWindowResize() {
     this.getScreenWidth = window.innerWidth;
     this.getScreenHeight = window.innerHeight;
-    if (this.getScreenWidth <= 550) {
+    if (this.getScreenWidth <= 550 || this.isdisplay) {
       console.log("mobile phone");
       this.ismobile = true
     }else{
@@ -1000,7 +1001,7 @@ export class Main3Component implements OnInit {
 
   checkALL() {
     // this.isShowG = false
-    console.log("Check ALL");
+    // console.log("Check ALL");
     if (this.isSelected) {
       this.isSelected = false
       this.isShowG = false
@@ -1009,7 +1010,7 @@ export class Main3Component implements OnInit {
       this.isSelected = true
       this.isShowG = true
       this.remove();
-      console.log(this.ALL1);
+      // console.log(this.ALL1);
       this.Lottary.forEach((element: any) => {
         this.ALL1.push(element)
       });
