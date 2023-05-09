@@ -2,14 +2,14 @@
   <div class="row" style="margin-top: 50px;margin-left: 10px;">
     <div class="col-sm">
       <h1 style=" font-family: Superspace;">วันที่ {{currentDateTime}}</h1>
-      <div style="display: flex;justify-content: center">
+      <div style="display: flex;justify-content: center;width: 500px;" >
         <div *ngIf="!isShowG">
           <img id="imageQ" src={{imageuser}} alt="" width="500px" height="500px">
         </div>
 
         <div class="slider" style="width: 500px;height: 500px;" *ngIf="isShowG">
-          <canvas *ngFor="let a of ALL1;index as i; trackBy:trackByFn" attr.id="canvas-{{i}}" width="500px" height="500px"
-            (click)="onImageClick(i)">
+          <canvas *ngFor="let a of ALL1;index as i; trackBy:trackByFn" attr.id="canvas-{{i}}" width="500px"
+            height="500px" (click)="onImageClick(i)">
           </canvas>
         </div>
 

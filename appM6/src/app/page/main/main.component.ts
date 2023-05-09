@@ -74,7 +74,7 @@ export class MainComponent implements OnInit,AfterViewInit {
   // arrayOfIndexes: any[] = []
   getDate !: any;
   tempdata!: any;
-
+ selectedImageIndex = 0;
   animal!: string;
   name!: string;
   currentDateTime:any;
@@ -321,7 +321,7 @@ export class MainComponent implements OnInit,AfterViewInit {
     console.log(this.listdataURL.length);
   }
 
-  selectedImageIndex = 0;
+
 
   onImageClick(index: number) {
     this.selectedImageIndex = index;

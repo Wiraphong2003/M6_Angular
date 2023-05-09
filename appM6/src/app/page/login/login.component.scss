@@ -1,0 +1,22 @@
+#container
+{
+width: 300px;
+height: 200px;
+border: solid 1px #000;
+position: relative;
+}
+
+#bottom-right
+{
+right: 0;
+bottom: 0;
+position: absolute;
+padding: 10px;
+}
+
+#bottom-left
+{
+left: 0;
+bottom: 0;
+position: absolute;
+}

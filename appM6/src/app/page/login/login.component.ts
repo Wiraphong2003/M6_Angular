@@ -54,7 +54,9 @@ export class LoginComponent {
             this.router.navigateByUrl('/main');
           } else if ("user2" == json.username) {
             this.router.navigateByUrl('/main2');
-          }else{
+          }else if ("mark" == json.username) {
+            this.router.navigateByUrl('/main3');
+          } else{
             this.texError = "บัญชีผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
           }
         } else {

@@ -43,6 +43,8 @@ import { FileSaverModule } from 'ngx-filesaver';
 import { ConfirmedComponent } from './page/confirmed/confirmed.component';
 import { Main2Component } from './page/main2/main2.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { Main3Component } from './page/main3/main3.component';
+
 // import { CanvasModule } from 'angular-canvas';
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
     MainComponent,
     ConfirmedComponent,
     Main2Component,
-    ImageSliderComponent
+    ImageSliderComponent,
+    Main3Component,
   ],
   imports: [
 

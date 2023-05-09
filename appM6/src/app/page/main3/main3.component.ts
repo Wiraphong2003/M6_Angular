@@ -12,23 +12,16 @@ import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { saveAs } from 'file-saver';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmedComponent } from '../confirmed/confirmed.component';
-
 @Component({
-  selector: 'app-main2',
-  templateUrl: './main2.component.html',
-  styleUrls: ['./main2.component.scss']
+  selector: 'app-main3',
+  templateUrl: './main3.component.html',
+  styleUrls: ['./main3.component.scss']
 })
-export class Main2Component {
+export class Main3Component {
   @ViewChild('canvas', { static: true }) myCanvas !: ElementRef;
   @ViewChild('Arraycanvas', { static: true }) Arraycanvas!: ElementRef[];
 
-
-  // myDate = new Date();
-
   areAllImagesLoaded = false;
-
-  // myDate !: any;
   arr: any[] = [];
   imageuser !: any;
   t1 = [
@@ -639,8 +632,6 @@ export class Main2Component {
   isSelected = false;
   checked = false;
   date_value!: any;
-
-
   canvas  !: HTMLCanvasElement;
   context !: CanvasRenderingContext2D;
   listcanvas: HTMLCanvasElement[] = [];
@@ -661,12 +652,9 @@ export class Main2Component {
   currentDateTime: any;
   constructor(
     private dataService: DataserveiceService,
-    private http: HttpClient,
-    private local: LocalService,
-    private el: ElementRef,
-    private router: Router,
     public dialog: MatDialog,
-    public date: DatePipe
+    public date: DatePipe,
+    private local: LocalService
   ) {
     this.currentDateTime = this.date.transform((new Date), 'dd/MM/yyyy');
     let AAA: any[] = []
@@ -679,31 +667,6 @@ export class Main2Component {
     // console.log(str.substring(0,str.length-1));
     this.DATE = str.substring(0, str.length - 1)
     this.imageuser = local.getData("img1");
-
-  
-    // this.date_value = this.todayISOString.split("T", 1);
-    // console.log(this.date_value);
-    // let ss: any[] = []
-    // this.date_value.forEach((element: any) => {
-    //   console.log(element);
-    //   ss = element.split("-");
-    // });
-    // console.log(ss);
-    // let getdatetemp = "";
-
-    // for (let index = ss.length - 1; index >= 0; index--) {
-    //   const element = ss[index];
-    //   getdatetemp = getdatetemp + "-" + element
-    // }
-    // console.log(getdatetemp);
-    // this.DATE = getdatetemp.slice(1, getdatetemp.length)
-
-    // this.t1 = dataService.t1;
-    // this.t2 = dataService.t2;
-    // this.t3 = dataService.t3;
-    // this.t4 = dataService.t4;
-    // this.t5 = dataService.t5;
-    // this.Lottary = dataService.Lottary;
   }
 
   async candown(array: any) {
@@ -716,7 +679,6 @@ export class Main2Component {
       // console.log(this.listdataURL);
     }
   }
-
   DOWLOADS() {
     const zip = new JSZip();
     for (let index = 0; index < this.listdataURL.length; index++) {
@@ -739,28 +701,13 @@ export class Main2Component {
     return (index);
   }
 
-  Createimage(array: any) {
-    console.log(this.ischs);
-    if (this.ischs == 1) {
-      this.todateURL(array)
-      if (confirm("ยืนยันการสร้างรูปภาพ") == true) {
-        this.todateURL(array);
-
-      }
-      this.ischs++
-    } else {
-      this.todateURL(array);
-      // this.ischs++
-    }
-  }
-
   todateURL(array: any) {
     this.listdataURL = this.listdataURL.filter(item => item !== item);
     for (let i = 0; i < array.length; i++) {
       const element = array[i];
 
       let img = new Image()
-      img.src = "../../../assets/img/user2_1.jpg"
+      img.src = "../../../assets/img/main3.jpg"
       const newWidth = 500;
       const newHeight = 500;
       const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
@@ -773,30 +720,30 @@ export class Main2Component {
         context.drawImage(img, 0, 0, newWidth, newHeight)
         this.random();
 
-        this.drawStrokedcenter(context, element.name, (w / 2) + 10, 370, "32px Chonburi", "#FFD51E", "black", 5)
-        this.drawStroked(context, this.currentDateTime, w - 80, 50, "12px Chonburi", "white", "", 1)
-        this.drawStroked(context, this.A, ((w / 2) - 100), 160, "60px Chonburi", "white", "black", 2)
-        this.drawStroked(context, this.B, ((w / 2) + 105), 160, "60px Chonburi", "white", "black", 2)
+        this.drawStrokedcenter(context, element.name, (w / 2) + 10, 140, "50px SOV_Assadong_C", "red", "black", 5)
+        this.drawStroked(context, this.currentDateTime, w - 60, 85, "14px MN", "white", "", 1)
+        this.drawStroked(context, this.A, ((w / 2) - 90), 220, "110px MN", "black", "black", 2)
+        this.drawStroked(context, this.B, ((w / 2) + 105), 220, "110px MN", "black", "black", 2)
 
         this.A1.forEach((element, index) => {
           // context.fillText(element, (80 * index) + 155, 250);
-          this.drawStroked(context, element, (60 * index) + 170, 230, "28px Chonburi", "white", "black", 1)
+          this.drawStroked(context, element, (70 * index) + 155, 290, "50px MN", "black", "black", 1)
         });
 
         this.B1.forEach((element, index) => {
-          this.drawStroked(context, element, (60 * index) + 170, 280, "28px Chonburi", "white", "black", 1)
+          this.drawStroked(context, element, (70 * index) + 155, 340, "50px MN", "black", "black", 1)
         });
 
         this.C.forEach((element, index) => {
-          this.drawStroked(context, element, (60 * index) + 200, 325, "20px Chonburi", "white", "black", 1)
+          this.drawStroked(context, element, (90 * index) + 120, 400, "50px MN", "black", "black", 1)
         });
 
         const png = canvas.toDataURL("image/jpg");
 
         if (png.length >= 450000 && png.length <= 470000) {
-          console.log("GOOD  " + element.name + "\t" + png.length);
+          // console.log("GOOD  " + element.name + "\t" + png.length);
         } else {
-          console.log("ERROR  " + element.name + "\t" + png.length);
+          // console.log("ERROR  " + element.name + "\t" + png.length);
           // this.gettoURL(array);
         }
         const pngs = canvas.toDataURL("image/jpg");
@@ -813,65 +760,6 @@ export class Main2Component {
   onImageClick(index: number) {
     this.selectedImageIndex = index;
   }
-
-  gettoURL(array: any) {
-    for (let index = 0; index < array.length; index++) {
-      const element = array[index];
-      // console.log(element.name);
-
-      let img = new Image()
-      // img.src = "../../../assets/img/user1_1.jpg"
-      img.src = "../../../assets/img/user2_1.jpg"
-      // img.src = this.local.getData("img1") + "";
-      const newWidth = 500;
-      const newHeight = (img.height / img.width) * newWidth;
-      // const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-      // const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-
-      img.onload = () => {
-        this.random();
-        const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + index);
-        const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-        // this.context =  <CanvasRenderingContext2D > canvas.getContext('2d')
-        let w = 500;
-        let h = 500;
-        let lenHH = element.name.length;
-        // context.shadowOffsetX = 4;
-        // context.shadowOffsetY = 4;
-        // context.shadowBlur = 3;
-
-        context.clearRect(0, 0, canvas.width, canvas.height);
-
-        context.drawImage(img, 0, 0, newWidth, newHeight)
-
-        this.drawStrokedcenter(context, element.name, (w / 2) + 10, 370, "32px Chonburi", "#FFD51E", "black", 5)
-
-
-        this.drawStroked(context, this.DATE, w - 70, 50, "10px Chonburi", "white", "", 1)
-
-        this.drawStroked(context, this.A, ((w / 2) - 100), 160, "60px Chonburi", "white", "black", 2)
-
-        this.drawStroked(context, this.B, ((w / 2) + 105), 160, "60px Chonburi", "white", "black", 2)
-
-
-        this.A1.forEach((element, index) => {
-          // context.fillText(element, (80 * index) + 155, 250);
-          this.drawStroked(context, element, (60 * index) + 170, 230, "28px Chonburi", "white", "black", 1)
-        });
-
-
-        this.B1.forEach((element, index) => {
-          this.drawStroked(context, element, (60 * index) + 170, 280, "28px Chonburi", "white", "black", 1)
-        });
-
-        this.C.forEach((element, index) => {
-          this.drawStroked(context, element, (60 * index) + 200, 325, "20px Chonburi", "white", "black", 1)
-        });
-
-      } // loadimage
-    }//loop 1
-  }
-
   getRandomNumber(min: number, max: number, previous?: number): number {
     let num = Math.floor(Math.random() * (max - min + 1) + min);
     while (num === previous) {
@@ -910,6 +798,7 @@ export class Main2Component {
   generateArray(num1: any, num2: any): number[] {
     let arr: number[] = []
     arr = [
+      this.getRandomNumber(100, 999),
       this.getRandomNumber(100, 999),
       this.getRandomNumber(100, 999),
       this.getRandomNumber(100, 999),
@@ -1107,6 +996,4 @@ export class Main2Component {
   saveAs(content: any, arg1: string) {
     throw new Error('Function not implemented.');
   }
-
-
 }
