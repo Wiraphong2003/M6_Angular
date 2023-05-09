@@ -23,6 +23,7 @@ export class DataserveiceService {
   t5 !: any;
   datauser !:any;
   ALL !: any;
+  isdispaly!:boolean;
   constructor(private httpClient: HttpClient) {
     this.Lottary = data;
     this.t1 = t1;

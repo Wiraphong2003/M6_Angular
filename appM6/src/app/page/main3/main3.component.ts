@@ -1,6 +1,6 @@
 // import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, ViewChild, OnInit, HostListener } from '@angular/core';
 import { DataserveiceService } from 'src/app/dataserveice.service';
 import { LocalService } from 'src/app/local.service';
 
@@ -15,9 +15,10 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-main3',
   templateUrl: './main3.component.html',
-  styleUrls: ['./main3.component.scss']
+  styleUrls: ['./main3.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Main3Component {
+export class Main3Component implements OnInit {
   @ViewChild('canvas', { static: true }) myCanvas !: ElementRef;
   @ViewChild('Arraycanvas', { static: true }) Arraycanvas!: ElementRef[];
 
@@ -650,12 +651,17 @@ export class Main3Component {
   isbreak !: boolean
   ischs = 1;
   currentDateTime: any;
+  innerWidth: any;
+  innerHeight: any;
+  isdisplay!:boolean;
+  items = Array.from({ length: 100000 }).map((_, i) => `Item #${i}`);
   constructor(
     private dataService: DataserveiceService,
     public dialog: MatDialog,
     public date: DatePipe,
     private local: LocalService
   ) {
+    this.isdisplay = dataService.isdispaly;
     this.currentDateTime = this.date.transform((new Date), 'dd/MM/yyyy');
     let AAA: any[] = []
     AAA = this.currentDateTime.split("/")
@@ -667,6 +673,37 @@ export class Main3Component {
     // console.log(str.substring(0,str.length-1));
     this.DATE = str.substring(0, str.length - 1)
     this.imageuser = local.getData("img1");
+  }
+
+
+
+  public getScreenWidth: any;
+  public getScreenHeight: any;
+  ismobile :boolean = false;
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.getScreenWidth = window.innerWidth;
+    this.getScreenHeight = window.innerHeight;
+    if (this.getScreenWidth <= 550) {
+      console.log("mobile phone");
+      this.ismobile = true
+    }else{
+      this.ismobile = false
+    }
+  }
+
+  ngOnInit(): void {
+    this.getScreenWidth = window.innerWidth;
+    this.getScreenHeight = window.innerHeight;
+
+    // this.innerHeight = window.innerHeight
+    // this.innerWidth = window.innerWidth
+    // console.log(this.innerWidth);
+    // console.log(this.innerHeight);
+    // if(this.innerWidth < 500){
+    //   console.log("mobile phone");
+
+    // }
   }
 
   async candown(array: any) {

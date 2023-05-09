@@ -38,7 +38,7 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FileSaverModule } from 'ngx-filesaver';
 import { ConfirmedComponent } from './page/confirmed/confirmed.component';
 import { Main2Component } from './page/main2/main2.component';
@@ -57,7 +57,7 @@ import { Main3Component } from './page/main3/main3.component';
     Main3Component,
   ],
   imports: [
-
+    ScrollingModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

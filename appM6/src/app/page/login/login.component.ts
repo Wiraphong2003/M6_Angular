@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataserveiceService } from 'src/app/dataserveice.service';
 import { LocalService } from 'src/app/local.service';
@@ -25,6 +25,11 @@ export class LoginComponent {
     private Local: LocalService,
     private dataservice: DataserveiceService) {
     this.dataUser = dataservice.datauser;
+    if(window.innerWidth <=540){
+      dataservice.isdispaly = true
+    }else{
+      dataservice.isdispaly = false
+    }
   }
   login() {
     console.log('OK');
