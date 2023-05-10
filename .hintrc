@@ -22,7 +22,8 @@
         "ignore": [
           "-webkit-overflow-scrolling",
           "backdrop-filter",
-          "user-select"
+          "user-select",
+          "width: fit-content"
         ]
       }
     ],

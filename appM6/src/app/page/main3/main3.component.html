@@ -1,6 +1,5 @@
 <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-
 <!-- <div class="container text-center mt-5">
   <p>Window width: <strong>{{ getScreenWidth }}</strong></p>
   <p>Window height: <strong>{{ getScreenHeight }}</strong></p>
@@ -9,7 +8,17 @@
   <div class="container">
     <div class="row justify-content-md-center">
       <div class="col-sm">
-        <h1 style=" font-family: Superspace;">วันที่ {{currentDateTime}}</h1>
+        <div style="display: flex;flex-direction: row;justify-content:space-between">
+          <div>
+            <h1 style=" font-family: Superspace;">วันที่ {{currentDateTime}}</h1>
+          </div>
+          <div>
+            <button class="button type1" (click)="logout()">
+              <span class="btn-txt">LOGOUT</span>
+            </button>
+          </div>
+        </div>
+
         <div style="display: flex;justify-content: center;">
           <div *ngIf="!isShowG">
             <img id="imageQ" src={{imageuser}} alt="" width="500px" height="500px" class="res">
@@ -47,30 +56,76 @@ box-shadow:  5px 5px 9px #d3d3d3,
               Download
             </button>
           </div>
-          <div class="col" style="display: flex;justify-content: center;margin-top: 10px;">
+          <div class="col"
+            style="display: flex;justify-content: center;margin-top: 10px;flex-direction:column-reverse;">
             <!-- <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
               <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkALL()">
                 <p style="font-family: K2D;margin: 0px;">Select All</p>
               </mat-checkbox>
             </section> -->
+            <div style="display: flex;justify-content: center;justify-items: center;">
+              <label class="container" style="display: flex;justify-content: center;justify-items: center;">
+                <div style="margin-right: 10px;">
+                  <input type="checkbox" (change)="checkALL()">
+                  <div class="checkmark"></div>
+                </div>
+                <div>
+                  <p style="font-family: K2D;margin: 0px;">Select All</p>
+                </div>
+              </label>
+            </div>
 
-            <label class="container" style="display: flex;">
-              <div style="margin-right: 10px;">
-                <input type="checkbox" (change)="checkALL()">
-                <div class="checkmark"></div>
+            <br>
+            <div style="display: flex;justify-content: center;justify-items: center;">
+              <div class="customCheckBoxHolder">
+                <input type="checkbox" id="cCB1" class="customCheckBoxInput" (change)="time()">
+                <label for="cCB1" class="customCheckBoxWrapper">
+                  <div class="customCheckBox">
+                    <div class="inner">Time</div>
+                  </div>
+                </label>
               </div>
-              <div>
-                <p style="font-family: K2D;margin: 0px;">Select All</p>
-              </div>
+            </div>
 
-            </label>
+
+
+
           </div>
+
           <div style="padding: 10px;"></div>
           <hr>
         </div>
 
+        <div class="row" *ngIf="istime">
+          <div class="col-sm">
+            <p style="text-align: center;">รายวัน</p>
+            <section class="example-section" *ngFor="let data of LotolyTime"
+              style="margin: 0px;font-family:K2D, sans-serif;">
+              <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                [checked]="isSelected">
+                <div class="row" style="display: flex;flex-direction: row;width: 350px;">
+                  <p class="col-8" style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+                  <p class="col-4" style="font-family: K2D;margin: 0px;">{{data.time}}</p>
+                </div>
+              </mat-checkbox>
+            </section>
+          </div>
+              <div class="col-sm">
+                <p style="text-align: center;">รายวัน</p>
+                <section class="example-section" *ngFor="let data of LotolyTime2" style="margin: 0px;font-family:K2D, sans-serif;">
+                  <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                    [checked]="isSelected">
+                    <div class="row" style="display: flex;flex-direction: row;width: 350px;">
+                      <p class="col-8" style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+                      <p class="col-4" style="font-family: K2D;margin: 0px;">{{data.time}}</p>
+                    </div>
+                  </mat-checkbox>
+                </section>
+              </div>
+        </div>
 
-        <div class="col-sm" style="display: contents;min-width: 300px;" *ngIf="!isdisplay">
+
+        <div class="col-sm" style="display: contents;min-width: 300px;" *ngIf="!isdisplay && !istime">
           <div class="row">
             <div class="col-sm">
               <p style="text-align: center;">รายวัน</p>

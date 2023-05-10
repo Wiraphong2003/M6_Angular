@@ -12,6 +12,13 @@ import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { saveAs } from 'file-saver';
 import { MatDialog } from '@angular/material/dialog';
+
+interface maindata {
+  name: any;
+  url: any;
+}
+
+
 @Component({
   selector: 'app-main3',
   templateUrl: './main3.component.html',
@@ -24,6 +31,7 @@ export class Main3Component implements OnInit {
 
   areAllImagesLoaded = false;
   arr: any[] = [];
+  maindatas:maindata[] = [];
   imageuser !: any;
   t1 = [
     {
@@ -76,7 +84,7 @@ export class Main3Component implements OnInit {
     },
     {
       "lid": 9,
-      "name": "ฮานอยกาชาติ",
+      "name": "ฮานอยกาชาด",
       "type": 1,
       "cid": 1
     },
@@ -623,6 +631,234 @@ export class Main3Component implements OnInit {
       "cid": 1
     }
   ]
+
+  LotolyTime = [
+    {
+      "lid": 1,
+      "name": "นิเคอิเช้าVIP",
+      "time":"09:00"
+    },
+    {
+      "lid": 2,
+      "name": "นิเคอิเช้า",
+      "time": "09:25"
+    },
+    {
+      "lid": 3,
+      "name": "จีนเช้าVIP",
+      "time": "10:00"
+    },
+    {
+      "lid": 4,
+      "name": "จีนเช้า",
+      "time": "10:20"
+    },
+    {
+      "lid": 5,
+      "name": "ลาวTV",
+      "time": "10:25"
+    },
+    {
+      "lid": 6,
+      "name": "ฮั่งเล็งเช้าVIP",
+      "time": "10:30"
+    },
+    {
+      "lid": 7,
+      "name": "ฮั่งเล็งเช้า",
+      "time": "10:55"
+    },
+    {
+      "lid": 8,
+      "name": "ฮานอยHD",
+      "time": "11:10"
+    },
+    {
+      "lid": 9,
+      "name": "ไต้หวันVIP",
+      "time": "11:30"
+    },
+    {
+      "lid": 10,
+      "name": "ไต้หวัน",
+      "time": "12:10"
+    },
+    {
+      "lid": 11,
+      "name": "ฮานอยสตาร์",
+      "time": "12:10"
+    },
+    {
+      "lid": 12,
+      "name": "เกาหลีVIP",
+      "time": "12:30"
+    },
+    {
+      "lid": 13,
+      "name": "เกาหลี",
+      "time": "12:45"
+    },
+    {
+      "lid": 14,
+      "name": "นิเคอิบ่าย",
+      "time": "12:55"
+    },
+    {
+      "lid": 15,
+      "name": "นิเคอิบ่ายVIP",
+      "time": "13:20"
+    },
+    {
+      "lid": 16,
+      "name": "ลาวHD",
+      "time": "13:40"
+    },
+    {
+      "lid": 17,
+      "name": "จีนบ่าย",
+      "time": "13:45"
+    },
+    {
+      "lid": 18,
+      "name": "ฮานอยTV",
+      "time": "14:10"
+    },
+    {
+      "lid": 19,
+      "name": "จีนบ่ายVIP",
+      "time": "14:20"
+    },
+    {
+      "lid": 20,
+      "name": "ฮั่งเส็งบ่าย",
+      "time": "14:55"
+    },
+    {
+      "lid": 21,
+      "name": "ฮั่งเส็งบ่ายVIP",
+      "time": "15:20"
+    },
+    {
+      "lid": 22,
+      "name": "ลาวสตาร์",
+      "time": "15:40"
+    },
+
+  ]
+
+  LotolyTime2 = [
+    {
+      "lid": 23,
+      "name": "ฮานอยกาชาด",
+      "time": "16:10"
+    },
+    {
+      "lid": 24,
+      "name": "ฮานอยพิเศษ",
+      "time": "17:10"
+    },
+    {
+      "lid": 25,
+      "name": "ฮานอยสามัคคี",
+      "time": "17:10"
+    },
+    {
+      "lid": 26,
+      "name": "ฮานอยปกติ",
+      "time": "18:10"
+    },
+    {
+      "lid": 27,
+      "name": "ฮานอยVIP",
+      "time": "19:10"
+    },
+    {
+      "lid": 28,
+      "name": "ฮานอยพัฒนา",
+      "time": "19:10"
+    },
+    {
+      "lid": 29,
+      "name": "ลาวสามัคคี",
+      "time": "20:15"
+    },
+    {
+      "lid": 30,
+      "name": "ลาวพัฒนา", //(จ พ ศ)
+      "time": "20:20"
+    },
+    {
+      "lid": 31,
+      "name": "ลาวอาเซียน",
+      "time": "20:55"
+    },
+    {
+      "lid": 32,
+      "name": "ลาวVIP",
+      "time": "21:15"
+    },
+    {
+      "lid": 33,
+      "name": "ลาวSTAR VIP",
+      "time": "21:45"
+    },
+    {
+      "lid": 34,
+      "name": "อังกฤษVIP",
+      "time": "21:45"
+    },
+    {
+      "lid": 35,
+      "name": "ฮานอยEXTER",
+      "time": "22:10"
+    },
+    {
+      "lid": 36,
+      "name": "รัสเซีย",
+      "time": "22:30"
+    },
+    {
+      "lid": 37,
+      "name": "เยอรมันVIP",
+      "time": "22:45"
+    },
+    {
+      "lid": 38,
+      "name": "อังกฤษ",
+      "time": "22:10"
+    },
+    {
+      "lid": 39,
+      "name": "เยอรมัน",
+      "time": "22:10"
+    },
+    {
+      "lid": 40,
+      "name": "ลาวกาซาด",
+      "time": "23:25"
+    },
+    {
+      "lid": 41,
+      "name": "รัสเซียVIP",
+      "time": "23:45"
+    },
+    {
+      "lid": 42,
+      "name": "ดาวโจนส์VIP",
+      "time": "00:10"
+    },
+    {
+      "lid": 43,
+      "name": "ดาวโจนส์STAR",
+      "time": "01:00"
+    },
+    {
+      "lid": 44,
+      "name": "ดาวโจนส์",
+      "time": "01:00"
+    },
+  ]
+
   A!: any;
   B!: any;
 
@@ -639,7 +875,6 @@ export class Main3Component implements OnInit {
   DATE!: any | GlobalEventHandlers;
   All: any[] = [];
   ALL1: any[] = [];
-
   selectedImageIndex = 0;
   listdataURL: any[] = [];
   // arrayOfIndexes: any[] = []
@@ -654,19 +889,20 @@ export class Main3Component implements OnInit {
   innerWidth: any;
   innerHeight: any;
   isdisplay!:boolean;
+  istime = false
   items = Array.from({ length: 100000 }).map((_, i) => `Item #${i}`);
   constructor(
     private dataService: DataserveiceService,
     public dialog: MatDialog,
     public date: DatePipe,
-    private local: LocalService
+    private local: LocalService,
+    private router: Router
   ) {
 
     this.isdisplay = dataService.isdispaly;
     this.currentDateTime = this.date.transform((new Date), 'dd/MM/yyyy');
     let AAA: any[] = []
     AAA = this.currentDateTime.split("/")
-    console.log(AAA);
     let str = ""
     AAA.forEach(element => {
       str += element + "-"
@@ -696,20 +932,11 @@ export class Main3Component implements OnInit {
   ngOnInit(): void {
     this.getScreenWidth = window.innerWidth;
     this.getScreenHeight = window.innerHeight;
-
-    // this.innerHeight = window.innerHeight
-    // this.innerWidth = window.innerWidth
-    // console.log(this.innerWidth);
-    // console.log(this.innerHeight);
-    // if(this.innerWidth < 500){
-    //   console.log("mobile phone");
-
-    // }
   }
 
   async candown(array: any) {
     try {
-      this.DOWLOADS();
+      this.DOWLOADS(array);
     } catch (E) {
       console.log("catch ERROR DOWLOAD");
       this.todateURL(this.ALL1)
@@ -717,13 +944,23 @@ export class Main3Component implements OnInit {
       // console.log(this.listdataURL);
     }
   }
-  DOWLOADS() {
+  DOWLOADS(array:any) {
     const zip = new JSZip();
-    for (let index = 0; index < this.listdataURL.length; index++) {
-      const element = this.listdataURL[index];
-      const name = this.ALL1[index].name;
-      zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
-    }
+    // for (let index = 0; index < this.listdataURL.length; index++) {
+    //   const element = this.listdataURL[index];
+    //   const name = this.ALL1[index].name;
+    //   zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
+    // }
+
+    // for (let index = 0; index < this.maindatas.length; index++) {
+    //   const element = this.listdataURL[index];
+    //   const name = this.ALL1[index].name;
+    //   // zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
+    // }
+    this.maindatas.forEach(element => {
+      // console.log(element);
+      zip.file(`${element.name}.png`, element.url.substr(element.url.indexOf(',') + 1), { base64: true });
+    });
 
     zip.generateAsync({ type: "blob" }).then((blob) => {
       const url = window.URL.createObjectURL(blob);
@@ -733,14 +970,35 @@ export class Main3Component implements OnInit {
       link.click();
     });
     this.listdataURL = this.listdataURL.filter(item => item !== item);
+    this.maindatas = this.maindatas.filter(item => item !== item);
   }
 
+  logout(){
+    this.router.navigateByUrl("login")
+  }
+
+  time(){
+    if (this.istime){
+      this.istime =false
+    }else{
+      this.istime = true
+    }
+
+    if (this.istime){
+      console.log("ON");
+
+    }else{
+      console.log("OFF");
+
+    }
+  }
   trackByFn(index: any) {
     return (index);
   }
 
   todateURL(array: any) {
     this.listdataURL = this.listdataURL.filter(item => item !== item);
+    this.maindatas = this.maindatas.filter(item => item !== item);
     for (let i = 0; i < array.length; i++) {
       const element = array[i];
 
@@ -786,13 +1044,17 @@ export class Main3Component implements OnInit {
         }
         const pngs = canvas.toDataURL("image/jpg");
         this.listdataURL.push(pngs)
+        let maindata = {
+          name:element.name,
+          url: pngs
+        }
+        this.maindatas.push(maindata)
       } // loadimage
 
     }//loop 1
     this.dataService.ALL = array;
     this.isShowG = true
     console.log(this.listdataURL.length);
-
   }
 
   onImageClick(index: number) {
@@ -986,7 +1248,7 @@ export class Main3Component implements OnInit {
     // this.isShowG = false
     const lid = obj.lid;
     const index = this.ALL1.findIndex((element) => element.lid === lid);
-    console.log(lid);
+    // console.log(lid);
     if (index >= 0) {
 
       this.ALL1.splice(index, 1);
