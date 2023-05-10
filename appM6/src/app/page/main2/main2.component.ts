@@ -14,6 +14,10 @@ import { saveAs } from 'file-saver';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmedComponent } from '../confirmed/confirmed.component';
 
+interface maindata {
+  name: any;
+  url: any;
+}
 @Component({
   selector: 'app-main2',
   templateUrl: './main2.component.html',
@@ -22,7 +26,7 @@ import { ConfirmedComponent } from '../confirmed/confirmed.component';
 export class Main2Component {
   @ViewChild('canvas', { static: true }) myCanvas !: ElementRef;
   @ViewChild('Arraycanvas', { static: true }) Arraycanvas!: ElementRef[];
-
+  maindatas: maindata[] = [];
 
   // myDate = new Date();
 
@@ -629,6 +633,236 @@ export class Main2Component {
       "cid": 1
     }
   ]
+
+
+  LotolyTime = [
+    {
+      "lid": 1,
+      "name": "นิเคอิเช้าVIP",
+      "time": "09:00"
+    },
+    {
+      "lid": 2,
+      "name": "นิเคอิเช้า",
+      "time": "09:25"
+    },
+    {
+      "lid": 3,
+      "name": "จีนเช้าVIP",
+      "time": "10:00"
+    },
+    {
+      "lid": 4,
+      "name": "จีนเช้า",
+      "time": "10:20"
+    },
+    {
+      "lid": 5,
+      "name": "ลาวTV",
+      "time": "10:25"
+    },
+    {
+      "lid": 6,
+      "name": "ฮั่งเล็งเช้าVIP",
+      "time": "10:30"
+    },
+    {
+      "lid": 7,
+      "name": "ฮั่งเล็งเช้า",
+      "time": "10:55"
+    },
+    {
+      "lid": 8,
+      "name": "ฮานอยHD",
+      "time": "11:10"
+    },
+    {
+      "lid": 9,
+      "name": "ไต้หวันVIP",
+      "time": "11:30"
+    },
+    {
+      "lid": 10,
+      "name": "ไต้หวัน",
+      "time": "12:10"
+    },
+    {
+      "lid": 11,
+      "name": "ฮานอยสตาร์",
+      "time": "12:10"
+    },
+    {
+      "lid": 12,
+      "name": "เกาหลีVIP",
+      "time": "12:30"
+    },
+    {
+      "lid": 13,
+      "name": "เกาหลี",
+      "time": "12:45"
+    },
+    {
+      "lid": 14,
+      "name": "นิเคอิบ่าย",
+      "time": "12:55"
+    },
+    {
+      "lid": 15,
+      "name": "นิเคอิบ่ายVIP",
+      "time": "13:20"
+    },
+    {
+      "lid": 16,
+      "name": "ลาวHD",
+      "time": "13:40"
+    },
+    {
+      "lid": 17,
+      "name": "จีนบ่าย",
+      "time": "13:45"
+    },
+    {
+      "lid": 18,
+      "name": "ฮานอยTV",
+      "time": "14:10"
+    },
+    {
+      "lid": 19,
+      "name": "จีนบ่ายVIP",
+      "time": "14:20"
+    },
+    {
+      "lid": 20,
+      "name": "ฮั่งเส็งบ่าย",
+      "time": "14:55"
+    },
+    {
+      "lid": 21,
+      "name": "ฮั่งเส็งบ่ายVIP",
+      "time": "15:20"
+    },
+    {
+      "lid": 22,
+      "name": "ลาวสตาร์",
+      "time": "15:40"
+    },
+
+  ]
+
+  LotolyTime2 = [
+    {
+      "lid": 23,
+      "name": "ฮานอยกาชาด",
+      "time": "16:10"
+    },
+    {
+      "lid": 24,
+      "name": "ฮานอยพิเศษ",
+      "time": "17:10"
+    },
+    {
+      "lid": 25,
+      "name": "ฮานอยสามัคคี",
+      "time": "17:10"
+    },
+    {
+      "lid": 26,
+      "name": "ฮานอยปกติ",
+      "time": "18:10"
+    },
+    {
+      "lid": 27,
+      "name": "ฮานอยVIP",
+      "time": "19:10"
+    },
+    {
+      "lid": 28,
+      "name": "ฮานอยพัฒนา",
+      "time": "19:10"
+    },
+    {
+      "lid": 29,
+      "name": "ลาวสามัคคี",
+      "time": "20:15"
+    },
+    {
+      "lid": 30,
+      "name": "ลาวพัฒนา", //(จ พ ศ)
+      "time": "20:20"
+    },
+    {
+      "lid": 31,
+      "name": "ลาวอาเซียน",
+      "time": "20:55"
+    },
+    {
+      "lid": 32,
+      "name": "ลาวVIP",
+      "time": "21:15"
+    },
+    {
+      "lid": 33,
+      "name": "ลาวSTAR VIP",
+      "time": "21:45"
+    },
+    {
+      "lid": 34,
+      "name": "อังกฤษVIP",
+      "time": "21:45"
+    },
+    {
+      "lid": 35,
+      "name": "ฮานอยEXTER",
+      "time": "22:10"
+    },
+    {
+      "lid": 36,
+      "name": "รัสเซีย",
+      "time": "22:30"
+    },
+    {
+      "lid": 37,
+      "name": "เยอรมันVIP",
+      "time": "22:45"
+    },
+    {
+      "lid": 38,
+      "name": "อังกฤษ",
+      "time": "22:10"
+    },
+    {
+      "lid": 39,
+      "name": "เยอรมัน",
+      "time": "22:10"
+    },
+    {
+      "lid": 40,
+      "name": "ลาวกาซาด",
+      "time": "23:25"
+    },
+    {
+      "lid": 41,
+      "name": "รัสเซียVIP",
+      "time": "23:45"
+    },
+    {
+      "lid": 42,
+      "name": "ดาวโจนส์VIP",
+      "time": "00:10"
+    },
+    {
+      "lid": 43,
+      "name": "ดาวโจนส์STAR",
+      "time": "01:00"
+    },
+    {
+      "lid": 44,
+      "name": "ดาวโจนส์",
+      "time": "01:00"
+    },
+  ]
+
+  isdisplay!: boolean;
   A!: any;
   B!: any;
 
@@ -647,7 +881,7 @@ export class Main2Component {
   DATE!: any | GlobalEventHandlers;
   All: any[] = [];
   ALL1: any[] = [];
-
+  istime = false
   selectedImageIndex = 0;
   listdataURL: any[] = [];
   // arrayOfIndexes: any[] = []
@@ -680,7 +914,7 @@ export class Main2Component {
     this.DATE = str.substring(0, str.length - 1)
     this.imageuser = local.getData("img1");
 
-  
+
     // this.date_value = this.todayISOString.split("T", 1);
     // console.log(this.date_value);
     // let ss: any[] = []
@@ -719,11 +953,17 @@ export class Main2Component {
 
   DOWLOADS() {
     const zip = new JSZip();
-    for (let index = 0; index < this.listdataURL.length; index++) {
-      const element = this.listdataURL[index];
-      const name = this.ALL1[index].name;
-      zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
-    }
+    // for (let index = 0; index < this.listdataURL.length; index++) {
+    //   const element = this.listdataURL[index];
+    //   const name = this.ALL1[index].name;
+    //   zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
+    // }
+
+
+    this.maindatas.forEach(element => {
+      // console.log(element);
+      zip.file(`${element.name}.png`, element.url.substr(element.url.indexOf(',') + 1), { base64: true });
+    });
 
     zip.generateAsync({ type: "blob" }).then((blob) => {
       const url = window.URL.createObjectURL(blob);
@@ -733,10 +973,31 @@ export class Main2Component {
       link.click();
     });
     this.listdataURL = this.listdataURL.filter(item => item !== item);
+    this.maindatas = this.maindatas.filter(item => item !== item);
   }
 
   trackByFn(index: any) {
     return (index);
+  }
+
+  logout() {
+    this.router.navigateByUrl("login")
+  }
+
+  time() {
+    if (this.istime) {
+      this.istime = false
+    } else {
+      this.istime = true
+    }
+
+    if (this.istime) {
+      console.log("ON");
+
+    } else {
+      console.log("OFF");
+
+    }
   }
 
   Createimage(array: any) {
@@ -755,59 +1016,68 @@ export class Main2Component {
   }
 
   todateURL(array: any) {
-    this.listdataURL = this.listdataURL.filter(item => item !== item);
-    for (let i = 0; i < array.length; i++) {
-      const element = array[i];
+    if (array.length > 0) {
+      this.listdataURL = this.listdataURL.filter(item => item !== item);
+      this.maindatas = this.maindatas.filter(item => item !== item);
+      for (let i = 0; i < array.length; i++) {
+        const element = array[i];
 
-      let img = new Image()
-      img.src = "../../../assets/img/user2_1.jpg"
-      const newWidth = 500;
-      const newHeight = 500;
-      const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
-      const context = <CanvasRenderingContext2D>canvas.getContext('2d')
+        let img = new Image()
+        img.src = "../../../assets/img/user2_1.jpg"
+        const newWidth = 500;
+        const newHeight = 500;
+        const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
+        const context = <CanvasRenderingContext2D>canvas.getContext('2d')
 
-      let w = 500;
-      let h = 500;
-      img.onload = () => {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.drawImage(img, 0, 0, newWidth, newHeight)
-        this.random();
+        let w = 500;
+        let h = 500;
+        img.onload = () => {
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.drawImage(img, 0, 0, newWidth, newHeight)
+          this.random();
 
-        this.drawStrokedcenter(context, element.name, (w / 2) + 10, 370, "32px Chonburi", "#FFD51E", "black", 5)
-        this.drawStroked(context, this.currentDateTime, w - 80, 50, "12px Chonburi", "white", "", 1)
-        this.drawStroked(context, this.A, ((w / 2) - 100), 160, "60px Chonburi", "white", "black", 2)
-        this.drawStroked(context, this.B, ((w / 2) + 105), 160, "60px Chonburi", "white", "black", 2)
+          this.drawStrokedcenter(context, element.name, (w / 2) + 10, 370, "32px Chonburi", "#FFD51E", "black", 5)
+          this.drawStroked(context, this.currentDateTime, w - 80, 50, "12px Chonburi", "white", "", 1)
+          this.drawStroked(context, this.A, ((w / 2) - 100), 160, "60px Chonburi", "white", "black", 2)
+          this.drawStroked(context, this.B, ((w / 2) + 105), 160, "60px Chonburi", "white", "black", 2)
 
-        this.A1.forEach((element, index) => {
-          // context.fillText(element, (80 * index) + 155, 250);
-          this.drawStroked(context, element, (60 * index) + 170, 230, "28px Chonburi", "white", "black", 1)
-        });
+          this.A1.forEach((element, index) => {
+            // context.fillText(element, (80 * index) + 155, 250);
+            this.drawStroked(context, element, (60 * index) + 170, 230, "28px Chonburi", "white", "black", 1)
+          });
 
-        this.B1.forEach((element, index) => {
-          this.drawStroked(context, element, (60 * index) + 170, 280, "28px Chonburi", "white", "black", 1)
-        });
+          this.B1.forEach((element, index) => {
+            this.drawStroked(context, element, (60 * index) + 170, 280, "28px Chonburi", "white", "black", 1)
+          });
 
-        this.C.forEach((element, index) => {
-          this.drawStroked(context, element, (60 * index) + 200, 325, "20px Chonburi", "white", "black", 1)
-        });
+          this.C.forEach((element, index) => {
+            this.drawStroked(context, element, (60 * index) + 200, 325, "20px Chonburi", "white", "black", 1)
+          });
 
-        const png = canvas.toDataURL("image/jpg");
+          const png = canvas.toDataURL("image/jpg");
 
-        if (png.length >= 450000 && png.length <= 470000) {
-          console.log("GOOD  " + element.name + "\t" + png.length);
-        } else {
-          console.log("ERROR  " + element.name + "\t" + png.length);
-          // this.gettoURL(array);
-        }
-        const pngs = canvas.toDataURL("image/jpg");
-        this.listdataURL.push(pngs)
-      } // loadimage
+          if (png.length >= 450000 && png.length <= 470000) {
+            console.log("GOOD  " + element.name + "\t" + png.length);
+          } else {
+            console.log("ERROR  " + element.name + "\t" + png.length);
+            // this.gettoURL(array);
+          }
+          const pngs = canvas.toDataURL("image/jpg");
+          // this.listdataURL.push(pngs)
+          let maindata = {
+            name: element.name,
+            url: pngs
+          }
+          this.maindatas.push(maindata)
+        } // loadimage
 
-    }//loop 1
-    this.dataService.ALL = array;
-    this.isShowG = true
-    console.log(this.listdataURL.length);
-
+      }//loop 1
+      this.dataService.ALL = array;
+      this.isShowG = true
+      console.log(this.listdataURL.length);
+    } else {
+      alert("กรุณาเลือก Check box")
+    }
   }
 
   onImageClick(index: number) {

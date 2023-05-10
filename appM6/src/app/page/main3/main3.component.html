@@ -98,12 +98,12 @@ box-shadow:  5px 5px 9px #d3d3d3,
 
         <div class="row" *ngIf="istime">
           <div class="col-sm">
-            <p style="text-align: center;">รายวัน</p>
+            <p style="text-align: center;">TIME A</p>
             <section class="example-section" *ngFor="let data of LotolyTime"
               style="margin: 0px;font-family:K2D, sans-serif;">
               <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
                 [checked]="isSelected">
-                <div class="row" style="display: flex;flex-direction: row;width: 350px;">
+                <div class="row" style="display: flex;flex-direction: row;width: 350px;justify-content: center;justify-items: center;">
                   <p class="col-8" style="font-family: K2D;margin: 0px;">{{data.name}}</p>
                   <p class="col-4" style="font-family: K2D;margin: 0px;">{{data.time}}</p>
                 </div>
@@ -111,7 +111,7 @@ box-shadow:  5px 5px 9px #d3d3d3,
             </section>
           </div>
               <div class="col-sm">
-                <p style="text-align: center;">รายวัน</p>
+                <p style="text-align: center;">TIME B</p>
                 <section class="example-section" *ngFor="let data of LotolyTime2" style="margin: 0px;font-family:K2D, sans-serif;">
                   <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
                     [checked]="isSelected">

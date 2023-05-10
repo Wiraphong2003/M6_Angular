@@ -1,101 +1,245 @@
-<div class=".container-sm" id="container">
-  <div class="row" style="margin-top: 50px;margin-left: 10px;">
-    <div class="col-sm">
-      <h1 style=" font-family: Superspace;">วันที่ {{currentDateTime}}</h1>
-      <div style="display: flex;justify-content: center">
-        <div *ngIf="!isShowG">
-          <img id="imageQ" src={{imageuser}} alt="" width="500px" height="500px">
+<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<!-- <div class="container text-center mt-5">
+  <p>Window width: <strong>{{ getScreenWidth }}</strong></p>
+  <p>Window height: <strong>{{ getScreenHeight }}</strong></p>
+</div> -->
+<div style="background-color: rgb(255, 255, 255);padding: 50px;">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-sm">
+        <div style="display: flex;flex-direction: row;justify-content:space-between">
+          <div>
+            <h1 style=" font-family: Superspace;">วันที่ {{currentDateTime}}</h1>
+          </div>
+          <div>
+            <button class="button type1" (click)="logout()">
+              <span class="btn-txt">LOGOUT</span>
+            </button>
+          </div>
         </div>
 
-        <div class="slider" style="width: 500px;height: 500px;" *ngIf="isShowG">
-          <canvas *ngFor="let a of ALL1;index as i; trackBy:trackByFn" attr.id="canvas-{{i}}" width="500px" height="500px"
-            (click)="onImageClick(i)">
-          </canvas>
-        </div>
+        <div style="display: flex;justify-content: center;">
+          <div *ngIf="!isShowG">
+            <img id="imageQ" src={{imageuser}} alt="" width="500px" height="500px" class="res">
+          </div>
 
-        <!-- <div style="width: 500px;height: 500px;" *ngIf="isShowG">
+          <div class="slider" style="width: 100%;;max-width:500px;height: auto;" *ngIf="isShowG">
+            <canvas *ngFor="let a of ALL1;index as i; trackBy:trackByFn" attr.id="canvas-{{i}}" width="500px"
+              height="500px" (click)="onImageClick(i)">
+            </canvas>
+          </div>
+
+          <!-- <div style="width: 500px;height: 500px;" *ngIf="isShowG">
           <mdb-carousel [animation]="'slide'">
             <mdb-carousel-item *ngFor="let a of ALL1;index as i; trackBy:trackByFn">
               <canvas attr.id="canvas-{{i}}" width="500" height="500"></canvas>
             </mdb-carousel-item>
           </mdb-carousel>
         </div> -->
+        </div>
       </div>
 
-      <div style="padding: 10px;width: 100%;">
-        <hr>
-        <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
-          <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkALL()">
-            <p style="font-family: K2D;margin: 0px;">Select All</p>
-          </mat-checkbox>
+      <div style="border-radius: 34px;
+background: linear-gradient(145deg, #cacaca, #f0f0f0);
+box-shadow:  5px 5px 9px #d3d3d3,
+             -5px -5px 9px #ededed;;padding: 50px;">
 
-        </section>
-        <br>
+        <div class="row" style="display: flex;">
+          <div class="col" style="display: flex;justify-content: center;">
+            <button id="btn" (click)="todateURL(ALL1)">
+              Create Image
+            </button>
+          </div>
+          <div class="col" style="display: flex;justify-content: center;">
+            <button id="btn" (click)="candown(ALL1)">
+              Download
+            </button>
+          </div>
+          <div class="col"
+            style="display: flex;justify-content: center;margin-top: 10px;flex-direction:column-reverse;">
+            <!-- <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
+              <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkALL()">
+                <p style="font-family: K2D;margin: 0px;">Select All</p>
+              </mat-checkbox>
+            </section> -->
+            <div style="display: flex;justify-content: center;justify-items: center;">
+              <label class="container" style="display: flex;justify-content: center;justify-items: center;">
+                <div style="margin-right: 10px;">
+                  <input type="checkbox" (change)="checkALL()">
+                  <div class="checkmark"></div>
+                </div>
+                <div>
+                  <p style="font-family: K2D;margin: 0px;">Select All</p>
+                </div>
+              </label>
+            </div>
+
+            <br>
+            <div style="display: flex;justify-content: center;justify-items: center;">
+              <div class="customCheckBoxHolder">
+                <input type="checkbox" id="cCB1" class="customCheckBoxInput" (change)="time()">
+                <label for="cCB1" class="customCheckBoxWrapper">
+                  <div class="customCheckBox">
+                    <div class="inner">Time</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+          <div style="padding: 10px;"></div>
+          <hr>
+        </div>
+
+        <div class="row" *ngIf="istime">
+          <div class="col-sm">
+            <p style="text-align: center;">TIME A</p>
+            <section class="example-section" *ngFor="let data of LotolyTime"
+              style="margin: 0px;font-family:K2D, sans-serif;">
+              <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                [checked]="isSelected">
+                <div class="row"
+                  style="display: flex;flex-direction: row;width: 350px;justify-content: center;justify-items: center;">
+                  <p class="col-8" style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+                  <p class="col-4" style="font-family: K2D;margin: 0px;">{{data.time}}</p>
+                </div>
+              </mat-checkbox>
+            </section>
+          </div>
+          <div class="col-sm">
+            <p style="text-align: center;">TIME B</p>
+            <section class="example-section" *ngFor="let data of LotolyTime2"
+              style="margin: 0px;font-family:K2D, sans-serif;">
+              <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                [checked]="isSelected">
+                <div class="row" style="display: flex;flex-direction: row;width: 350px;">
+                  <p class="col-8" style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+                  <p class="col-4" style="font-family: K2D;margin: 0px;">{{data.time}}</p>
+                </div>
+              </mat-checkbox>
+            </section>
+          </div>
+        </div>
+
+
+        <div class="col-sm" style="display: contents;min-width: 300px;" *ngIf="!isdisplay && !istime">
+          <div class="row">
+            <div class="col-sm">
+              <p style="text-align: center;">รายวัน</p>
+              <section class="example-section" *ngFor="let data of t1" style="margin: 0px;font-family:K2D, sans-serif;">
+                <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                  [checked]="isSelected">
+                  <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+                </mat-checkbox>
+              </section>
+            </div>
+
+            <div class="col-sm">
+              <p style="text-align: center;">หุ้น</p>
+              <section class="example-section" *ngFor="let data of t2" style="margin: 0px;font-family:K2D, sans-serif;">
+                <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                  [checked]="isSelected">
+                  <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+                </mat-checkbox>
+              </section>
+            </div>
+
+            <div class="col-sm">
+              <p style="text-align: center;">VIP</p>
+              <section class="example-section" *ngFor="let data of t3" style="margin: 0px;font-family:K2D, sans-serif;">
+                <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                  [checked]="isSelected">
+                  <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+                </mat-checkbox>
+              </section>
+            </div>
+            <div class="col-sm">
+              <p style="text-align: center;">ต่างประเทศ</p>
+              <section class="example-section" *ngFor="let data of t4" style="margin: 0px;font-family:K2D, sans-serif;">
+                <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                  [checked]="isSelected">
+                  <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+                </mat-checkbox>
+              </section>
+            </div>
+            <div class="col-sm">
+              <p style="text-align: center;">รัฐบาล</p>
+              <section class="example-section" *ngFor="let data of t5 let i = index"
+                style="margin: 0px;font-family:K2D, sans-serif;">
+                <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                  [checked]="isSelected">
+                  <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+                </mat-checkbox>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- {{listdataURL|json}} -->
+    <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport" *ngIf="isdisplay"
+      style="width: 100%;height:400px;">
+      <!-- <div *cdkVirtualFor="let item of t1" class="example-item">{{item}}</div> -->
+
+      <div class="col-sm">
         <div class="row" style="padding: 10px;">
-          <button type="button" (click)="todateURL(ALL1)" class="btn btn-success"
-            style="margin-top:0px;width: 100%;">Create
-            Image</button>
+          <div class="col-sm" style="margin-top: 20px;">
+            <p style="text-align: center;font-size:24px;">รายวัน</p>
+            <section class="example-section" *ngFor="let data of t1" style="margin: 0px;font-family:K2D, sans-serif;">
+              <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                [checked]="isSelected">
+                <p style="font-family: K2D;margin: 0px;font-size: 20px;">{{data.name}}</p>
+              </mat-checkbox>
+            </section>
+          </div>
 
-          <button type="button" class="btn btn-outline-primary" style="margin-top: 0px;width: 100%;margin-top: 10px;"
-            id="download" (click)="candown(ALL1)">
-            Dowload
-          </button>
+          <div class="col-sm" style="margin-top: 20px;">
+            <p style="text-align: center;font-size:24px;">หุ้น</p>
+            <section class="example-section" *ngFor="let data of t2" style="margin: 0px;font-family:K2D, sans-serif;">
+              <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                [checked]="isSelected">
+                <p style="font-family: K2D;margin: 0px;font-size:20px;">{{data.name}}</p>
+              </mat-checkbox>
+            </section>
+          </div>
+
+          <div class="col-sm" style="margin-top: 20px;">
+            <p style="text-align: center;font-size:24px;">VIP</p>
+            <section class="example-section" *ngFor="let data of t3" style="margin: 0px;font-family:K2D, sans-serif;">
+              <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                [checked]="isSelected">
+                <p style="font-family: K2D;margin: 0px;font-size:20px;">{{data.name}}</p>
+              </mat-checkbox>
+            </section>
+          </div>
+
+          <div class="col-sm" style="margin-top: 20px;">
+            <p style="text-align: center;font-size:24px;">ต่างประเทศ</p>
+            <section class="example-section" *ngFor="let data of t4" style="margin: 0px;font-family:K2D, sans-serif;">
+              <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                [checked]="isSelected">
+                <p style="font-family: K2D;margin: 0px;font-size:20px;">{{data.name}}</p>
+              </mat-checkbox>
+            </section>
+          </div>
+
+          <div class="col-sm" style="margin-top: 20px;">
+            <p style="text-align: center;font-size:24px;">รัฐบาล</p>
+            <section class="example-section" *ngFor="let data of t5 let i = index"
+              style="margin: 0px;font-family:K2D, sans-serif;">
+              <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                [checked]="isSelected">
+                <p style="font-family: K2D;margin: 0px;font-size:20px;">{{data.name}}</p>
+              </mat-checkbox>
+            </section>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-sm" style="display: contents;">
-      <div class="row">
-        <div class="col-sm">
-          <p style="text-align: center;">รายวัน</p>
-          <section class="example-section" *ngFor="let data of t1" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
-              [checked]="isSelected">
-              <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
-            </mat-checkbox>
-          </section>
-        </div>
-
-        <div class="col-sm">
-          <p style="text-align: center;">หุ้น</p>
-          <section class="example-section" *ngFor="let data of t2" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
-              [checked]="isSelected">
-              <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
-            </mat-checkbox>
-          </section>
-        </div>
-
-        <div class="col-sm">
-          <p style="text-align: center;">VIP</p>
-          <section class="example-section" *ngFor="let data of t3" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
-              [checked]="isSelected">
-              <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
-            </mat-checkbox>
-          </section>
-        </div>
-        <div class="col-sm">
-          <p style="text-align: center;">ต่างประเทศ</p>
-          <section class="example-section" *ngFor="let data of t4" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
-              [checked]="isSelected">
-              <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
-            </mat-checkbox>
-          </section>
-        </div>
-        <div class="col-sm">
-          <p style="text-align: center;">รัฐบาล</p>
-          <section class="example-section" *ngFor="let data of t5 let i = index"
-            style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
-              [checked]="isSelected">
-              <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
-            </mat-checkbox>
-          </section>
-        </div>
-      </div>
-    </div>
+    </cdk-virtual-scroll-viewport>
   </div>
-  <!-- {{listdataURL|json}} -->
 </div>
