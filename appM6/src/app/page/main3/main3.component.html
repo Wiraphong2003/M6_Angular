@@ -150,7 +150,7 @@ box-shadow:  5px 5px 9px #d3d3d3,
             <div class="col-sm">
               <p style="text-align: center;">VIP</p>
               <section class="example-section" *ngFor="let data of t3" style="margin: 0px;font-family:K2D, sans-serif;">
-                <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;display: flex;" (change)="checkbox(data)"
                   [checked]="isSelected">
                   <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
                 </mat-checkbox>
@@ -159,7 +159,7 @@ box-shadow:  5px 5px 9px #d3d3d3,
             <div class="col-sm">
               <p style="text-align: center;">ต่างประเทศ</p>
               <section class="example-section" *ngFor="let data of t4" style="margin: 0px;font-family:K2D, sans-serif;">
-                <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+                <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;display: flex;" (change)="checkbox(data)"
                   [checked]="isSelected">
                   <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
                 </mat-checkbox>

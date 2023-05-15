@@ -998,7 +998,7 @@ export class Main3Component implements OnInit {
   }
 
   todateURL(array: any) {
-    this.listdataURL = this.listdataURL.filter(item => item !== item);
+    // this.listdataURL = this.listdataURL.filter(item => item !== item);
     this.maindatas = this.maindatas.filter(item => item !== item);
     for (let i = 0; i < array.length; i++) {
       const element = array[i];
@@ -1009,7 +1009,7 @@ export class Main3Component implements OnInit {
       const newHeight = 500;
       const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
       const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-
+      
       let w = 500;
       let h = 500;
       img.onload = () => {
