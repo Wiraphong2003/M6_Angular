@@ -214,9 +214,9 @@
 
 
 <div *ngIf="isdisplay">
-  <div style="background-color: #d3d3d3;padding: 3px;display:
-    flex;justify-content: space-between;">
-    <h1 style=" font-family: Superspace;">วันที่
+  <div style="padding: 3px;display:
+    flex;justify-content: space-between;margin-top: 10px;">
+    <h1 style=" font-family: Superspace;margin-top: 10px;">วันที่
       {{currentDateTime}}
     </h1>
     <button class="button type1" (click)="logout()">
@@ -225,7 +225,7 @@
   </div>
 
 
-  <section>
+  <section style="margin-top: 10px;">
     <div style="display: flex;justify-content: center;">
       <div *ngIf="!isShowG">
         <img id="imageQ" src={{imageuser}} alt="" width="500px"
