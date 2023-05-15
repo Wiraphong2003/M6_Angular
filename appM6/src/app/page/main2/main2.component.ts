@@ -902,6 +902,7 @@ export class Main2Component {
     public dialog: MatDialog,
     public date: DatePipe
   ) {
+    this.isdisplay = dataService.isdispaly;
     this.currentDateTime = this.date.transform((new Date), 'dd/MM/yyyy');
     let AAA: any[] = []
     AAA = this.currentDateTime.split("/")
