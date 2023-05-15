@@ -1023,7 +1023,7 @@ export class Main2Component {
         const element = array[i];
 
         let img = new Image()
-        img.src = "../../../assets/img/user2_1.jpg"
+        img.src = "../../../assets/img/user2_2.jpg"
         const newWidth = 500;
         const newHeight = 500;
         const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
@@ -1036,22 +1036,22 @@ export class Main2Component {
           context.drawImage(img, 0, 0, newWidth, newHeight)
           this.random();
 
-          this.drawStrokedcenter(context, element.name, (w / 2) + 10, 370, "32px Chonburi", "#FFD51E", "black", 5)
-          this.drawStroked(context, this.currentDateTime, w - 80, 50, "12px Chonburi", "white", "", 1)
-          this.drawStroked(context, this.A, ((w / 2) - 100), 160, "60px Chonburi", "white", "black", 2)
-          this.drawStroked(context, this.B, ((w / 2) + 105), 160, "60px Chonburi", "white", "black", 2)
+          this.drawStrokedcenter(context, element.name, (w / 2) + 10, 400, '32px Chonburi', "#FFD51E", "black", 5)
+          this.drawStrokedcenter(context, this.currentDateTime,w/2, 120, "18px Chonburi", "white", "", 1)
+          this.drawStroked(context, this.A, ((w / 2) - 100), 190, "60px Chonburi", "white", "black", 2)
+          this.drawStroked(context, this.B, ((w / 2) + 105), 190, "60px Chonburi", "white", "black", 2)
 
           this.A1.forEach((element, index) => {
             // context.fillText(element, (80 * index) + 155, 250);
-            this.drawStroked(context, element, (60 * index) + 170, 230, "28px Chonburi", "white", "black", 1)
+            this.drawStroked(context, element, (60 * index) + 170, 240, "28px Chonburi", "white", "black", 1)
           });
 
           this.B1.forEach((element, index) => {
-            this.drawStroked(context, element, (60 * index) + 170, 280, "28px Chonburi", "white", "black", 1)
+            this.drawStroked(context, element, (60 * index) + 170, 300, "28px Chonburi", "white", "black", 1)
           });
 
           this.C.forEach((element, index) => {
-            this.drawStroked(context, element, (60 * index) + 200, 325, "20px Chonburi", "white", "black", 1)
+            this.drawStroked(context, element, (60 * index) + 200, 350, "20px Chonburi", "white", "black", 1)
           });
 
           const png = canvas.toDataURL("image/jpg");
@@ -1091,7 +1091,7 @@ export class Main2Component {
 
       let img = new Image()
       // img.src = "../../../assets/img/user1_1.jpg"
-      img.src = "../../../assets/img/user2_1.jpg"
+      img.src = "../../../assets/img/user2_2.jpg"
       // img.src = this.local.getData("img1") + "";
       const newWidth = 500;
       const newHeight = (img.height / img.width) * newWidth;
