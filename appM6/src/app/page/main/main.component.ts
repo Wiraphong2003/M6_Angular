@@ -51,6 +51,8 @@ export class MainComponent implements OnInit,AfterViewInit {
   isShowG = false;
   isSelected = false;
   checked = false;
+  istime = false
+  isdisplay!: boolean;
   date_value!: any;
   todayNumber: number = Date.now();
   todayDate: Date = new Date();
@@ -69,6 +71,7 @@ export class MainComponent implements OnInit,AfterViewInit {
     { src: '' + this.local.getData("img1"), alt: 'Image 2' },
     { src: '' + this.local.getData("img1"), alt: 'Image 3' },
   ];
+
   arr: any[] = [];
   listdataURL: any[] = [];
   // arrayOfIndexes: any[] = []
@@ -78,6 +81,234 @@ export class MainComponent implements OnInit,AfterViewInit {
   animal!: string;
   name!: string;
   currentDateTime:any;
+
+  LotolyTime = [
+    {
+      "lid": 1,
+      "name": "      นิเคอิเช้าVIP",
+      "time": "09:00"
+    },
+    {
+      "lid": 2,
+      "name": "      นิเคอิเช้า",
+      "time": "09:25"
+    },
+    {
+      "lid": 3,
+      "name": "    จีนเช้าVIP",
+      "time": "10:00"
+    },
+    {
+      "lid": 4,
+      "name": "    จีนเช้า",
+      "time": "10:20"
+    },
+    {
+      "lid": 5,
+      "name": "ลาวTV",
+      "time": "10:25"
+    },
+    {
+      "lid": 6,
+      "name": "         ฮั่งเส็งเช้าVIP",
+      "time": "10:30"
+    },
+    {
+      "lid": 7,
+      "name": "         ฮั่งเส็งเช้า",
+      "time": "10:55"
+    },
+    {
+      "lid": 8,
+      "name": "ฮานอยHD ",
+      "time": "11:10"
+    },
+    {
+      "lid": 9,
+      "name": "    ไต้หวันVIP",
+      "time": "11:30"
+    },
+    {
+      "lid": 10,
+      "name": "    ไต้หวัน",
+      "time": "12:10"
+    },
+    {
+      "lid": 11,
+      "name": "ฮานอยสตาร์",
+      "time": "12:10"
+    },
+    {
+      "lid": 12,
+      "name": "  เกาหลีVIP",
+      "time": "12:30"
+    },
+    {
+      "lid": 13,
+      "name": " เกาหลี",
+      "time": "12:45"
+    },
+    {
+      "lid": 14,
+      "name": "     นิเคอิบ่าย",
+      "time": "12:55"
+    },
+    {
+      "lid": 15,
+      "name": "     นิเคอิบ่ายVIP",
+      "time": "13:20"
+    },
+    {
+      "lid": 16,
+      "name": "ลาวHD",
+      "time": "13:40"
+    },
+    {
+      "lid": 17,
+      "name": "   จีนบ่าย",
+      "time": "13:45"
+    },
+    {
+      "lid": 18,
+      "name": "ฮานอยTV ",
+      "time": "14:10"
+    },
+    {
+      "lid": 19,
+      "name": "   จีนบ่ายVIP",
+      "time": "14:20"
+    },
+    {
+      "lid": 20,
+      "name": "        ฮั่งเส็งบ่าย",
+      "time": "14:55"
+    },
+    {
+      "lid": 21,
+      "name": "       ฮั่งเส็งบ่ายVIP",
+      "time": "15:20"
+    },
+    {
+      "lid": 22,
+      "name": "ลาวสตาร์",
+      "time": "15:40"
+    },
+
+  ]
+
+  LotolyTime2 = [
+    {
+      "lid": 23,
+      "name": " ฮานอยกาชาด",
+      "time": "16:10"
+    },
+    {
+      "lid": 24,
+      "name": "ฮานอยพิเศษ",
+      "time": "17:10"
+    },
+    {
+      "lid": 25,
+      "name": " ฮานอยสามัคคี",
+      "time": "17:10"
+    },
+    {
+      "lid": 26,
+      "name": "ฮานอยปกติ",
+      "time": "18:10"
+    },
+    {
+      "lid": 27,
+      "name": "ฮานอยVIP",
+      "time": "19:10"
+    },
+    {
+      "lid": 28,
+      "name": " ฮานอยพัฒนา ",
+      "time": "19:10"
+    },
+    {
+      "lid": 29,
+      "name": " ลาวสามัคคี",
+      "time": "20:15"
+    },
+    {
+      "lid": 30,
+      "name": "ลาวพัฒนา", //(จ พ ศ)
+      "time": "20:20"
+    },
+    {
+      "lid": 31,
+      "name": " ลาวอาเซียน",
+      "time": "20:55"
+    },
+    {
+      "lid": 32,
+      "name": "ลาวVIP",
+      "time": "21:15"
+    },
+    {
+      "lid": 33,
+      "name": "ลาวSTAR VIP",
+      "time": "21:45"
+    },
+    {
+      "lid": 34,
+      "name": "อังกฤษVIP",
+      "time": "21:45"
+    },
+    {
+      "lid": 35,
+      "name": "ฮานอยEXTER",
+      "time": "22:10"
+    },
+    {
+      "lid": 36,
+      "name": "    รัสเซีย",
+      "time": "22:30"
+    },
+    {
+      "lid": 37,
+      "name": "เยอรมันVIP",
+      "time": "22:45"
+    },
+    {
+      "lid": 38,
+      "name": " อังกฤษ",
+      "time": "22:10"
+    },
+    {
+      "lid": 39,
+      "name": "  เยอรมัน",
+      "time": "22:10"
+    },
+    {
+      "lid": 40,
+      "name": "ลาวกาซาด ",
+      "time": "23:25"
+    },
+    {
+      "lid": 41,
+      "name": "รัสเซียVIP",
+      "time": "23:45"
+    },
+    {
+      "lid": 42,
+      "name": " ดาวโจนส์VIP",
+      "time": "00:10"
+    },
+    {
+      "lid": 43,
+      "name": "ดาวโจนส์STAR",
+      "time": "01:00"
+    },
+    {
+      "lid": 44,
+      "name": "ดาวโจนส์",
+      "time": "01:00"
+    },
+  ]
+
   constructor(
     private dataService: DataserveiceService,
     private http: HttpClient,
@@ -87,6 +318,7 @@ export class MainComponent implements OnInit,AfterViewInit {
     public dialog: MatDialog,
     public date : DatePipe
   ) {
+    this.isdisplay = dataService.isdispaly;
     this.currentDateTime = this.date.transform((new Date), 'dd/MM/yyyy');
     let AAA:any[] = []
     AAA = this.currentDateTime.split("/")
@@ -302,15 +534,15 @@ export class MainComponent implements OnInit,AfterViewInit {
         const png = canvas.toDataURL("image/jpg");
         // console.log(png);
         // this.checktodata(png,array)
-        if (png.length >= 530000 && png.length <= 540000) {
-          // console.log("> GOOD " + png.length + "\t" + this.isbreak);
-          console.log("GOOD " + i + " " + element.name + "\t" + png.length);
-          // this.listdataURL.push(png)
-        } else {
-          console.log("ERROR " + i + " " + element.name + "\t" + png.length);
-          // this.gettoURL(array);
-          // i--
-        }
+        // if (png.length >= 530000 && png.length <= 540000) {
+        //   // console.log("> GOOD " + png.length + "\t" + this.isbreak);
+        //   console.log("GOOD " + i + " " + element.name + "\t" + png.length);
+        //   // this.listdataURL.push(png)
+        // } else {
+        //   console.log("ERROR " + i + " " + element.name + "\t" + png.length);
+        //   // this.gettoURL(array);
+        //   // i--
+        // }
         this.listdataURL.push(png)
       } // loadimage
       i++
@@ -509,6 +741,22 @@ export class MainComponent implements OnInit,AfterViewInit {
     return result
   }
 
+  time() {
+    if (this.istime) {
+      this.istime = false
+    } else {
+      this.istime = true
+    }
+
+    if (this.istime) {
+      console.log("ON");
+
+    } else {
+      console.log("OFF");
+
+    }
+  }
+
   generateArray(num1: any, num2: any): number[] {
     let arr: number[] = []
     arr = [
@@ -620,6 +868,9 @@ export class MainComponent implements OnInit,AfterViewInit {
     return (index);
   }
 
+  logout() {
+    this.router.navigateByUrl("login")
+  }
   checkbox(obj: any) {
     // this.isShowG = false
     const lid = obj.lid;
