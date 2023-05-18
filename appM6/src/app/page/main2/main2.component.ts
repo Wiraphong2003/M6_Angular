@@ -1087,7 +1087,9 @@ export class Main2Component {
   }
 
   time() {
+
     this.maindatas = this.maindatas.filter(item => item !== item);
+    this.ALL1 = this.ALL1.filter(item => item !== item);
     if (this.istime) {
       this.istime = false
     } else {
@@ -1156,12 +1158,12 @@ export class Main2Component {
 
           const png = canvas.toDataURL("image/jpg");
 
-          if (png.length >= 450000 && png.length <= 470000) {
-            console.log("GOOD  " + element.name + "\t" + png.length);
-          } else {
-            console.log("ERROR  " + element.name + "\t" + png.length);
-            // this.gettoURL(array);
-          }
+          // if (png.length >= 450000 && png.length <= 470000) {
+          //   console.log("GOOD  " + element.name + "\t" + png.length);
+          // } else {
+          //   console.log("ERROR  " + element.name + "\t" + png.length);
+          //   // this.gettoURL(array);
+          // }
           const pngs = canvas.toDataURL("image/jpg");
           // this.listdataURL.push(pngs)
           let maindata = {

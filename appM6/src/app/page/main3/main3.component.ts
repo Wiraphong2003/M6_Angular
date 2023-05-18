@@ -16,6 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
 interface maindata {
   name: any;
   url: any;
+  time: any
 }
 
 
@@ -31,122 +32,141 @@ export class Main3Component implements OnInit {
 
   areAllImagesLoaded = false;
   arr: any[] = [];
-  maindatas:maindata[] = [];
+  maindatas: maindata[] = [];
   imageuser !: any;
   t1 = [
     {
       "lid": 1,
       "name": "ลาวEXTRA",
       "type": 1,
-      "cid": null
+      "cid": null,
+      "time": "08:25"
     },
     {
       "lid": 2,
       "name": "ฮานอยอาเซียน",
       "type": 1,
-      "cid": null
+      "cid": null,
+      "time": "09:10"
     },
     {
       "lid": 3,
       "name": "ลาวTV",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "10:25"
     },
     {
       "lid": 4,
       "name": "ฮานอยHD",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "11:10"
     },
     {
       "lid": 5,
       "name": "ฮานอยสตาร์",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "12:10"
     },
     {
       "lid": 6,
       "name": "ลาวHD",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "13:40"
     },
     {
       "lid": 7,
       "name": "ฮานอยTV",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "14:10"
     },
     {
       "lid": 8,
       "name": "ลาวสตาร์",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "15:40"
     },
     {
       "lid": 9,
-      "name": "ฮานอยกาชาด",
+      "name": "ฮานอยกาชาติ",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "16:10"
     },
     {
       "lid": 10,
       "name": "ฮานอยสามัคคี",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "17:10"
     },
     {
       "lid": 11,
       "name": "ฮานอยพัฒนา",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "20:18"
     },
     {
       "lid": 12,
       "name": "ลาวสามัคคี",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "20:20"
     },
     {
       "lid": 13,
       "name": "ลาวอาเซียน",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "20:55"
     },
     {
       "lid": 14,
       "name": "ลาวสามัคคีVIP",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "21:25"
     },
     {
       "lid": 15,
       "name": "ฮานอยEXTRE",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "22:10"
     },
     {
       "lid": 16,
       "name": "ลาวสตาร์VIP",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "21:45"
     },
     {
       "lid": 17,
       "name": "ลาวกาซาด",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "23:25"
     },
     {
       "lid": 18,
       "name": "ดาวโจนส์VIP",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "00:10"
     },
     {
       "lid": 19,
       "name": "ดาวโจนส์STAR",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "01:05"
     }
   ]
 
@@ -155,85 +175,99 @@ export class Main3Component implements OnInit {
       "lid": 20,
       "name": "นิเคอิเช้า",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "09:25"
     },
     {
       "lid": 21,
       "name": "จีนเช้า",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "10:20"
     },
     {
       "lid": 22,
       "name": "ฮั่งเส็งเช้า",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "10:55"
     },
     {
       "lid": 23,
       "name": "ไต้หวัน",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "12:10"
     },
     {
       "lid": 24,
       "name": "เกาหลี",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "12:45"
     },
     {
       "lid": 25,
       "name": "นิเคอิบ่าย",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "12:55"
     },
     {
       "lid": 26,
       "name": "จีนบ่าย",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "13:45"
     },
     {
       "lid": 27,
       "name": "ฮั่งเส็งบ่าย",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "14:52"
     },
     {
       "lid": 28,
       "name": "สิงคโปร์",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "17:00"
     },
     {
       "lid": 29,
       "name": "ไทยเย็น",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "16:05"
     },
     {
       "lid": 30,
       "name": "รัสเซีย",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "22:30"
     },
     {
       "lid": 31,
       "name": "เยอรมัน",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "22:15"
     },
     {
       "lid": 32,
       "name": "อังกฤษ",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "22:15"
     },
     {
       "lid": 48,
       "name": "ดาวโจนส์ปกติ",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "02:00"
     }
   ]
 
@@ -242,49 +276,57 @@ export class Main3Component implements OnInit {
       "lid": 33,
       "name": "นิเคอิเช้าVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "09:00"
     },
     {
       "lid": 34,
       "name": "จีนเช้าVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "10:00"
     },
     {
       "lid": 35,
       "name": "ฮั่งเส็งเช้าVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "10:30"
     },
     {
       "lid": 36,
       "name": "ไต้หวันVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "11:30"
     },
     {
       "lid": 37,
       "name": "เกาหลีVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "12:30"
     },
     {
       "lid": 38,
       "name": "นิเคอิบ่ายVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "13:20"
     },
     {
       "lid": 39,
       "name": "จีนบ่ายVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "14:20"
     },
     {
       "lid": 40,
       "name": "ฮั่งเส็งบ่ายVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "15:20"
     }
   ]
 
@@ -293,25 +335,29 @@ export class Main3Component implements OnInit {
       "lid": 41,
       "name": "ฮานอยพิเศษ",
       "type": 4,
-      "cid": 1
+      "cid": 1,
+      "time": "17:12"
     },
     {
       "lid": 42,
       "name": "ฮานอยปกติ",
       "type": 4,
-      "cid": 1
+      "cid": 1,
+      "time": "18.12"
     },
     {
       "lid": 43,
       "name": "ฮานอยVIP",
       "type": 4,
-      "cid": 1
+      "cid": 1,
+      "time": "19:10"
     },
     {
       "lid": 44,
       "name": "ลาวพัฒนา",
       "type": 4,
-      "cid": 1
+      "cid": 1,
+      "time": "20:18"
     }
   ]
   t5 = [
@@ -319,324 +365,373 @@ export class Main3Component implements OnInit {
       "lid": 45,
       "name": "ไทย",
       "type": 5,
-      "cid": 1
+      "cid": 1,
+      "time": "15:00"
     },
     {
       "lid": 46,
       "name": "ออมสิน",
       "type": 5,
-      "cid": 1
+      "cid": 1,
+      "time": "13:00"
     },
     {
       "lid": 47,
       "name": "ธกส",
       "type": 5,
-      "cid": 1
+      "cid": 1,
+      "time": "10:00"
     }
   ]
   type !: any;
+
+
   Lottary = [
+
     {
       "lid": 1,
       "name": "ลาวEXTRA",
       "type": 1,
-      "cid": null
+      "cid": null,
+      "time": "08:25"
     },
     {
       "lid": 2,
       "name": "ฮานอยอาเซียน",
       "type": 1,
-      "cid": null
+      "cid": null,
+      "time": "09:10"
     },
     {
       "lid": 3,
       "name": "ลาวTV",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "10:25"
     },
     {
       "lid": 4,
       "name": "ฮานอยHD",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "11:10"
     },
     {
       "lid": 5,
       "name": "ฮานอยสตาร์",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "12:10"
     },
     {
       "lid": 6,
       "name": "ลาวHD",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "13:40"
     },
     {
       "lid": 7,
       "name": "ฮานอยTV",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "14:10"
     },
     {
       "lid": 8,
       "name": "ลาวสตาร์",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "15:40"
     },
     {
       "lid": 9,
       "name": "ฮานอยกาชาติ",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "16:10"
     },
     {
       "lid": 10,
       "name": "ฮานอยสามัคคี",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "17:10"
     },
     {
       "lid": 11,
       "name": "ฮานอยพัฒนา",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "20:18"
     },
     {
       "lid": 12,
       "name": "ลาวสามัคคี",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "20:20"
     },
     {
       "lid": 13,
       "name": "ลาวอาเซียน",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "20:55"
     },
     {
       "lid": 14,
       "name": "ลาวสามัคคีVIP",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "21:25"
     },
     {
       "lid": 15,
       "name": "ฮานอยEXTRE",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "22:10"
     },
     {
       "lid": 16,
       "name": "ลาวสตาร์VIP",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "21:45"
     },
     {
       "lid": 17,
       "name": "ลาวกาซาด",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "23:25"
     },
     {
       "lid": 18,
       "name": "ดาวโจนส์VIP",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "00:10"
     },
     {
       "lid": 19,
       "name": "ดาวโจนส์STAR",
       "type": 1,
-      "cid": 1
+      "cid": 1,
+      "time": "01:05"
     },
     {
       "lid": 20,
       "name": "นิเคอิเช้า",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "09:25"
     },
     {
       "lid": 21,
       "name": "จีนเช้า",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "10:20"
     },
     {
       "lid": 22,
       "name": "ฮั่งเส็งเช้า",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "10:55"
     },
     {
       "lid": 23,
       "name": "ไต้หวัน",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "12:10"
     },
     {
       "lid": 24,
       "name": "เกาหลี",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "12:45"
     },
     {
       "lid": 25,
       "name": "นิเคอิบ่าย",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "12:55"
     },
     {
       "lid": 26,
       "name": "จีนบ่าย",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "13:45"
     },
     {
       "lid": 27,
       "name": "ฮั่งเส็งบ่าย",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "14:52"
     },
     {
       "lid": 28,
       "name": "สิงคโปร์",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "17:00"
     },
     {
       "lid": 29,
       "name": "ไทยเย็น",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "16:05"
     },
     {
       "lid": 30,
       "name": "รัสเซีย",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "22:30"
     },
     {
       "lid": 31,
       "name": "เยอรมัน",
       "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "22:15"
     },
     {
       "lid": 32,
       "name": "อังกฤษ",
       "type": 2,
-      "cid": 1
-    },
-    {
-      "lid": 48,
-      "name": "ดาวโจนส์ปกติ",
-      "type": 2,
-      "cid": 1
+      "cid": 1,
+      "time": "22:15"
     },
     {
       "lid": 33,
-      "name": "นิเคอิเช้าVIP",
-      "type": 3,
-      "cid": 1
+      "name": "ดาวโจนส์ปกติ",
+      "type": 2,
+      "cid": 1,
+      "time": "02:00"
     },
     {
       "lid": 34,
-      "name": "จีนเช้าVIP",
+      "name": "นิเคอิเช้าVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "09:00"
     },
     {
       "lid": 35,
-      "name": "ฮั่งเส็งเช้าVIP",
+      "name": "จีนเช้าVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "10:00"
     },
     {
       "lid": 36,
-      "name": "ไต้หวันVIP",
+      "name": "ฮั่งเส็งเช้าVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "10:30"
     },
     {
       "lid": 37,
-      "name": "เกาหลีVIP",
+      "name": "ไต้หวันVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "11:30"
     },
     {
       "lid": 38,
-      "name": "นิเคอิบ่ายVIP",
+      "name": "เกาหลีVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "12:30"
     },
     {
       "lid": 39,
-      "name": "จีนบ่ายVIP",
+      "name": "นิเคอิบ่ายVIP",
       "type": 3,
-      "cid": 1
+      "cid": 1,
+      "time": "13:20"
     },
     {
       "lid": 40,
+      "name": "จีนบ่ายVIP",
+      "type": 3,
+      "cid": 1,
+      "time": "14:20"
+    },
+    {
+      "lid": 41,
       "name": "ฮั่งเส็งบ่ายVIP",
       "type": 3,
-      "cid": 1
-    },
-    {
-      "lid": 41,
-      "name": "ฮานอยพิเศษ",
-      "type": 4,
-      "cid": 1
+      "cid": 1,
+      "time": "15:20"
     },
     {
       "lid": 42,
-      "name": "ฮานอยปกติ",
-      "type": 4,
-      "cid": 1
-    },
-    {
-      "lid": 43,
-      "name": "ฮานอยVIP",
-      "type": 4,
-      "cid": 1
-    },
-    {
-      "lid": 44,
-      "name": "ลาวพัฒนา",
-      "type": 4,
-      "cid": 1
-    },
-    {
-      "lid": 41,
       "name": "ฮานอยพิเศษ",
       "type": 4,
-      "cid": 1
-    },
-    {
-      "lid": 42,
-      "name": "ฮานอยปกติ",
-      "type": 4,
-      "cid": 1
+      "cid": 1,
+      "time": "17:12"
     },
     {
       "lid": 43,
-      "name": "ฮานอยVIP",
+      "name": "ฮานอยปกติ",
       "type": 4,
-      "cid": 1
+      "cid": 1,
+      "time": "18.12"
     },
     {
       "lid": 44,
+      "name": "ฮานอยVIP",
+      "type": 4,
+      "cid": 1,
+      "time": "19:10"
+    },
+    {
+      "lid": 45,
       "name": "ลาวพัฒนา",
       "type": 4,
-      "cid": 1
+      "cid": 1,
+      "time": "20:18"
+    },
+    {
+      "lid": 46,
+      "name": "ไทย",
+      "type": 5,
+      "cid": 1,
+      "time": "15:00"
+    },
+    {
+      "lid": 47,
+      "name": "ออมสิน",
+      "type": 5,
+      "cid": 1,
+      "time": "13:00"
+    },
+    {
+      "lid": 48,
+      "name": "ธกส",
+      "type": 5,
+      "cid": 1,
+      "time": "10:00"
     }
   ]
+
 
   LotolyTime = [
     {
       "lid": 1,
       "name": "นิเคอิเช้าVIP",
-      "time":"09:00"
+      "time": "09:00"
     },
     {
       "lid": 2,
@@ -858,7 +953,6 @@ export class Main3Component implements OnInit {
       "time": "01:00"
     },
   ]
-
   A!: any;
   B!: any;
 
@@ -888,7 +982,7 @@ export class Main3Component implements OnInit {
   currentDateTime: any;
   innerWidth: any;
   innerHeight: any;
-  isdisplay!:boolean;
+  isdisplay!: boolean;
   istime = false
   items = Array.from({ length: 100000 }).map((_, i) => `Item #${i}`);
   constructor(
@@ -916,7 +1010,7 @@ export class Main3Component implements OnInit {
 
   public getScreenWidth: any;
   public getScreenHeight: any;
-  ismobile :boolean = false;
+  ismobile: boolean = false;
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
     this.getScreenWidth = window.innerWidth;
@@ -924,7 +1018,7 @@ export class Main3Component implements OnInit {
     if (this.getScreenWidth <= 550 || this.isdisplay) {
       console.log("mobile phone");
       this.ismobile = true
-    }else{
+    } else {
       this.ismobile = false
     }
   }
@@ -944,7 +1038,7 @@ export class Main3Component implements OnInit {
       // console.log(this.listdataURL);
     }
   }
-  DOWLOADS(array:any) {
+  DOWLOADS(array: any) {
     const zip = new JSZip();
     // for (let index = 0; index < this.listdataURL.length; index++) {
     //   const element = this.listdataURL[index];
@@ -957,9 +1051,14 @@ export class Main3Component implements OnInit {
     //   const name = this.ALL1[index].name;
     //   // zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
     // }
+
     this.maindatas.forEach(element => {
       // console.log(element);
-      zip.file(`${element.name}.png`, element.url.substr(element.url.indexOf(',') + 1), { base64: true });
+      let time = element.time.split(":")
+      let str = time[0] + "_" + time[1];
+      let name = str + "" + element.name
+      console.log(name);
+      zip.file(`${name}.png`, element.url.substr(element.url.indexOf(',') + 1), { base64: true });
     });
 
     zip.generateAsync({ type: "blob" }).then((blob) => {
@@ -971,23 +1070,26 @@ export class Main3Component implements OnInit {
     });
     this.listdataURL = this.listdataURL.filter(item => item !== item);
     this.maindatas = this.maindatas.filter(item => item !== item);
-  }
+    console.log(this.maindatas);
 
-  logout(){
+  }
+  logout() {
     this.router.navigateByUrl("login")
   }
 
-  time(){
-    if (this.istime){
-      this.istime =false
-    }else{
+  time() {
+
+    this.maindatas = this.maindatas.filter(item => item !== item);
+    if (this.istime) {
+      this.istime = false
+    } else {
       this.istime = true
     }
 
-    if (this.istime){
+    if (this.istime) {
       console.log("ON");
 
-    }else{
+    } else {
       console.log("OFF");
 
     }
@@ -1009,7 +1111,7 @@ export class Main3Component implements OnInit {
       const newHeight = 500;
       const canvas = <HTMLCanvasElement>document.getElementById('canvas-' + i);
       const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-      
+
       let w = 500;
       let h = 500;
       img.onload = () => {
@@ -1046,8 +1148,9 @@ export class Main3Component implements OnInit {
         const pngs = canvas.toDataURL("image/jpg");
         this.listdataURL.push(pngs)
         let maindata = {
-          name:element.name,
-          url: pngs
+          name: element.name,
+          url: pngs,
+          time: element.time
         }
         this.maindatas.push(maindata)
       } // loadimage
