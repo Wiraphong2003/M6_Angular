@@ -329,7 +329,12 @@ export class Main2Component {
       "type": 3,
       "cid": 1,
       "time": "15:20"
-    }
+    },
+    {
+      "lid": 99,
+      "name": "ลาวVIP",
+      "time": "21:15"
+    },
   ]
 
   t4 = [
@@ -725,7 +730,12 @@ export class Main2Component {
         "type": 5,
         "cid": 1,
         "time": "10:00"
-      }
+      },
+    {
+      "lid": 99,
+      "name": "ลาวVIP",
+      "time": "21:15"
+    },
   ]
 
 
