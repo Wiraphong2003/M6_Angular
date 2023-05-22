@@ -1163,7 +1163,7 @@ export class Main2Component {
           });
 
           this.C.forEach((element, index) => {
-            this.drawStroked(context, element, (70 * index) + 185, 360, "24px Chonburi", "white", "black", 1)
+            this.drawStroked(context, element, (80 * index) + 180, 360, "30px Chonburi", "white", "black", 1)
           });
 
           const png = canvas.toDataURL("image/jpg");
