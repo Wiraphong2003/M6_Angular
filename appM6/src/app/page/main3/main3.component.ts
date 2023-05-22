@@ -331,7 +331,7 @@ export class Main3Component implements OnInit {
     {
       "lid": 99,
       "name": "ลาวVIP",
-      "time": "21:15"
+      "time": "21:20"
     },
   ]
 
@@ -732,7 +732,7 @@ export class Main3Component implements OnInit {
     {
       "lid": 99,
       "name": "ลาวVIP",
-      "time": "21:15"
+      "time": "21:20"
     },
   ]
 
@@ -900,7 +900,7 @@ export class Main3Component implements OnInit {
     {
       "lid": 32,
       "name": "ลาวVIP",
-      "time": "21:15"
+      "time": "21:20"
     },
     {
       "lid": 33,
@@ -963,6 +963,8 @@ export class Main3Component implements OnInit {
       "time": "01:00"
     },
   ]
+
+
   A!: any;
   B!: any;
 

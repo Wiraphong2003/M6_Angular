@@ -333,7 +333,7 @@ export class Main2Component {
     {
       "lid": 99,
       "name": "ลาวVIP",
-      "time": "21:15"
+      "time": "21:20"
     },
   ]
 
@@ -734,7 +734,7 @@ export class Main2Component {
     {
       "lid": 99,
       "name": "ลาวVIP",
-      "time": "21:15"
+      "time": "21:20"
     },
   ]
 
@@ -902,7 +902,7 @@ export class Main2Component {
     {
       "lid": 32,
       "name": "ลาวVIP",
-      "time": "21:15"
+      "time": "21:20"
     },
     {
       "lid": 33,
@@ -1148,22 +1148,22 @@ export class Main2Component {
           context.drawImage(img, 0, 0, newWidth, newHeight)
           this.random();
 
-          this.drawStrokedcenter(context, element.name, (w / 2) + 10, 400, '32px Chonburi', "#FFD51E", "black", 5)
+          this.drawStrokedcenter(context, element.name, (w / 2) + 5, 410, '32px Chonburi', "#FFD51E", "black", 5)
           this.drawStrokedcenter(context, this.currentDateTime,w/2, 120, "18px Chonburi", "white", "", 1)
-          this.drawStroked(context, this.A, ((w / 2) - 100), 190, "60px Chonburi", "white", "black", 2)
-          this.drawStroked(context, this.B, ((w / 2) + 105), 190, "60px Chonburi", "white", "black", 2)
+          this.drawStroked(context, this.A, ((w / 2) - 100), 190, "80px Chonburi", "white", "black", 2)
+          this.drawStroked(context, this.B, ((w / 2) + 105), 190, "80px Chonburi", "white", "black", 2)
 
           this.A1.forEach((element, index) => {
             // context.fillText(element, (80 * index) + 155, 250);
-            this.drawStroked(context, element, (60 * index) + 170, 240, "28px Chonburi", "white", "black", 1)
+            this.drawStroked(context, element, (70 * index) + 150, 250, "35px Chonburi", "white", "black", 1)
           });
 
           this.B1.forEach((element, index) => {
-            this.drawStroked(context, element, (60 * index) + 170, 300, "28px Chonburi", "white", "black", 1)
+            this.drawStroked(context, element, (70 * index) + 150, 310, "35px Chonburi", "white", "black", 1)
           });
 
           this.C.forEach((element, index) => {
-            this.drawStroked(context, element, (60 * index) + 200, 350, "20px Chonburi", "white", "black", 1)
+            this.drawStroked(context, element, (70 * index) + 185, 360, "24px Chonburi", "white", "black", 1)
           });
 
           const png = canvas.toDataURL("image/jpg");
