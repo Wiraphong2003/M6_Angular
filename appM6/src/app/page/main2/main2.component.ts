@@ -1198,7 +1198,6 @@ export class Main2Component {
     this.selectedImageIndex = index;
   }
 
-
   getRandomNumber(min: number, max: number, previous?: number): number {
     let num = Math.floor(Math.random() * (max - min + 1) + min);
     while (num === previous) {
