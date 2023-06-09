@@ -19,7 +19,7 @@
 
           <div style="display: flex;justify-content: center;">
             <div *ngIf="!isShowG">
-              <img id="imageQ" src={{imageuser}} alt="" width="500px"
+              <img id="imageQ" src={{imageuser}} alt width="500px"
                 height="500px" class="res">
             </div>
 
@@ -79,10 +79,8 @@
                 </label>
               </div>
 
-
-
-              <br>
-              <div style="display: flex;justify-content: center;justify-items:
+              <!-- <br> -->
+              <!-- <div style="display: flex;justify-content: center;justify-items:
                 center;">
                 <div class="customCheckBoxHolder">
                   <input type="checkbox" id="cCB1" class="customCheckBoxInput"
@@ -93,11 +91,7 @@
                     </div>
                   </label>
                 </div>
-              </div>
-
-
-
-
+              </div> -->
 
             </div>
 
@@ -105,7 +99,7 @@
             <hr>
           </div>
 
-          <div class="row" *ngIf="istime">
+          <div class="row">
             <div class="col-sm">
               <p style="text-align: center;">TIME A</p>
               <section class="example-section" *ngFor="let data of LotolyTime"
@@ -139,7 +133,7 @@
             </div>
           </div>
 
-
+          <!--
           <div class="col-sm" style="display: contents;min-width: 300px;"
             *ngIf="!isdisplay && !istime">
             <div class="row">
@@ -204,15 +198,14 @@
                 </section>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- {{listdataURL|json}} -->
     </div>
   </div>
 </div>
-
-
+{{isShowG}}
 <div *ngIf="isdisplay">
   <div style="padding: 3px;display:
     flex;justify-content: space-between;margin-top: 10px;">
@@ -224,11 +217,10 @@
     </button>
   </div>
 
-
   <section style="margin-top: 10px;">
     <div style="display: flex;justify-content: center;">
       <div *ngIf="!isShowG">
-        <img id="imageQ" src={{imageuser}} alt="" width="500px"
+        <img id="imageQ" src={{imageuser}} alt width="500px"
           height="500px" class="res">
       </div>
 
@@ -269,12 +261,12 @@
               <div class="checkmark"></div>
             </div>
             <div>
-              <p style="font-family: K2D;margin: 0px;">Select All</p>
+              <p style="font-family: K2D;margin: 0px;">Select AllS</p>
             </div>
           </label>
         </div>
 
-        <div class="col-6" style="display: flex;justify-content:
+        <!-- <div class="col-6" style="display: flex;justify-content:
           center;justify-items: center;">
           <div class="customCheckBoxHolder">
             <input type="checkbox" id="cCB1" class="customCheckBoxInput"
@@ -285,7 +277,7 @@
               </div>
             </label>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -295,7 +287,7 @@
       class="example-viewport"
       style="width: 100%;height:400px;">
       <!-- <div *cdkVirtualFor="let item of t1" class="example-item">{{item}}</div> -->
-      <div class="row" *ngIf="istime">
+      <div class="row">
         <div class="col-sm">
           <p style="text-align: center;">TIME A</p>
           <section class="example-section" *ngFor="let data of LotolyTime"
@@ -306,8 +298,10 @@
               <div class="row" style="display: flex;flex-direction:
                 row;width: 350px;justify-content: center;justify-items:
                 center;">
-                <p class="col-8" style="font-family: K2D;margin: 0px;font-size: 20px;">{{data.name}}</p>
-                <p class="col-4" style="font-family: K2D;margin: 0px;font-size: 20px;">{{data.time}}</p>
+                <p class="col-8"
+                  style="font-family: K2D;margin: 0px;font-size: 20px;">{{data.name}}</p>
+                <p class="col-4"
+                  style="font-family: K2D;margin: 0px;font-size: 20px;">{{data.time}}</p>
               </div>
             </mat-checkbox>
           </section>
@@ -319,8 +313,10 @@
               <div class="row" style="display: flex;flex-direction:
                 row;width: 350px;justify-content: center;justify-items:
                 center;">
-                <p class="col-8" style="font-family: K2D;margin: 0px;font-size: 20px;">{{data.name}}</p>
-                <p class="col-4" style="font-family: K2D;margin: 0px;font-size: 20px;">{{data.time}}</p>
+                <p class="col-8"
+                  style="font-family: K2D;margin: 0px;font-size: 20px;">{{data.name}}</p>
+                <p class="col-4"
+                  style="font-family: K2D;margin: 0px;font-size: 20px;">{{data.time}}</p>
               </div>
             </mat-checkbox>
           </section>
@@ -343,8 +339,7 @@
         </div> -->
       </div>
 
-
-      <div class="col-sm" *ngIf="!istime">
+      <!-- <div class="col-sm" *ngIf="!istime">
         <div class="row" style="padding: 10px;">
           <div class="col-sm" style="margin-top: 20px;">
             <p style="text-align: center;font-size:24px;">รายวัน</p>
@@ -369,7 +364,6 @@
               </mat-checkbox>
             </section>
           </div>
-
 
           <div class="col-sm" style="margin-top: 20px;">
             <p style="text-align: center;font-size:24px;">VIP</p>
@@ -408,11 +402,8 @@
             </section>
           </div>
         </div>
-      </div>
+      </div> -->
     </cdk-virtual-scroll-viewport>
   </section>
-
-
-
 
 </div>

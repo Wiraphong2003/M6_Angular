@@ -289,6 +289,13 @@ export class Main2Component {
       "time": "10:00"
     },
     {
+      "lid": 99,
+      "name": "ธกส",
+      "type": 3,
+      "cid": 1,
+      "time": "10:00"
+    },
+    {
       "lid": 35,
       "name": "ฮั่งเส็งเช้าVIP",
       "type": 3,
@@ -394,573 +401,516 @@ export class Main2Component {
 
 
   Lottary = [
-
-      {
-        "lid": 1,
-        "name": "ลาวEXTRA",
-        "type": 1,
-        "cid": null,
-        "time": "08:25"
-      },
-      {
-        "lid": 2,
-        "name": "ฮานอยอาเซียน",
-        "type": 1,
-        "cid": null,
-        "time": "09:10"
-      },
-      {
-        "lid": 3,
-        "name": "ลาวTV",
-        "type": 1,
-        "cid": 1,
-        "time": "10:25"
-      },
-      {
-        "lid": 4,
-        "name": "ฮานอยHD",
-        "type": 1,
-        "cid": 1,
-        "time": "11:10"
-      },
-      {
-        "lid": 5,
-        "name": "ฮานอยสตาร์",
-        "type": 1,
-        "cid": 1,
-        "time": "12:10"
-      },
-      {
-        "lid": 6,
-        "name": "ลาวHD",
-        "type": 1,
-        "cid": 1,
-        "time": "13:40"
-      },
-      {
-        "lid": 7,
-        "name": "ฮานอยTV",
-        "type": 1,
-        "cid": 1,
-        "time": "14:10"
-      },
-      {
-        "lid": 8,
-        "name": "ลาวสตาร์",
-        "type": 1,
-        "cid": 1,
-        "time": "15:40"
-      },
-      {
-        "lid": 9,
-        "name": "ฮานอยกาชาติ",
-        "type": 1,
-        "cid": 1,
-        "time": "16:10"
-      },
-      {
-        "lid": 10,
-        "name": "ฮานอยสามัคคี",
-        "type": 1,
-        "cid": 1,
-        "time": "17:10"
-      },
-      {
-        "lid": 11,
-        "name": "ฮานอยพัฒนา",
-        "type": 1,
-        "cid": 1,
-        "time": "20:18"
-      },
-      {
-        "lid": 12,
-        "name": "ลาวสามัคคี",
-        "type": 1,
-        "cid": 1,
-        "time": "20:20"
-      },
-      {
-        "lid": 13,
-        "name": "ลาวอาเซียน",
-        "type": 1,
-        "cid": 1,
-        "time": "20:55"
-      },
-      {
-        "lid": 14,
-        "name": "ลาวสามัคคีVIP",
-        "type": 1,
-        "cid": 1,
-        "time": "21:25"
-      },
-      {
-        "lid": 15,
-        "name": "ฮานอยEXTRE",
-        "type": 1,
-        "cid": 1,
-        "time": "22:10"
-      },
-      {
-        "lid": 16,
-        "name": "ลาวสตาร์VIP",
-        "type": 1,
-        "cid": 1,
-        "time": "21:45"
-      },
-      {
-        "lid": 17,
-        "name": "ลาวกาซาด",
-        "type": 1,
-        "cid": 1,
-        "time": "23:25"
-      },
-      {
-        "lid": 18,
-        "name": "ดาวโจนส์VIP",
-        "type": 1,
-        "cid": 1,
-        "time": "00:10"
-      },
-      {
-        "lid": 19,
-        "name": "ดาวโจนส์STAR",
-        "type": 1,
-        "cid": 1,
-        "time": "01:05"
-      },
-      {
-        "lid": 20,
-        "name": "นิเคอิเช้า",
-        "type": 2,
-        "cid": 1,
-        "time": "09:25"
-      },
-      {
-        "lid": 21,
-        "name": "จีนเช้า",
-        "type": 2,
-        "cid": 1,
-        "time": "10:20"
-      },
-      {
-        "lid": 22,
-        "name": "ฮั่งเส็งเช้า",
-        "type": 2,
-        "cid": 1,
-        "time": "10:55"
-      },
-      {
-        "lid": 23,
-        "name": "ไต้หวัน",
-        "type": 2,
-        "cid": 1,
-        "time": "12:10"
-      },
-      {
-        "lid": 24,
-        "name": "เกาหลี",
-        "type": 2,
-        "cid": 1,
-        "time": "12:45"
-      },
-      {
-        "lid": 25,
-        "name": "นิเคอิบ่าย",
-        "type": 2,
-        "cid": 1,
-        "time": "12:55"
-      },
-      {
-        "lid": 26,
-        "name": "จีนบ่าย",
-        "type": 2,
-        "cid": 1,
-        "time": "13:45"
-      },
-      {
-        "lid": 27,
-        "name": "ฮั่งเส็งบ่าย",
-        "type": 2,
-        "cid": 1,
-        "time": "14:52"
-      },
-      {
-        "lid": 28,
-        "name": "สิงคโปร์",
-        "type": 2,
-        "cid": 1,
-        "time": "17:00"
-      },
-      {
-        "lid": 29,
-        "name": "ไทยเย็น",
-        "type": 2,
-        "cid": 1,
-        "time": "16:05"
-      },
-      {
-        "lid": 30,
-        "name": "รัสเซีย",
-        "type": 2,
-        "cid": 1,
-        "time": "22:30"
-      },
-      {
-        "lid": 31,
-        "name": "เยอรมัน",
-        "type": 2,
-        "cid": 1,
-        "time": "22:15"
-      },
-      {
-        "lid": 32,
-        "name": "อังกฤษ",
-        "type": 2,
-        "cid": 1,
-        "time": "22:15"
-      },
-      {
-        "lid": 33,
-        "name": "ดาวโจนส์ปกติ",
-        "type": 2,
-        "cid": 1,
-        "time": "02:00"
-      },
-      {
-        "lid": 34,
-        "name": "นิเคอิเช้าVIP",
-        "type": 3,
-        "cid": 1,
-        "time": "09:00"
-      },
-      {
-        "lid": 35,
-        "name": "จีนเช้าVIP",
-        "type": 3,
-        "cid": 1,
-        "time": "10:00"
-      },
-      {
-        "lid": 36,
-        "name": "ฮั่งเส็งเช้าVIP",
-        "type": 3,
-        "cid": 1,
-        "time": "10:30"
-      },
-      {
-        "lid": 37,
-        "name": "ไต้หวันVIP",
-        "type": 3,
-        "cid": 1,
-        "time": "11:30"
-      },
-      {
-        "lid": 38,
-        "name": "เกาหลีVIP",
-        "type": 3,
-        "cid": 1,
-        "time": "12:30"
-      },
-      {
-        "lid": 39,
-        "name": "นิเคอิบ่ายVIP",
-        "type": 3,
-        "cid": 1,
-        "time": "13:20"
-      },
-      {
-        "lid": 40,
-        "name": "จีนบ่ายVIP",
-        "type": 3,
-        "cid": 1,
-        "time": "14:20"
-      },
-      {
-        "lid": 41,
-        "name": "ฮั่งเส็งบ่ายVIP",
-        "type": 3,
-        "cid": 1,
-        "time": "15:20"
-      },
-      {
-        "lid": 42,
-        "name": "ฮานอยพิเศษ",
-        "type": 4,
-        "cid": 1,
-        "time": "17:12"
-      },
-      {
-        "lid": 43,
-        "name": "ฮานอยปกติ",
-        "type": 4,
-        "cid": 1,
-        "time": "18.12"
-      },
-      {
-        "lid": 44,
-        "name": "ฮานอยVIP",
-        "type": 4,
-        "cid": 1,
-        "time": "19:10"
-      },
-      {
-        "lid": 45,
-        "name": "ลาวพัฒนา",
-        "type": 4,
-        "cid": 1,
-        "time": "20:18"
-      },
-      {
-        "lid": 46,
-        "name": "ไทย",
-        "type": 5,
-        "cid": 1,
-        "time": "15:00"
-      },
-      {
-        "lid": 47,
-        "name": "ออมสิน",
-        "type": 5,
-        "cid": 1,
-        "time": "13:00"
-      },
-      {
-        "lid": 48,
-        "name": "ธกส",
-        "type": 5,
-        "cid": 1,
-        "time": "10:00"
-      },
     {
-      "lid": 99,
+      "lid": 1001,
+      "name": "ลาวEXTRA",
+      "time": "08:25"
+    },
+    {
+      "lid": 1002,
+      "name": "นิเคอิเช้าVIP",
+      "time": "09:00"
+    },
+    {
+      "lid": 1003,
+      "name": "ฮานอยอาเซียน",
+      "time": "09:10"
+    },
+    {
+      "lid": 1004,
+      "name": "นิเคอิเช้า",
+      "time": "09:25"
+    },
+    {
+      "lid": 1005,
+      "name": "จีนเช้าVIP",
+      "time": "10:00"
+    },
+    {
+      "lid": 1006,
+      "name": "ธกส",
+      "type": 3,
+      "cid": 1,
+      "time": "10:00"
+    },
+    {
+      "lid": 1007,
+      "name": "จีนเช้า",
+      "time": "10:20"
+    },
+    {
+      "lid": 1008,
+      "name": "ลาวTV",
+      "time": "10:25"
+    },
+    {
+      "lid": 1009,
+      "name": "ฮั่งเล็งเช้าVIP",
+      "time": "10:30"
+    },
+    {
+      "lid": 1010,
+      "name": "ฮั่งเล็งเช้า",
+      "time": "10:55"
+    },
+    {
+      "lid": 1011,
+      "name": "ฮานอยHD",
+      "time": "11:10"
+    },
+    {
+      "lid": 1012,
+      "name": "ไต้หวันVIP",
+      "time": "11:30"
+    },
+    {
+      "lid": 1013,
+      "name": "ไต้หวัน",
+      "time": "12:10"
+    },
+    {
+      "lid": 1014,
+      "name": "ฮานอยสตาร์",
+      "time": "12:10"
+    },
+    {
+      "lid": 1015,
+      "name": "เกาหลีVIP",
+      "time": "12:30"
+    },
+    {
+      "lid": 1016,
+      "name": "เกาหลี",
+      "time": "12:45"
+    },
+    {
+      "lid": 1017,
+      "name": "นิเคอิบ่าย",
+      "time": "12:55"
+    },
+    {
+      "lid": 1018,
+      "name": "ออมสิน",
+      "type": 3,
+      "cid": 1,
+      "time": "13:00"
+    },
+    {
+      "lid": 1019,
+      "name": "นิเคอิบ่ายVIP",
+      "time": "13:20"
+    },
+    {
+      "lid": 1020,
+      "name": "ลาวHD",
+      "time": "13:40"
+    },
+    {
+      "lid": 1021,
+      "name": "จีนบ่าย",
+      "time": "13:45"
+    },
+    {
+      "lid": 1022,
+      "name": "ฮานอยTV",
+      "time": "14:10"
+    },
+    {
+      "lid": 1023,
+      "name": "จีนบ่ายVIP",
+      "time": "14:20"
+    },
+    {
+      "lid": 1024,
+      "name": "ฮั่งเส็งบ่าย",
+      "time": "14:55"
+    },
+    {
+      "lid": 1025,
+      "name": "ไทย",
+      "type": 3,
+      "cid": 1,
+      "time": "15:00"
+    }
+
+    ,
+    {
+      "lid": 1026,
+      "name": "ฮั่งเส็งบ่ายVIP",
+      "time": "15:20"
+    },
+    {
+      "lid": 1027,
+      "name": "ลาวสตาร์",
+      "time": "15:40"
+    },
+    {
+      "lid": 1028,
+      "name": "ฮานอยกาชาด",
+      "time": "16:10"
+    },
+    {
+      "lid": 1029,
+      "name": "ฮานอยพิเศษ",
+      "time": "17:10"
+    },
+    {
+      "lid": 1030,
+      "name": "ฮานอยสามัคคี",
+      "time": "17:10"
+    },
+    {
+      "lid": 1031,
+      "name": "ฮานอยปกติ",
+      "time": "18:10"
+    },
+    {
+      "lid": 1032,
+      "name": "ฮานอยVIP",
+      "time": "19:10"
+    },
+    {
+      "lid": 1033,
+      "name": "ฮานอยพัฒนา",
+      "time": "19:10"
+    },
+    {
+      "lid": 1034,
+      "name": "ลาวสามัคคี",
+      "time": "20:15"
+    },
+    {
+      "lid": 1035,
+      "name": "ลาวพัฒนา", //(จ พ ศ)
+      "time": "20:20"
+    },
+    {
+      "lid": 1036,
+      "name": "ลาวอาเซียน",
+      "time": "20:55"
+    },
+    {
+      "lid": 1037,
       "name": "ลาวVIP",
       "time": "21:20"
     },
+    {
+      "lid": 1038,
+      "name": "ลาวSTAR VIP",
+      "time": "21:45"
+    },
+    {
+      "lid": 1039,
+      "name": "อังกฤษVIP",
+      "time": "21:45"
+    },
+    {
+      "lid": 1040,
+      "name": "ฮานอยEXTER",
+      "time": "22:10"
+    },
+    {
+      "lid": 1041,
+      "name": "รัสเซีย",
+      "time": "22:30"
+    },
+    {
+      "lid": 1042,
+      "name": "เยอรมันVIP",
+      "time": "22:45"
+    },
+    {
+      "lid": 1043,
+      "name": "อังกฤษ",
+      "time": "22:10"
+    },
+    {
+      "lid": 1044,
+      "name": "เยอรมัน",
+      "time": "22:10"
+    },
+    {
+      "lid": 1045,
+      "name": "ลาวกาซาด",
+      "time": "23:25"
+    },
+    {
+      "lid": 1046,
+      "name": "รัสเซียVIP",
+      "time": "23:45"
+    },
+    {
+      "lid": 1047,
+      "name": "ดาวโจนส์VIP",
+      "time": "00:10"
+    },
+    {
+      "lid": 1048,
+      "name": "ดาวโจนส์STAR",
+      "time": "01:00"
+    },
+    {
+      "lid": 1049,
+      "name": "ดาวโจนส์",
+      "time": "01:00"
+    }
   ]
 
 
   LotolyTime = [
     {
-      "lid": 1,
+      "lid": 1001,
+      "name": "ลาวEXTRA",
+      "time": "08:25"
+    },
+    {
+      "lid": 1002,
       "name": "นิเคอิเช้าVIP",
       "time": "09:00"
     },
     {
-      "lid": 2,
+      "lid": 1003,
+      "name": "ฮานอยอาเซียน",
+      "time": "09:10"
+    },
+    {
+      "lid": 1004,
       "name": "นิเคอิเช้า",
       "time": "09:25"
     },
     {
-      "lid": 3,
+      "lid": 1005,
       "name": "จีนเช้าVIP",
       "time": "10:00"
     },
     {
-      "lid": 4,
+      "lid": 1006,
+      "name": "ธกส",
+      "type": 3,
+      "cid": 1,
+      "time": "10:00"
+    },
+    {
+      "lid": 1007,
       "name": "จีนเช้า",
       "time": "10:20"
     },
     {
-      "lid": 5,
+      "lid": 1008,
       "name": "ลาวTV",
       "time": "10:25"
     },
     {
-      "lid": 6,
+      "lid": 1009,
       "name": "ฮั่งเล็งเช้าVIP",
       "time": "10:30"
     },
     {
-      "lid": 7,
+      "lid": 1010,
       "name": "ฮั่งเล็งเช้า",
       "time": "10:55"
     },
     {
-      "lid": 8,
+      "lid": 1011,
       "name": "ฮานอยHD",
       "time": "11:10"
     },
     {
-      "lid": 9,
+      "lid": 1012,
       "name": "ไต้หวันVIP",
       "time": "11:30"
     },
     {
-      "lid": 10,
+      "lid": 1013,
       "name": "ไต้หวัน",
       "time": "12:10"
     },
     {
-      "lid": 11,
+      "lid": 1014,
       "name": "ฮานอยสตาร์",
       "time": "12:10"
     },
     {
-      "lid": 12,
+      "lid": 1015,
       "name": "เกาหลีVIP",
       "time": "12:30"
     },
     {
-      "lid": 13,
+      "lid": 1016,
       "name": "เกาหลี",
       "time": "12:45"
     },
     {
-      "lid": 14,
+      "lid": 1017,
       "name": "นิเคอิบ่าย",
       "time": "12:55"
     },
     {
-      "lid": 15,
+      "lid": 1018,
+      "name": "ออมสิน",
+      "type": 3,
+      "cid": 1,
+      "time": "13:00"
+    },
+    {
+      "lid": 1019,
       "name": "นิเคอิบ่ายVIP",
       "time": "13:20"
     },
     {
-      "lid": 16,
+      "lid": 1020,
       "name": "ลาวHD",
       "time": "13:40"
     },
     {
-      "lid": 17,
+      "lid": 1021,
       "name": "จีนบ่าย",
       "time": "13:45"
     },
     {
-      "lid": 18,
+      "lid": 1022,
       "name": "ฮานอยTV",
       "time": "14:10"
     },
     {
-      "lid": 19,
+      "lid": 1023,
       "name": "จีนบ่ายVIP",
       "time": "14:20"
     },
     {
-      "lid": 20,
+      "lid": 1024,
       "name": "ฮั่งเส็งบ่าย",
       "time": "14:55"
     },
     {
-      "lid": 21,
-      "name": "ฮั่งเส็งบ่ายVIP",
-      "time": "15:20"
-    },
-    {
-      "lid": 22,
-      "name": "ลาวสตาร์",
-      "time": "15:40"
-    },
+      "lid": 1025,
+      "name": "ไทย",
+      "type": 3,
+      "cid": 1,
+      "time": "15:00"
+    }
+
 
   ]
 
   LotolyTime2 = [
     {
-      "lid": 23,
+      "lid": 1026,
+      "name": "ฮั่งเส็งบ่ายVIP",
+      "time": "15:20"
+    },
+    {
+      "lid": 1027,
+      "name": "ลาวสตาร์",
+      "time": "15:40"
+    },
+    {
+      "lid": 1028,
       "name": "ฮานอยกาชาด",
       "time": "16:10"
     },
     {
-      "lid": 24,
+      "lid": 1029,
       "name": "ฮานอยพิเศษ",
       "time": "17:10"
     },
     {
-      "lid": 25,
+      "lid": 1030,
       "name": "ฮานอยสามัคคี",
       "time": "17:10"
     },
     {
-      "lid": 26,
+      "lid": 1031,
       "name": "ฮานอยปกติ",
       "time": "18:10"
     },
     {
-      "lid": 27,
+      "lid": 1032,
       "name": "ฮานอยVIP",
       "time": "19:10"
     },
     {
-      "lid": 28,
+      "lid": 1033,
       "name": "ฮานอยพัฒนา",
       "time": "19:10"
     },
     {
-      "lid": 29,
+      "lid": 1034,
       "name": "ลาวสามัคคี",
       "time": "20:15"
     },
     {
-      "lid": 30,
+      "lid": 1035,
       "name": "ลาวพัฒนา", //(จ พ ศ)
       "time": "20:20"
     },
     {
-      "lid": 31,
+      "lid": 1036,
       "name": "ลาวอาเซียน",
       "time": "20:55"
     },
     {
-      "lid": 32,
+      "lid": 1037,
       "name": "ลาวVIP",
       "time": "21:20"
     },
     {
-      "lid": 33,
+      "lid": 1038,
       "name": "ลาวSTAR VIP",
       "time": "21:45"
     },
     {
-      "lid": 34,
+      "lid": 1039,
       "name": "อังกฤษVIP",
       "time": "21:45"
     },
     {
-      "lid": 35,
+      "lid": 1040,
       "name": "ฮานอยEXTER",
       "time": "22:10"
     },
     {
-      "lid": 36,
+      "lid": 1041,
       "name": "รัสเซีย",
       "time": "22:30"
     },
     {
-      "lid": 37,
+      "lid": 1042,
       "name": "เยอรมันVIP",
       "time": "22:45"
     },
     {
-      "lid": 38,
+      "lid": 1043,
       "name": "อังกฤษ",
       "time": "22:10"
     },
     {
-      "lid": 39,
+      "lid": 1044,
       "name": "เยอรมัน",
       "time": "22:10"
     },
     {
-      "lid": 40,
+      "lid": 1045,
       "name": "ลาวกาซาด",
       "time": "23:25"
     },
     {
-      "lid": 41,
+      "lid": 1046,
       "name": "รัสเซียVIP",
       "time": "23:45"
     },
     {
-      "lid": 42,
+      "lid": 1047,
       "name": "ดาวโจนส์VIP",
       "time": "00:10"
     },
     {
-      "lid": 43,
+      "lid": 1048,
       "name": "ดาวโจนส์STAR",
       "time": "01:00"
     },
     {
-      "lid": 44,
+      "lid": 1049,
       "name": "ดาวโจนส์",
       "time": "01:00"
     },
@@ -1069,7 +1019,7 @@ export class Main2Component {
     this.maindatas.forEach(element => {
       // console.log(element);
       let time = element.time.split(":")
-      let str = time[0]+"_"+time[1];
+      let str = time[0] + "_" + time[1];
       let name = str + "" + element.name
       console.log(name);
       zip.file(`${name}.png`, element.url.substr(element.url.indexOf(',') + 1), { base64: true });
@@ -1149,7 +1099,7 @@ export class Main2Component {
           this.random();
 
           this.drawStrokedcenter(context, element.name, (w / 2) + 5, 410, '32px Chonburi', "#FFD51E", "black", 5)
-          this.drawStrokedcenter(context, this.currentDateTime,w/2, 120, "18px Chonburi", "white", "", 1)
+          this.drawStrokedcenter(context, this.currentDateTime, w / 2, 120, "18px Chonburi", "white", "", 1)
           this.drawStroked(context, this.A, ((w / 2) - 100), 190, "80px Chonburi", "white", "black", 2)
           this.drawStroked(context, this.B, ((w / 2) + 105), 190, "80px Chonburi", "white", "black", 2)
 
@@ -1383,26 +1333,43 @@ export class Main2Component {
 
   checkbox(obj: any) {
     // this.isShowG = false
+
+
     const lid = obj.lid;
     const index = this.ALL1.findIndex((element) => element.lid === lid);
 
-    console.log(lid);
+
+    // console.log(this.ALL1.length);
+    // if(this.ALL1.length!=49){
+    //   this.isSelected = false
+    // }else{
+    //   this.isSelected = true
+    // }
+
     if (index >= 0) {
 
+
       this.ALL1.splice(index, 1);
-      this.isShowG = false
+      // this.isShowG = false
+      if (this.ALL1.length == 0) {
+        this.isShowG = false
+      }
     } else {
+
       this.isShowG = true
-
       this.ALL1.push(obj);
-
     }
     // this.todateURL(this.ALL1);
     // this.isShowG = false
+    // console.log("========================");
+    // this.ALL1.forEach(element => {
+    //   console.log(element.name);
+    // });
   }
 
   checkALL() {
-    // this.isShowG = false
+
+    this.isShowG = false
     console.log("Check ALL");
     if (this.isSelected) {
       this.isSelected = false
@@ -1412,14 +1379,17 @@ export class Main2Component {
       this.isSelected = true
       this.isShowG = true
       this.remove();
-      console.log(this.ALL1);
       this.Lottary.forEach((element: any) => {
         this.ALL1.push(element)
       });
     }
-    console.log(this.maindatas);
     // this.todateURL(this.ALL1);
+    // console.log("========================");
+    // this.ALL1.forEach(element => {
+    //   console.log(element.name);
+    // });
     // this.isShowG = false
+    // console.log(this.ALL1.length);
   }
 
 
