@@ -1185,11 +1185,50 @@ export class Main2Component {
 
   generateArray(num1: any, num2: any): number[] {
     let arr: number[] = []
-    arr = [
-      this.getRandomNumber(100, 999),
-      this.getRandomNumber(100, 999),
-      this.getRandomNumber(100, 999),
-    ]
+    let ran = this.getRandomNumber(0, 5)
+    // let ran = 0
+    if (ran == 0) {
+      arr = [
+        this.getRandomNumber(10, 99) + num1.toString(),
+        num2.toString() + this.getRandomNumber(10, 99),
+        num2.toString() + this.getRandomNumber(0, 9) + num1.toString(),
+      ]
+    } else if (ran == 1) {
+      arr = [
+        num1.toString() + this.getRandomNumber(10, 99),
+        num2.toString() + this.getRandomNumber(0, 9) + num1.toString(),
+        num1.toString() + this.getRandomNumber(10, 99),
+      ]
+    } else if (ran == 2) {
+      arr = [
+        num2.toString() + this.getRandomNumber(10, 99),
+        num2.toString() + this.getRandomNumber(0, 9) + num1.toString(),
+        this.getRandomNumber(10, 99) + num1.toString()
+      ]
+    } else if (ran == 3) {
+      arr = [
+        this.getRandomNumber(10, 99) + num2.toString(),
+        num1.toString() + this.getRandomNumber(0, 9) + num1.toString(),
+        this.getRandomNumber(10, 99) + num1.toString()
+      ]
+    } else if (ran == 4) {
+      arr = [
+        this.getRandomNumber(99, 999),
+        this.getRandomNumber(0, 9) + num2.toString() + num1.toString(),
+        this.getRandomNumber(10, 99) + num2.toString()
+      ]
+    } else {
+      arr = [
+        num2.toString() + this.getRandomNumber(0, 9) + num1.toString(),
+        this.getRandomNumber(10, 99) + num1.toString(),
+        this.getRandomNumber(10, 99) + num2.toString()
+      ]
+    }
+    // arr = [
+    //   this.getRandomNumber(100, 999),
+    //   this.getRandomNumber(100, 999),
+    //   this.getRandomNumber(100, 999),
+    // ]
     for (let index = 0; index < arr.length; index++) {
 
       let cks = this.checkindextree(arr[index], arr)
