@@ -426,13 +426,13 @@ export class Main2Component {
       "name": "จีนเช้าVIP",
       "time": "10:00"
     },
-    {
-      "lid": 1006,
-      "name": "ธกส",
-      "type": 3,
-      "cid": 1,
-      "time": "10:00"
-    },
+    // {
+    //   "lid": 1006,
+    //   "name": "ธกส",
+    //   "type": 3,
+    //   "cid": 1,
+    //   "time": "10:00"
+    // },
     {
       "lid": 1007,
       "name": "จีนเช้า",
@@ -488,13 +488,13 @@ export class Main2Component {
       "name": "นิเคอิบ่าย",
       "time": "12:55"
     },
-    {
-      "lid": 1018,
-      "name": "ออมสิน",
-      "type": 3,
-      "cid": 1,
-      "time": "13:00"
-    },
+    // {
+    //   "lid": 1018,
+    //   "name": "ออมสิน",
+    //   "type": 3,
+    //   "cid": 1,
+    //   "time": "13:00"
+    // },
     {
       "lid": 1019,
       "name": "นิเคอิบ่ายVIP",
@@ -525,13 +525,13 @@ export class Main2Component {
       "name": "ฮั่งเส็งบ่าย",
       "time": "14:55"
     },
-    {
-      "lid": 1025,
-      "name": "ไทย",
-      "type": 3,
-      "cid": 1,
-      "time": "15:00"
-    }
+    // {
+    //   "lid": 1025,
+    //   "name": "ไทย",
+    //   "type": 3,
+    //   "cid": 1,
+    //   "time": "15:00"
+    // }
 
     ,
     {
@@ -683,13 +683,13 @@ export class Main2Component {
       "name": "จีนเช้าVIP",
       "time": "10:00"
     },
-    {
-      "lid": 1006,
-      "name": "ธกส",
-      "type": 3,
-      "cid": 1,
-      "time": "10:00"
-    },
+    // {
+    //   "lid": 1006,
+    //   "name": "ธกส",
+    //   "type": 3,
+    //   "cid": 1,
+    //   "time": "10:00"
+    // },
     {
       "lid": 1007,
       "name": "จีนเช้า",
@@ -745,13 +745,13 @@ export class Main2Component {
       "name": "นิเคอิบ่าย",
       "time": "12:55"
     },
-    {
-      "lid": 1018,
-      "name": "ออมสิน",
-      "type": 3,
-      "cid": 1,
-      "time": "13:00"
-    },
+    // {
+    //   "lid": 1018,
+    //   "name": "ออมสิน",
+    //   "type": 3,
+    //   "cid": 1,
+    //   "time": "13:00"
+    // },
     {
       "lid": 1019,
       "name": "นิเคอิบ่ายVIP",
@@ -782,23 +782,23 @@ export class Main2Component {
       "name": "ฮั่งเส็งบ่าย",
       "time": "14:55"
     },
-    {
-      "lid": 1025,
-      "name": "ไทย",
-      "type": 3,
-      "cid": 1,
-      "time": "15:00"
-    }
-
-
-  ]
-
-  LotolyTime2 = [
+    // {
+    //   "lid": 1025,
+    //   "name": "ไทย",
+    //   "type": 3,
+    //   "cid": 1,
+    //   "time": "15:00"
+    // }
     {
       "lid": 1026,
       "name": "ฮั่งเส็งบ่ายVIP",
       "time": "15:20"
     },
+
+  ]
+
+  LotolyTime2 = [
+
     {
       "lid": 1027,
       "name": "ลาวสตาร์",
@@ -915,6 +915,32 @@ export class Main2Component {
       "time": "01:00"
     },
   ]
+
+  spachice = [
+    {
+      "lid": 1006,
+      "name": "ธกส",
+      "type": 3,
+      "cid": 1,
+      "time": "10:00"
+    },
+    {
+      "lid": 1018,
+      "name": "ออมสิน",
+      "type": 3,
+      "cid": 1,
+      "time": "13:00"
+    },
+    {
+      "lid": 1025,
+      "name": "ไทย",
+      "type": 3,
+      "cid": 1,
+      "time": "15:00"
+    }
+  ]
+
+
 
   isdisplay!: boolean;
   A!: any;
