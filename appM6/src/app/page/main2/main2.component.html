@@ -138,8 +138,7 @@
                 style="width:300px;display: flex;justify-content: center;">
                 <div class="col" *ngFor="let data of spachice">
                   <mat-checkbox class="example-margin" [disabled]="false"
-                    style="margin: -5px;" (change)="checkbox(data)"
-                    >
+                    style="margin: -5px;" (change)="checkbox(data)">
                     <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
                   </mat-checkbox>
                 </div>
@@ -338,6 +337,20 @@
             </mat-checkbox>
           </section>
 
+          <hr>
+          <section class="example-section" *ngFor="let data of spachice"
+            style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false"
+              style="margin: -5px;" (change)="checkbox(data)"
+              >
+              <div class="row" style="display: flex;flex-direction:
+                row;width: 350px;justify-content: center;justify-items:
+                center;">
+                <p class="col"
+                  style="font-family: K2D;margin: 0px;font-size: 20px;">{{data.name}}</p>
+              </div>
+            </mat-checkbox>
+          </section>
         </div>
         <!-- <div class="col-sm">
           <p style="text-align: center;">TIME B</p>
