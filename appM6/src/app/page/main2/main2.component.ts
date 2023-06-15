@@ -992,62 +992,37 @@ export class Main2Component {
     AAA.forEach(element => {
       str += element + "-"
     });
-    // console.log(str.substring(0,str.length-1));
+
     this.DATE = str.substring(0, str.length - 1)
     this.imageuser = local.getData("img1");
-
-
-    // this.date_value = this.todayISOString.split("T", 1);
-    // console.log(this.date_value);
-    // let ss: any[] = []
-    // this.date_value.forEach((element: any) => {
-    //   console.log(element);
-    //   ss = element.split("-");
-    // });
-    // console.log(ss);
-    // let getdatetemp = "";
-
-    // for (let index = ss.length - 1; index >= 0; index--) {
-    //   const element = ss[index];
-    //   getdatetemp = getdatetemp + "-" + element
-    // }
-    // console.log(getdatetemp);
-    // this.DATE = getdatetemp.slice(1, getdatetemp.length)
-
-    // this.t1 = dataService.t1;
-    // this.t2 = dataService.t2;
-    // this.t3 = dataService.t3;
-    // this.t4 = dataService.t4;
-    // this.t5 = dataService.t5;
-    // this.Lottary = dataService.Lottary;
   }
 
   async candown(array: any) {
     try {
-      this.DOWLOADS();
+      // console.log(this.maindatas.length > 0);
+      if (this.maindatas.length > 0) {
+        this.DOWLOADS();
+
+      } else {
+        alert("กรุณาสร้างรูปภาพ")
+      }
+
+
+
+
     } catch (E) {
       console.log("catch ERROR DOWLOAD");
-      this.todateURL(this.ALL1)
       alert("กรุณา Dowload อีกครั้ง")
-      // console.log(this.listdataURL);
     }
   }
 
   DOWLOADS() {
     const zip = new JSZip();
-    // for (let index = 0; index < this.listdataURL.length; index++) {
-    //   const element = this.listdataURL[index];
-    //   const name = this.ALL1[index].name;
-    //   zip.file(`${name}.png`, element.substr(element.indexOf(',') + 1), { base64: true });
-    // }
-
 
     this.maindatas.forEach(element => {
-      // console.log(element);
       let time = element.time.split(":")
       let str = time[0] + "_" + time[1];
       let name = str + "" + element.name
-      console.log(name);
       zip.file(`${name}.png`, element.url.substr(element.url.indexOf(',') + 1), { base64: true });
     });
 
@@ -1060,8 +1035,6 @@ export class Main2Component {
     });
     this.listdataURL = this.listdataURL.filter(item => item !== item);
     this.maindatas = this.maindatas.filter(item => item !== item);
-    console.log(this.maindatas);
-
   }
 
   trackByFn(index: any) {
@@ -1081,12 +1054,9 @@ export class Main2Component {
     } else {
       this.istime = true
     }
-    console.log(this.maindatas);
-
   }
 
   Createimage(array: any) {
-    console.log(this.ischs);
     if (this.ischs == 1) {
       this.todateURL(array)
       if (confirm("ยืนยันการสร้างรูปภาพ") == true) {
@@ -1105,8 +1075,6 @@ export class Main2Component {
       this.listdataURL = this.listdataURL.filter(item => item !== item);
       this.maindatas = this.maindatas.filter(item => item !== item);
       this.maindatas = []
-      console.log(this.maindatas);
-
       for (let i = 0; i < array.length; i++) {
         const element = array[i];
 
@@ -1141,15 +1109,6 @@ export class Main2Component {
           this.C.forEach((element, index) => {
             this.drawStroked(context, element, (80 * index) + 180, 360, "30px Chonburi", "white", "black", 1)
           });
-
-          const png = canvas.toDataURL("image/jpg");
-
-          // if (png.length >= 450000 && png.length <= 470000) {
-          //   console.log("GOOD  " + element.name + "\t" + png.length);
-          // } else {
-          //   console.log("ERROR  " + element.name + "\t" + png.length);
-          //   // this.gettoURL(array);
-          // }
           const pngs = canvas.toDataURL("image/jpg");
           // this.listdataURL.push(pngs)
           let maindata = {
@@ -1164,7 +1123,6 @@ export class Main2Component {
       }//loop 1
       this.dataService.ALL = array;
       this.isShowG = true
-      console.log(this.listdataURL.length);
     } else {
       alert("กรุณาเลือก Check box")
     }
@@ -1205,7 +1163,6 @@ export class Main2Component {
       num + this.arr[2],
       num + this.arr[3]
     ]
-    // console.log(result);
     return result
   }
 
@@ -1250,11 +1207,6 @@ export class Main2Component {
         this.getRandomNumber(10, 99) + num2.toString()
       ]
     }
-    // arr = [
-    //   this.getRandomNumber(100, 999),
-    //   this.getRandomNumber(100, 999),
-    //   this.getRandomNumber(100, 999),
-    // ]
     for (let index = 0; index < arr.length; index++) {
 
       let cks = this.checkindextree(arr[index], arr)
@@ -1263,7 +1215,6 @@ export class Main2Component {
       } else if (cks == 2) {
         arr[index] = this.getRandomNumber(1, 9) + arr[index];
       } else {
-        // console.log("generateArray else");
       }
       cks = this.checkindextree(arr[index], arr);
     }
@@ -1272,15 +1223,13 @@ export class Main2Component {
   checkindextree(em: any, arr: any) {
     let result !: number;
     if (em.toString().length == 1) {
-      // console.log("common==0: " + em);
+      ;
       result = 1
     }
     else if (em.toString().length == 2) {
-      // console.log("common==1: " + em);
       result = 2
     }
     else {
-      // console.log("commonelse: " + em);
     }
     return result;
   }
@@ -1317,24 +1266,14 @@ export class Main2Component {
 
     const myArray = this.generateArray(randomNum1, randomNum2);
     let arrsum: any[] = []
-
-    // const arr1 = this.randomN1(randomNum1);
-    // const arr2 = this.randomN1(randomNum2);
-
     const arr1 = this.getRandomNumbers(randomNum1)
     const arr2 = this.getRandomNumbers(randomNum2)
     arrsum = this.intersect_arrays(arr1, arr2);
-    // console.log("SSS:\t" + arrsum);
+
     if (arrsum.length > 0) {
-      // console.log("=========intersect_arrays==========");
+
       this.random()
     }
-
-
-
-    // console.log("Arr1: " + arr1)
-    // console.log("Arr2: " + arr2)
-    // console.log(myArray);
 
     this.C = myArray;
     this.A = randomNum1;
@@ -1349,12 +1288,10 @@ export class Main2Component {
     if (len > 0) {
 
       if (len == 1) {
-        // console.log(num + "\tnum == 1 ");
         isresult = 1;
 
       } else if (len == 2) {
         let temp = 0
-        // console.log(num + "\tnum == 2 ");
         if (arr.includes(num)) {
           arr.forEach((ee: any) => {
             if (ee == num) {
@@ -1363,15 +1300,10 @@ export class Main2Component {
             if (temp > 1) {
               isresult = 2;
             }
-            // else{
-            //     temp=0
-            // }
-            // console.log(temp)
           });
         }
 
       } else {
-        console.log(num + "\tnum > 2 ");
       }
     }
     return isresult
@@ -1403,14 +1335,6 @@ export class Main2Component {
     const lid = obj.lid;
     const index = this.ALL1.findIndex((element) => element.lid === lid);
 
-
-    // console.log(this.ALL1.length);
-    // if(this.ALL1.length!=49){
-    //   this.isSelected = false
-    // }else{
-    //   this.isSelected = true
-    // }
-
     if (index >= 0) {
 
 
@@ -1424,12 +1348,6 @@ export class Main2Component {
       this.isShowG = true
       this.ALL1.push(obj);
     }
-    // this.todateURL(this.ALL1);
-    // this.isShowG = false
-    // console.log("========================");
-    // this.ALL1.forEach(element => {
-    //   console.log(element.name);
-    // });
   }
 
   checkALL() {
@@ -1448,13 +1366,6 @@ export class Main2Component {
         this.ALL1.push(element)
       });
     }
-    // this.todateURL(this.ALL1);
-    // console.log("========================");
-    // this.ALL1.forEach(element => {
-    //   console.log(element.name);
-    // });
-    // this.isShowG = false
-    // console.log(this.ALL1.length);
   }
 
 
@@ -1472,6 +1383,4 @@ export class Main2Component {
   saveAs(content: any, arg1: string) {
     throw new Error('Function not implemented.');
   }
-
-
 }
