@@ -545,6 +545,16 @@ export class Main2Component {
       "time": "15:40"
     },
     {
+      "lid": 2221,
+      "name": "ไทยเย็น",
+      "time": "16:05"
+    },
+    {
+      "lid": 2222,
+      "name": "สิงคโปร์",
+      "time": "16:10"
+    },
+    {
       "lid": 1028,
       "name": "ฮานอยกาชาด",
       "time": "16:10"
@@ -794,15 +804,24 @@ export class Main2Component {
       "name": "ฮั่งเส็งบ่ายVIP",
       "time": "15:20"
     },
-
-  ]
-
-  LotolyTime2 = [
-
     {
       "lid": 1027,
       "name": "ลาวสตาร์",
       "time": "15:40"
+    },
+
+  ]
+
+  LotolyTime2 = [
+    {
+      "lid": 2221,
+      "name": "ไทยเย็น",
+      "time": "16:05"
+    },
+    {
+      "lid": 2222,
+      "name": "สิงคโปร์",
+      "time": "16:10"
     },
     {
       "lid": 1028,
